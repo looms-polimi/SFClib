@@ -1,0 +1,55 @@
+within SFC.ContinuousSys.ContinuousTests;
+model testSourceDrivenPulse
+  SFC.BasicBlocks.Condition C1(y = S0.t > 30)  annotation(
+    Placement(visible = true, transformation(origin = {-60, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  SFC.BasicBlocks.InitialStep S0 annotation(
+    Placement(visible = true, transformation(origin = {-90, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  SFC.BasicBlocks.Transition T1 annotation(
+    Placement(visible = true, transformation(origin = {-90, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  SFC.BasicBlocks.Step S1 annotation(
+    Placement(visible = true, transformation(origin = {-90, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  SFC.BasicBlocks.Transition T2 annotation(
+    Placement(visible = true, transformation(origin = {-90, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Math.Feedback feedback1 annotation(
+    Placement(visible = true, transformation(origin = {10, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Math.Gain K(k = 2 / 0.7)  annotation(
+    Placement(visible = true, transformation(origin = {40, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Continuous.TransferFunction P(a = {80, 42, 1}, b = {0.7}, y_start = 20)  annotation(
+    Placement(visible = true, transformation(origin = {98, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  SFC.BasicBlocks.Condition C2(y = P.y > 30 - 0.05)  annotation(
+    Placement(visible = true, transformation(origin = {-58, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  SFC.BasicBlocks.Action ON(qualifierType = SFC.Types.Qualifier.P)  annotation(
+    Placement(visible = true, transformation(origin = {-56, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  SFC.BasicBlocks.Action OFF(qualifierType = SFC.Types.Qualifier.P)  annotation(
+    Placement(visible = true, transformation(origin = {-56, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  BlocksImpl.drivenPulse TL_0(amplitude = 30, n = 1)  annotation(
+    Placement(visible = true, transformation(origin = {-20, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+equation
+  connect(OFF.actionOUT, TL_0.pulseIN[1]) annotation(
+    Line(points = {{-46, 8}, {-30, 8}, {-30, 8}, {-30, 8}}));
+  connect(K.y, P.u) annotation(
+    Line(points = {{52, 8}, {86, 8}, {86, 8}, {86, 8}}, color = {0, 0, 127}));
+  connect(TL_0.pulseOUT, feedback1.u1) annotation(
+    Line(points = {{-8, 8}, {2, 8}, {2, 8}, {2, 8}}, color = {0, 0, 127}));
+  connect(feedback1.u2, P.y) annotation(
+    Line(points = {{10, 0}, {10, -14}, {118, -14}, {118, 8}, {114, 8}, {114, 8}, {112, 8}, {112, 8}, {110, 8}}, color = {0, 0, 127}));
+  connect(S0.X, ON.phase_active) annotation(
+    Line(points = {{-78, 70}, {-66, 70}}, color = {255, 0, 255}));
+  connect(S1.X, OFF.phase_active) annotation(
+    Line(points = {{-78, 10}, {-66, 10}, {-66, 10}, {-66, 10}}, color = {255, 0, 255}));
+  connect(T2.OUT, S0.IN) annotation(
+    Line(points = {{-90, -22}, {-90, -22}, {-90, -40}, {-120, -40}, {-120, 92}, {-90, 92}, {-90, 80}, {-90, 80}}));
+  connect(T2.C, C2.y) annotation(
+    Line(points = {{-78, -20}, {-70, -20}, {-70, -20}, {-70, -20}}, color = {255, 0, 255}));
+  connect(feedback1.y, K.u) annotation(
+    Line(points = {{19, 8}, {21.5, 8}, {21.5, 8}, {24, 8}, {24, 8}, {29, 8}, {29, 8}, {27, 8}}, color = {0, 0, 127}));
+  connect(S1.OUT, T2.IN) annotation(
+    Line(points = {{-90, 0}, {-90, 0}, {-90, 0}, {-90, 0}, {-90, -18}, {-90, -18}}));
+  connect(T1.OUT, S1.IN) annotation(
+    Line(points = {{-90, 38}, {-90, 38}, {-90, 38}, {-90, 38}, {-90, 20}, {-90, 20}}));
+  connect(S0.OUT, T1.IN) annotation(
+    Line(points = {{-90, 60}, {-90, 60}, {-90, 60}, {-90, 60}, {-90, 42}, {-90, 42}, {-90, 42}, {-90, 42}}));
+  connect(T1.C, C1.y) annotation(
+    Line(points = {{-78, 40}, {-70, 40}, {-70, 40}, {-71, 40}, {-71, 40}, {-72, 40}}, color = {255, 0, 255}));
+  annotation(
+    uses(Modelica(version = "3.2.3")));end testSourceDrivenPulse;

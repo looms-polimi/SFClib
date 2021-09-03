@@ -1,0 +1,24 @@
+within SFC.BasicBlocks;
+
+model CounterMerge  // block created with Boolean input connector, the other counter has a mergeIN connector
+
+Integer count (start = 0);
+  Modelica.Blocks.Interfaces.BooleanInput increment annotation(
+    Placement(visible = true, transformation(origin = {-116, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-40, -3.21965e-15}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+
+//algorithm
+//when edge(increment) then count := pre(count) +1; end when;
+
+algorithm
+when initial() then if increment then count :=1; end if;
+elsewhen edge(increment) then count := pre(count) +1; end when;
+//the latter algorithm differs from the first one (commented) because it also initialises the counter (needed when a MergeActions has an action connected to the initial step)
+  annotation(
+    uses(Modelica(version = "3.2.3")),
+    Diagram(coordinateSystem(initialScale = 0.1)),
+    Icon(graphics = {Rectangle(origin = {-20, 20}, fillColor = {245, 245, 245}, fillPattern = FillPattern.Solid, extent = {{-40, 40}, {80, -80}}), Text(origin = {-25, 44}, extent = {{-21, 10}, {69, -24}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)),
+  Documentation(info = "<html><head></head><body><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><span class=\"Apple-style-span\" style=\"font-size: 12px; \">This block is a&nbsp;<b>Counter</b>&nbsp;block that counte events.<div><br></div><div>It is used to count events coming from the MergeActions block. Everytime it detects a rising edge the count is incremented.</div><div><br></div><div>It has one<b>&nbsp;inpunt </b>and an internal variable used to count<b>&nbsp;</b>:</div><div><ul><li><b><u>count</u>:</b>&nbsp;it is an&nbsp;<b>internal variable</b>&nbsp;integer number that provides the value of the counter;</li><li><span class=\"Apple-style-span\" style=\"font-size: 12px; \"><b><u>increment</u>:&nbsp;</b>it is an&nbsp;<b>input</b>&nbsp;that says if the action merged is true, i.e. if the merged action is being performed;</span></li></ul><div><br></div></div></span></body></html>"));
+    
+
+
+end CounterMerge;

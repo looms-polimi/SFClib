@@ -1,0 +1,4 @@
+within SFC.DiscreteEventSys;
+
+package Example
+end Example;

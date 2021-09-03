@@ -1,0 +1,11 @@
+within SFC.BasicBlocks;
+
+model RealCondition "Condition to trigger a Transition of an SFC"
+  Modelica.Blocks.Interfaces.RealOutput y = 0 "Value of Boolean output" annotation(
+    Dialog(group = "Time varying output signal"),
+    Placement(visible = true, transformation(origin = {-110, 0}, extent = {{10, -10}, {-10, 10}}, rotation = 0), iconTransformation(origin = {-110, 0}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+  annotation(
+    Icon(coordinateSystem(preserveAspectRatio = false, initialScale = 0.1), graphics = {Rectangle(fillColor = {235, 235, 235}, fillPattern = FillPattern.Solid, borderPattern = BorderPattern.Raised, extent = {{-100, 40}, {100, -40}}), Text(extent = {{-96, 15}, {96, -15}}, textString = "%y"), Text(lineColor = {0, 0, 255}, extent = {{-150, 90}, {150, 50}}, textString = "%name")}),
+    Documentation(info = "<html><head></head><body><p>This block is a simple Boolean condition block taken from the Standard Library of Modelica that has been included in the library for convenience and practicality.</p><p>The Condition must be connected to a Transition block, and when the condition inserted in the block is verified, it triggers the transition to fire.&nbsp;</p><p>The condition can be manually inserted through the internal boolean variable y. It can be of different types:</p><p></p><ul><li>A time to wait, e.g.&nbsp;\"time &gt;= 1 and time &lt;= 2\" (&nbsp;\"time\" is a built-in variable that is always accessible during the simulations);</li><li>Waiting that a variable of an external block became true/false or reaches a certain value, e.g P.y &gt; 29.99 in testErrorCompensatorPI;</li><li>Can be directly set to true, on rare occasions, when the transition must be fired immediately (in this case see also the documentation about the Fake Step in Transition block).</li></ul><p></p><div>In all the the cases, the output signal is <strong>true</strong>&nbsp;if the condition inserted is verified, otherwise is&nbsp;<strong>false</strong>.</div><div><br></div><div><b><u>Note</u></b> that if the condition to be verified is a time to be waited - as in the example above - and the cycle time of the Transition block is different from zero (Tc =!0), the total time to fire the transition will be the sum of the two (Tc + time to verify the condition).&nbsp;</div>
+</body></html>"));
+end RealCondition;

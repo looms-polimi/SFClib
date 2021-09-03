@@ -1,0 +1,17 @@
+within SFC.DevelTests;
+
+model Trial_0000
+  SFC.BasicBlocks.Transition T01 annotation(
+    Placement(visible = true, transformation(origin = {-7, -31}, extent = {{-25, -25}, {25, 25}}, rotation = 0)));
+  Modelica.Blocks.Sources.BooleanStep booleanStep(startTime = 2)  annotation(
+    Placement(visible = true, transformation(origin = {50, -32}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
+  SFC.BasicBlocks.InitialStep_version2 initialStep_version2 annotation(
+    Placement(visible = true, transformation(origin = {-11, 23}, extent = {{-27, -27}, {27, 27}}, rotation = 0)));
+equation
+  connect(T01.C, booleanStep.y) annotation(
+    Line(points = {{24, -30}, {38, -30}, {38, -32}, {38, -32}}, color = {255, 0, 255}));
+  connect(T01.IN, initialStep_version2.OUT) annotation(
+    Line(points = {{-8, -26}, {-10, -26}, {-10, -4}, {-10, -4}}));
+  connect(initialStep_version2.IN, T01.OUT) annotation(
+    Line(points = {{-10, 50}, {-12, 50}, {-12, 66}, {-78, 66}, {-78, -70}, {-8, -70}, {-8, -36}, {-6, -36}}));
+end Trial_0000;

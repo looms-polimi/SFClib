@@ -1,0 +1,34 @@
+within SFC.BasicBlocks;
+
+model Transition_ "Transition of an SFC"
+  SFC.Interfaces.TransitionInput IN annotation(
+    Placement(visible = true, transformation(origin = {-92, 60}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {-1.77636e-15, 20}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+  SFC.Interfaces.TransitionOutput OUT annotation(
+    Placement(visible = true, transformation(origin = {-54, -62}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {3.55271e-15, -20}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.BooleanInput C annotation(
+    Placement(visible = true, transformation(origin = {100, 54}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {120, 0}, extent = {{20, -20}, {-20, 20}}, rotation = 0)));
+  // C stands for condition
+equation
+  OUT.fire = IN.fire;
+algorithm
+//when pre(IN.active) and pre(C) then IN.fire:=not IN.fire; end when;
+  when pre(IN.active) and C then IN.fire := not IN.fire; end when;
+//   when pre(IN.fire) then IN.fire := false; end when;
+initial algorithm
+  IN.fire := false;
+annotation(
+    Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
+    Icon(graphics = {Rectangle(fillPattern = FillPattern.Solid, extent = {{-100, 20}, {100, -20}}), Text(origin = {-163, 39}, extent = {{-57, 35}, {57, -35}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)),
+  experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-6, Interval = 0.002),
+  Documentation(info = "<html><head></head><body><div style=\"text-align: justify;\">A <b>Transition</b>&nbsp;in the SFC is the element placed between two Steps, always associated with a condition. Its role is to manage the system evolution from one step to another that happens every time the transition is enabled(the step preceding the transition is active and the condition is satisfied).</div><div><br></div>The <i><u>Transition</u></i> block is equipped with three connectors, two are the customised <i>TransitionInput</i> and <i>TransitionOutput</i> from the Interface of the SFC library, the other one is a <i>BooleanInput</i> connector from the Modelica Standard Library. <div><br></div>To perform the evolution of the system, the TransitionInput and TransitionOutput monitor the state of the preceding and succeeding steps, the BooleanInput communicates if the condition (that comes from the Condition block) becomes true. As can be seen in the Figure below, suppose the case where S1 is an active step and step S2 is inactive, when condition C is satisfied, the transition is triggered and as consequence, the SFC evolves. S1 is deactivated and S2 activated, always through the TransitionInput and TransitionOutput connectors.&nbsp;<b>METTERE FIGURA</b> 
+
+<div><br></div><i>Particular case:</i> Fake Step <div><br></div><div>
+In some cases, the preceding step can be defined as a fake step (if the condition related to the step is set to true and then, there is no condition to be waited to fire the transition). For these cases, the transition has an internal Real variable T<sub>c</sub> (set by default to 0).
+
+</div><div><ul><li>If T<sub>c</sub>=0, the SFC evolves immediately and the transition is triggered by the condition;
+</li></ul></div><div><ul><li>If T<sub>c</sub>=!0, also if the condition is verified,  the SFC wait an amount of time equal to Tc before evolving.</li></ul></div>
+
+This variable is useful for two reasons: 
+First of all because, if the SFC language replicates a PLC implementation, the PLC evolution implies a minimum cycle time&nbsp;T<sub>c</sub>&nbsp;(that depends from the application);
+Second, because - when the condition related to the step is set to true - there are ambiguities in the code, the entire simulation becomes inconsistent and this library can not give any guaranty about the correctness of the SFC evolution.&nbsp;</body></html>"));
+end Transition_;
