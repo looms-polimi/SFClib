@@ -104,7 +104,7 @@ equation
   connect(ON.actionOUT, ON_OFF.mergeIN[1]) annotation(
     Line(points = {{-36, 18}, {5, 18}, {5, -2}, {50, -2}, {50, -20}}));
   connect(tank.outflow1, valveOUT.outflow1) annotation(
-    Line(points = {{66, 38}, {66, 15}}));
+    Line(points = {{66, 37}, {66, 15}}));
   connect(empty_tank.X, valve2open.phase_active) annotation(
     Line(points = {{-78, -100}, {-60, -100}, {-60, -100}, {-60, -100}}, color = {255, 0, 255}));
   connect(valve1open.actionBoolean, valveIN.valveControl) annotation(
@@ -112,7 +112,7 @@ equation
   connect(fill_tank.X, valve1open.phase_active) annotation(
     Line(points = {{-78, 60}, {-62, 60}, {-62, 60}, {-60, 60}}, color = {255, 0, 255}));
   connect(valveIN.inflow1, tank.inflow1) annotation(
-    Line(points = {{28, 94}, {28, 94}, {28, 76}, {28, 76}}));
+    Line(points = {{28, 94}, {28, 85}, {27.5, 85}, {27.5, 76}}));
   connect(t1.C, c1.y) annotation(
     Line(points = {{-78, 80}, {-60, 80}, {-60, 80}, {-62, 80}}, color = {255, 0, 255}));
   connect(t2.C, c2.y) annotation(
@@ -140,4 +140,5 @@ equation
   annotation(
     Icon(coordinateSystem(grid = {0, 0})),
     uses(Modelica(version = "3.2.3")),
-  experiment(StartTime = 0, StopTime = 1500, Tolerance = 1e-6, Interval = 3));end HeaterTankExample;
+  experiment(StartTime = 0, StopTime = 1500, Tolerance = 1e-6, Interval = 3));
+end HeaterTankExample;
