@@ -1,5 +1,6 @@
 package SFC
  extends Modelica.Icons.Package;
+ import Modelica.SIunits.*;
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     uses(Modelica(version = "3.2.3")),
