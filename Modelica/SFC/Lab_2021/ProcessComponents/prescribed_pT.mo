@@ -1,6 +1,8 @@
 within SFC.Lab_2021.ProcessComponents;
 
 model prescribed_pT
+  replaceable model Liquid=Media.BaseClasses.Base_LinearLiquid 
+              constrainedby Media.BaseClasses.Base_LinearLiquid;
   SFC.Lab_2021.Interfaces.pwh pwh_a annotation(
     Placement(visible = true, transformation(origin = {116, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {119, -1}, extent = {{-19, -19}, {19, 19}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput p annotation(
@@ -8,7 +10,7 @@ model prescribed_pT
   Modelica.Blocks.Interfaces.RealInput T annotation(
     Placement(visible = true, transformation(origin = {-156, -56}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-156, -56}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
 protected
-  Media.LinearLiquid liq;
+  Liquid liq;
 equation
   liq.p = p;
   liq.T = T;
