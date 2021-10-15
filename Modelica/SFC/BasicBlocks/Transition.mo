@@ -8,30 +8,30 @@ model Transition "Transition of an SFC"
     Placement(visible = true, transformation(origin = {-54, -62}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {3.55271e-15, -20}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanInput C annotation(
     Placement(visible = true, transformation(origin = {100, 54}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {120, 0}, extent = {{20, -20}, {-20, 20}}, rotation = 0)));
- protected
-  Real t_start_firing;
-  Boolean firing;
+protected
+  discrete Real t_start_firing;
+  discrete Integer status "0 idle, 1 waiting to fire";
 equation
   OUT.fire = IN.fire;
 algorithm
-  when pre(IN.active) and pre(C) then
-     if Tcycle<=0 then
-        IN.fire := true;
-     elseif Tcycle>=0 then
-     firing := true;
-     end if;
-     t_start_firing := time;   
+  when status==0 and pre(IN.active) and pre(C) then
+     if Tcycle<=0 then             
+        IN.fire := not(IN.fire);  /* fire immediately*/
+        t_start_firing := 0;
+     else
+        status := 1;              /* start waiting to fire*/
+        t_start_firing := time;
+     end if; 
   end when;
-  when pre(firing) and time-t_start_firing>=Tcycle then
-        IN.fire := true;
+  when status==1 and time-t_start_firing>=Tcycle then
+     IN.fire := not(IN.fire); 
+     status := 0;
   end when;
-  when pre(IN.fire) then IN.fire := false; firing := false; end when;
 
 initial algorithm
   IN.fire := false;
-  firing := false;
   t_start_firing := time;
-
+  status := 0;
 
 annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),

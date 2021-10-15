@@ -10,7 +10,7 @@ model Step "Step of an SFC"
   discrete Real t_last_activation(start=0,fixed=true);
   discrete Real duration_last_activity(start=0,fixed=true);
   discrete Integer act_count;
-  Real t;
+  Real t(start=0);
 equation
   t = if X then time - t_last_activation else duration_last_activity;
   OUT.active=X;
@@ -20,7 +20,10 @@ algorithm
     t_last_activation:= time;
     act_count := act_count+1;
   end when;
-  when change(OUT.fire) then X:=false; duration_last_activity := t; end when;
+  when change(OUT.fire) then
+     X:=false;
+     duration_last_activity := t;
+  end when;
 initial algorithm
   X := false;
   act_count := 0;

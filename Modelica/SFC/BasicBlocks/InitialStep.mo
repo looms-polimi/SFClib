@@ -10,7 +10,7 @@ model InitialStep "Initial Step of an SFC"
   discrete Real t_last_activation(start=0,fixed=true);
   discrete Real duration_last_activity(start=0,fixed=true);
   discrete Integer act_count;
-  Real t;
+  Real t(start=0);
 equation
   t = if X then time - t_last_activation else duration_last_activity;
   OUT.active=X;
