@@ -4,7 +4,7 @@ model InitialStep "Initial Step of an SFC"
   SFC.Interfaces.StepInput IN annotation(
     Placement(visible = true, transformation(origin = {-26, 116}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {0, 100}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   SFC.Interfaces.StepOutput OUT annotation(
-    Placement(visible = true, transformation(origin = {-116, -40}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {0, -100}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {0, -70}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {0, -100}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput X annotation(
     Placement(visible = true, transformation(origin = {-34, 18}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {120, -3.55271e-15}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   discrete Real t_last_activation(start=0,fixed=true);
@@ -20,7 +20,10 @@ algorithm
     t_last_activation:= time;
     act_count := act_count+1;
   end when;
-  when change(OUT.fire) then X:=false; duration_last_activity := t; end when;
+  when change(OUT.fire) then
+    X:=false;
+    duration_last_activity := t;
+  end when;
 initial algorithm
   X := true;
   act_count := 1;

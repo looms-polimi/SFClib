@@ -11,10 +11,11 @@ model Transition "Transition of an SFC"
 protected
   discrete Real t_start_firing;
   discrete Integer status "0 idle, 1 waiting to fire";
+
 equation
-  OUT.fire = IN.fire;
+  OUT.fire =IN.fire;
 algorithm
-  when status==0 and pre(IN.active) and pre(C) then
+  when pre(status)==0 and pre(IN.active) and pre(C) then
      if Tcycle<=0 then             
         IN.fire := not(IN.fire);  /* fire immediately*/
         t_start_firing := 0;
