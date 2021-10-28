@@ -1,7 +1,7 @@
 within SFC.Tests;
 
-model testAction_S2 "Action with S qualifier - connected to a generic Step"
-  BasicBlocks.Step S0(initialStep = true)  annotation(
+model testAction_R1 "Action with R qualifier - connected to an Initial Step"
+  BasicBlocks.Step S0(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {-10, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   BasicBlocks.Condition C1(y = S0.t > 2) annotation(
     Placement(visible = true, transformation(origin = {30, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -11,8 +11,8 @@ model testAction_S2 "Action with S qualifier - connected to a generic Step"
     Placement(visible = true, transformation(origin = {-10, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   BasicBlocks.Transition T2 annotation(
     Placement(visible = true, transformation(origin = {-10, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action_SR A_SR(m = 0) annotation(
-    Placement(visible = true, transformation(origin = {48, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  BasicBlocks.Action_SR A_SR(n = 0) annotation(
+    Placement(visible = true, transformation(origin = {52, 68}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   BasicBlocks.Condition C2(y = S1.t > 1) annotation(
     Placement(visible = true, transformation(origin = {30, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
@@ -28,9 +28,13 @@ equation
     Line(points = {{2, -20}, {20, -20}, {20, -20}, {18, -20}}, color = {255, 0, 255}));
   connect(T1.OUT, S1.IN) annotation(
     Line(points = {{-10, 38}, {-10, 38}, {-10, 20}, {-10, 20}}));
-  connect(S1.X, A_SR.IN_S[1]) annotation(
-    Line(points = {{4, 10}, {34, 10}, {34, 12}}));
+  connect(S0.X, A_SR.IN_R[1]) annotation(
+    Line(points = {{4, 70}, {18, 70}, {18, 64}, {38, 64}}));
   annotation(
-    Documentation(info = "<html><head></head><body><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><div><div>Action&nbsp;<b>A</b>&nbsp;is connected to Step&nbsp;<u>S1</u>. When S1 becomes active, action A is set and remains set until the end of the simulation.&nbsp;</div><div></div></div><div><br></div><div><br></div><div>&nbsp;<img width=\"400\" src=\"modelica://SFC/Images/Test/S2.png\"></div></body></html>"),
+    Documentation(info = "<html><head></head><body><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><div><div>Action&nbsp;<b>A</b>&nbsp;is connected to Step&nbsp;<u>S0</u>. When S0 becomes active, action A is reset and remains reset until the end of the simulation. Obviously the reset operation is not visible without performing previously a set operation, then signal A remains always to zero (see testMergeActions_SR1 to see the SR evolution af an action).&nbsp;</div><div></div></div><div><br></div><div><br></div>
+    
+    <img width=\"400\" src=\"modelica://SFC/Images/Test/R1.png\">
+    
+    </body></html>"),
     experiment(StartTime = 0, StopTime = 10, Tolerance = 1e-6, Interval = 0.02));
-end testAction_S2;
+  end testAction_R1;

@@ -2,30 +2,45 @@ within SFC.BasicBlocks;
 
 model Step "Step of an SFC"
   SFC.Interfaces.StepInput IN annotation(
-    Placement(visible = true, transformation(origin = {-26, 116}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {0, 100}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {0, 100}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {0, 100}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   SFC.Interfaces.StepOutput OUT annotation(
-    Placement(visible = true, transformation(origin = {-116, -40}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {0, -100}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
-  Modelica.Blocks.Interfaces.BooleanOutput X annotation(
-    Placement(visible = true, transformation(origin = {-34, 18}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {120, -3.55271e-15}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {0, -100}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {0, -100}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   discrete Real t_last_activation(start=0,fixed=true);
   discrete Real duration_last_activity(start=0,fixed=true);
   discrete Integer act_count;
   Real t(start=0);
+  parameter Boolean initialStep = false "checked if the Step is the Initial step of the SFC" annotation(
+    Evaluate = true,
+    HideResult = true,
+    choices(__Dymola_checkBox = true));
+  SFC.Interfaces.StepOUT X annotation(
+    Placement(visible = true, transformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {140, 5.32907e-15}, extent = {{-40, -40}, {40, 40}}, rotation = 0)));
 equation
-  t = if X then time - t_last_activation else duration_last_activity;
-  OUT.active=X;
+  t = if X.phase_act then time - t_last_activation else duration_last_activity;
+  OUT.active=X.phase_act;
+  if initialStep then 
+     X.InitialStep = true; 
+     else 
+     X.InitialStep = false; 
+  end if;
+  
 algorithm
   when change(IN.fire) then
-    X:=true;
+    X.phase_act:=true;
     t_last_activation:= time;
     act_count := act_count+1;
   end when;
   when change(OUT.fire) then
-     X:=false;
+     X.phase_act:=false;
      duration_last_activity := t;
   end when;
+  
 initial algorithm
-  X := false;
+  if initialStep then 
+     X.phase_act := true; 
+     else 
+     X.phase_act := false; 
+  end if;
   act_count := 0;
 annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),

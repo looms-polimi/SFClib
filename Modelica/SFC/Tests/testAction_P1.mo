@@ -1,7 +1,7 @@
 within SFC.Tests;
 
 model testAction_P1 "Action with P qualifier - connected to an Initial Step"
-  SFC.BasicBlocks.InitialStep S0 annotation(
+  SFC.BasicBlocks.Step S0(initialStep = true)  annotation(
     Placement(visible = true, transformation(origin = {-10, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Step S1 annotation(
     Placement(visible = true, transformation(origin = {-10, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -9,21 +9,18 @@ model testAction_P1 "Action with P qualifier - connected to an Initial Step"
     Placement(visible = true, transformation(origin = {-10, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Transition T2 annotation(
     Placement(visible = true, transformation(origin = {-10, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action A(initialStepAction = true, qualifierType = SFC.Types.Qualifier.P) annotation(
-    Placement(visible = true, transformation(origin = {30, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  SFC.BasicBlocks.Action_NP A(qualifierType = SFC.Types.Qualifier.P) annotation(
+    Placement(visible = true, transformation(origin = {40, 68}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Condition C1(y = S0.t > 2) annotation(
     Placement(visible = true, transformation(origin = {30, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Condition C2(y = S1.t > 1) annotation(
     Placement(visible = true, transformation(origin = {30, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.CounterAction count annotation(
-    Placement(visible = true, transformation(origin = { 70, 72}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(A.actionBoolean, count.increment) annotation(
-    Line(points = {{40, 72}, {58, 72}, {58, 72}, {58, 72}}, color = {255, 0, 255}));
+  
   connect(T2.OUT, S0.IN) annotation(
     Line(points = {{-10, -22}, {-10, -32}, {-34, -32}, {-34, 86}, {-10, 86}, {-10, 80}}));
-  connect(S0.X, A.phase_active) annotation(
-    Line(points = {{2, 70}, {20, 70}, {20, 70}, {20, 70}}, color = {255, 0, 255}));
+  connect(S0.X, A.IN) annotation(
+    Line(points = {{2, 70}, {18, 70}, {18, 68}, {26, 68}}, color = {255, 0, 255}));
   connect(T1.C, C1.y) annotation(
     Line(points = {{2, 40}, {20, 40}, {20, 40}, {18, 40}}, color = {255, 0, 255}));
   connect(T2.C, C2.y) annotation(

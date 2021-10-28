@@ -1,11 +1,12 @@
 Step
 StepNinputs
-InitialStep
 InitialStepNI
 FinalStep
 Transition
-Action
 CounterAction
 mergeActions
 Condition
 RealCondition
+Action_NP
+Action_NP_000
+Action_SR

@@ -2,7 +2,7 @@ within SFC.Tests;
 
 model testBranchingAlternative2 "Alternative Split/Join test with two branches"
   Boolean res = Cpulse1.y and Cpulse2.y and not Cpulse1.y;
-  SFC.BasicBlocks.InitialStep S0 annotation(
+  SFC.BasicBlocks.Step S0(initialStep = true)  annotation(
     Placement(visible = true, transformation(origin = {-16, 76}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Step S1 annotation(
     Placement(visible = true, transformation(origin = {-56, 28}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -40,8 +40,8 @@ model testBranchingAlternative2 "Alternative Split/Join test with two branches"
     Placement(visible = true, transformation(origin = {-16, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanPulse Cpulse2(period = 2.5, startTime = 0.3, width = 30) annotation(
     Placement(visible = true, transformation(origin = {-42, 78}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
-  SFC.BasicBlocks.Condition C1(y = Cpulse1.y) annotation(
-    Placement(visible = true, transformation(origin = {-26, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  SFC.BasicBlocks.Condition C1(y = Cpulse1.y and not Cpulse2.y) annotation(
+    Placement(visible = true, transformation(origin = {-23, 48}, extent = {{-13, -10}, {13, 10}}, rotation = 0)));
   SFC.BasicBlocks.Condition C3(y = Cpulse2.y and not Cpulse1.y) annotation(
     Placement(visible = true, transformation(origin = {54, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Condition C25(y = S2.t > 1) annotation(
@@ -60,7 +60,7 @@ equation
   connect(T3.C, C3.y) annotation(
     Line(points = {{36, 48}, {42, 48}, {42, 48}, {42, 48}}, color = {255, 0, 255}));
   connect(T1.C, C1.y) annotation(
-    Line(points = {{-44, 48}, {-36, 48}, {-36, 48}, {-38, 48}}, color = {255, 0, 255}));
+    Line(points = {{-44, 48}, {-37, 48}}, color = {255, 0, 255}));
   connect(alternativeJoin21.OUT, S5.IN) annotation(
     Line(points = {{-16, -42}, {-16, -42}, {-16, -50}, {-16, -50}, {-16, -50}, {-16, -50}}));
   connect(S5.OUT, T5.IN) annotation(
