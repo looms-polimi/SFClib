@@ -13,15 +13,19 @@ model PI_loop_CT
     Placement(visible = true, transformation(origin = {-50, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.TransferFunction P(a = {T, 1}, b = {mu})  annotation(
     Placement(visible = true, transformation(origin = {10, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression SP(y = if time < 1 then 0 else min(1, 5 * (time - 1)))  annotation(
-    Placement(visible = true, transformation(origin = {-130, 34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.RealInput SP annotation(
+    Placement(visible = true, transformation(origin = {-136, 34}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-120, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.RealOutput PV annotation(
+    Placement(visible = true, transformation(origin = {92, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {120, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
 equation
   connect(PI.CS, P.u) annotation(
     Line(points = {{-38, 30}, {-2, 30}}, color = {0, 0, 127}));
   connect(P.y, PI.PV) annotation(
     Line(points = {{22, 30}, {40, 30}, {40, 0}, {-80, 0}, {-80, 26}, {-62, 26}}, color = {0, 0, 127}));
-  connect(SP.y, PI.SP) annotation(
-    Line(points = {{-119, 34}, {-62, 34}}, color = {0, 0, 127}));
+  connect(SP, PI.SP) annotation(
+    Line(points = {{-136, 34}, {-62, 34}}, color = {0, 0, 127}));
+  connect(P.y, PV) annotation(
+    Line(points = {{22, 30}, {92, 30}}, color = {0, 0, 127}));
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     experiment(StartTime = 0, StopTime = 6, Tolerance = 1e-6, Interval = 0.001),
