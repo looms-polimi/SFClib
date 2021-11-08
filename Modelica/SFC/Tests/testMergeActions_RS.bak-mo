@@ -5,8 +5,6 @@ model testMergeActions_RS "Set-Reset Actions merged - reset at the Initial Step"
     Placement(visible = true, transformation(origin = {-10, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   BasicBlocks.Transition T3 annotation(
     Placement(visible = true, transformation(origin = {-10, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  BasicBlocks.Action_SR A0 annotation(
-    Placement(visible = true, transformation(origin = {109, 63}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
   BasicBlocks.Step S2 annotation(
     Placement(visible = true, transformation(origin = {-10, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   BasicBlocks.Condition C3(y = S2.t > 0.5) annotation(
@@ -27,6 +25,8 @@ model testMergeActions_RS "Set-Reset Actions merged - reset at the Initial Step"
     Placement(visible = true, transformation(origin = {26, 11}, extent = {{-16, -9}, {16, 9}}, rotation = 0)));
   BasicBlocks.Step S3 annotation(
     Placement(visible = true, transformation(origin = {-10, -56}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  SFC.BasicBlocks.ActionSR_MI actionSR_MI annotation(
+    Placement(visible = true, transformation(origin = {104, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T3.C, C3.y) annotation(
     Line(points = {{2, -34}, {8, -34}}, color = {255, 0, 255}));
@@ -52,10 +52,11 @@ equation
     Line(points = {{-10, -22}, {-10, -32}}));
   connect(T4.OUT, S0.IN) annotation(
     Line(points = {{-10, -80}, {-10, -88}, {-34, -88}, {-34, 94}, {-10, 94}, {-10, 86}}));
-  connect(S2.X, A0.IN_S[1]) annotation(
-    Line(points = {{4, -12}, {58, -12}, {58, 72}, {90, 72}, {90, 68}}));
-  connect(A0.IN_R[1], S0.X) annotation(
-    Line(points = {{90, 58}, {62, 58}, {62, 76}, {4, 76}}));
+  connect(S0.X, actionSR_MI.IN_S[1]) annotation(
+    Line(points = {{4, 76}, {58, 76}, {58, 56}, {90, 56}}));
+  connect(S2.X, actionSR_MI.IN_R[1]) annotation(
+    Line(points = {{4, -12}, {76, -12}, {76, 48}, {90, 48}}));
+protected
   annotation(
     Documentation(info = "<html><head></head><body><div>In this test, the action A0 is associated with the Step S0 and the action A2 with the Step S2. A0 has a reset qualifier, A2 a set one.&nbsp;</div><div>The output of the mergeActions is a third signal&nbsp;<b>A</b>&nbsp;that is active as shown in the figure below: set when&nbsp;<u>S2</u>&nbsp;is activated and reset when&nbsp;<u>S0</u>&nbsp;is activated. &nbsp;</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<img width=\"400\" src=\"modelica://SFC/Images/Test/RS.png\"></div><div><br></div><div><br></div><div>The number of input n of the mergeAction must be equal to the number of blocks to merge.</div></body></html>"),
     experiment(StartTime = 0, StopTime = 10, Tolerance = 1e-6, Interval = 0.02));

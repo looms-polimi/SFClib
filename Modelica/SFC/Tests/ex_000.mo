@@ -1,7 +1,10 @@
 within SFC.Tests;
 
-model testBranchingAlternative2 "Alternative Split/Join test with three branches"
-  Boolean res = C1.y and C3.y and C6.y;
+model ex_000 "Alternative Split/Join test with three branches"
+  Boolean C13  = C1.y and C3.y; 
+  Boolean C63  = C6.y and C3.y; 
+  Boolean C16  = C1.y and C6.y;
+  Boolean C136 = C1.y and C3.y and C6.y;
   SFC.BasicBlocks.Step S0(initialStep = true)  annotation(
     Placement(visible = true, transformation(origin = {6, 76}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Step S1 annotation(
@@ -132,4 +135,4 @@ equation
   
    <img width=\"400\" src=\"modelica://SFC/Images/Test/AltBranches3.png\"></div></div></body></html>"),
     experiment(StartTime = 0, StopTime = 50, Tolerance = 1e-06, Interval = 0.1));
-end testBranchingAlternative2;
+end ex_000;

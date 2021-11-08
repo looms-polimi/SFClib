@@ -2,7 +2,7 @@ within SFC.Tests;
 
 model testBranchingAlt3
   Boolean proof = C1.y and C3.y and C6.y;
-  SFC.BasicBlocks.InitialStep S0 annotation(
+  SFC.BasicBlocks.Step S0(initialStep = true)  annotation(
     Placement(visible = true, transformation(origin = {6, 76}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Step S1 annotation(
     Placement(visible = true, transformation(origin = {-42, 28}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

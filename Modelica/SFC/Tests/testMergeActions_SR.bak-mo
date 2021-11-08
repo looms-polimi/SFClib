@@ -25,11 +25,9 @@ model testMergeActions_SR "Set-Reset Actions merged"
     Placement(visible = true, transformation(origin = {25, -34}, extent = {{-15, -10}, {15, 10}}, rotation = 0)));
   SFC.BasicBlocks.Condition C4(y = S3.t > 1.5) annotation(
     Placement(visible = true, transformation(origin = {26, -77}, extent = {{-16, -9}, {16, 9}}, rotation = 0)));
-  SFC.BasicBlocks.Action_SR A0 annotation(
-    Placement(visible = true, transformation(origin = {109, 63}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
-
+  SFC.BasicBlocks.ActionSR_SI actionSR_SI annotation(
+    Placement(visible = true, transformation(origin = {118, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-
   connect(T1.C, C1.y) annotation(
     Line(points = {{2, 54}, {8, 54}}, color = {255, 0, 255}));
   connect(T2.C, C2.y) annotation(
@@ -54,10 +52,10 @@ equation
     Line(points = {{-10, 66}, {-10, 56}}));
   connect(T1.OUT, S1.IN) annotation(
     Line(points = {{-10, 52}, {-10, 42}}));
-  connect(S0.X, A0.IN_S[1]) annotation(
-    Line(points = {{4, 76}, {30, 76}, {30, 69}, {90, 69}}));
-  connect(S2.X, A0.IN_R[1]) annotation(
-    Line(points = {{4, -12}, {36, -12}, {36, 57}, {90, 57}}));
+  connect(S0.X, actionSR_SI.IN_S) annotation(
+    Line(points = {{4, 76}, {78, 76}, {78, 34}, {104, 34}}));
+  connect(S2.X, actionSR_SI.IN_R) annotation(
+    Line(points = {{4, -12}, {62, -12}, {62, 26}, {104, 26}}));
   annotation(
     Documentation(info = "<html><head></head><body><div>In this test, the action A0 is associated with the Step S0 and the action A2 with the Step S2. A0 has a set qualifier, A2 a reset one.&nbsp;</div><div>The output of the mergeActions is a third signal <b>A</b> that is active as shown in the figure below: set when <u>S0</u> is activated and reset when <u>S2</u> is activated.</div><div><div><br></div><div>&nbsp;
     

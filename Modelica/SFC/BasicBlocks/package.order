@@ -3,10 +3,11 @@ StepNinputs
 InitialStepNI
 FinalStep
 Transition
-CounterAction
-mergeActions
 Condition
 RealCondition
-Action_NP
-Action_NP_000
-Action_SR
+ActionSI_N
+ActionSI_P
+ActionSI_SR
+ActionMI_N
+ActionMI_SR
+ActionMI_P

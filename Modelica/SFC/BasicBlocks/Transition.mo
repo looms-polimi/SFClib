@@ -8,32 +8,105 @@ model Transition "Transition of an SFC"
     Placement(visible = true, transformation(origin = {-54, -62}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {3.55271e-15, -20}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanInput C annotation(
     Placement(visible = true, transformation(origin = {100, 54}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {120, 0}, extent = {{20, -20}, {-20, 20}}, rotation = 0)));
+  discrete Integer status "0 idle, 1 waiting to fire";
 protected
   discrete Real t_start_firing;
-  discrete Integer status "0 idle, 1 waiting to fire";
 
-equation
-  OUT.fire =IN.fire;
+
 algorithm
+  
   when pre(status)==0 and pre(IN.active) and pre(C) then
      if Tcycle<=0 then             
-        IN.fire := not(IN.fire);  /* fire immediately*/
-        t_start_firing := 0;
-     else
-        status := 1;              /* start waiting to fire*/
+        IN.fire := not(IN.fire);    /* fire immediately IN and OUT - min. branch requirement: mutually exclusive conditions */
+        OUT.fire := not(OUT.fire); 
         t_start_firing := time;
+     else
+        status := 1;                /* start waiting to fire: fire IN to deactivate the previous Step and wait Tc to fire OUT*/
+        t_start_firing := time;
+        //IN.fire := not(IN.fire);  /* escludo i Tc dallo stato precedente */
+        
      end if; 
   end when;
-  when status==1 and time-t_start_firing>=Tcycle then
-     IN.fire := not(IN.fire); 
+  when pre(status)==1 and time-t_start_firing>=Tcycle then
+     IN.fire := not(IN.fire);       /* includo i Tc dallo stato precedente - ma così non funziona l'alternative, ovvero nell'aspettare il Tc potrebbe esserci un altro fire*/
+     OUT.fire := not(OUT.fire);     /* fire immediately after waiting a Tc: fire OUT to activate the next Step after a Tc */
      status := 0;
   end when;
 
 initial algorithm
-  IN.fire := false;
+   if IN.active then 
+   IN.fire     := true;
+   else 
+    IN.fire    := false;
+  end if; 
   t_start_firing := time;
   status := 0;
+//////////////////////////////////////// status integer
+//  parameter Real Tcycle=0 "if >0 fire Tc after enabling" annotation(Evaluate = true);
+//  SFC.Interfaces.TransitionInput IN annotation(
+//    Placement(visible = true, transformation(origin = {-92, 60}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {-1.77636e-15, 20}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+//  SFC.Interfaces.TransitionOutput OUT annotation(
+//    Placement(visible = true, transformation(origin = {-54, -62}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {3.55271e-15, -20}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+//  Modelica.Blocks.Interfaces.BooleanInput C annotation(
+//    Placement(visible = true, transformation(origin = {100, 54}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {120, 0}, extent = {{20, -20}, {-20, 20}}, rotation = 0)));
+//  discrete Integer status "0 idle, 1 waiting to fire";
+//protected
+//  discrete Real t_start_firing;
 
+//algorithm
+//  when pre(status)==0 and pre(IN.active) and pre(C) then
+//     if Tcycle<=0 then             
+//        IN.fire := not(IN.fire);    /* fire immediately IN and OUT - min. branch requirement: mutually exclusive conditions */
+//        OUT.fire := not(OUT.fire); 
+//        t_start_firing := time;
+//     else
+//        status := 1;                /* start waiting to fire: fire IN to deactivate the previous Step and wait Tc to fire OUT*/
+//        t_start_firing := time;
+//        //IN.fire := not(IN.fire);  /* escludo i Tc dallo stato precedente */
+        
+//     end if; 
+//  end when;
+//  when pre(status)==1 and time-t_start_firing>=Tcycle then
+//     IN.fire := not(IN.fire);       /* includo i Tc dallo stato precedente - ma così non funziona l'alternative, ovvero nell'aspettare il Tc potrebbe esserci un altro fire*/
+//     OUT.fire := not(OUT.fire);     /* fire immediately after waiting a Tc: fire OUT to activate the next Step after a Tc */
+//     status := 0;
+//  end when;
+
+//initial algorithm
+//   if IN.active then 
+//   IN.fire     := true;
+//   else 
+//    IN.fire    := false;
+//  end if; 
+//  t_start_firing := time;
+//  status := 0;
+
+/////////////////////////////////////////////////status integer - codice vecchio 
+//discrete Real t_start_firing;
+//  discrete Integer status "0 idle, 1 waiting to fire";
+
+//equation
+//  OUT.fire = IN.fire;
+//  IN.Tr_status = status;
+//algorithm
+//  when status==0 and pre(IN.active) and C then
+//     if Tcycle<=0 then             
+//        IN.fire := not(IN.fire);  /* fire immediately*/
+//        t_start_firing := 0;
+//     else
+//        status := 1;              /* start waiting to fire*/
+//        t_start_firing := time;
+//     end if; 
+//  end when;
+//  when status==1 and time-t_start_firing>=Tcycle then
+//     IN.fire := not(IN.fire);     /* fire immediately after waiting a Tc*/
+//     status := 0;
+//  end when;
+
+//initial algorithm
+//  IN.fire := false;
+//  t_start_firing := time;
+//  status := 0;
 annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     Icon(graphics = {Rectangle(fillPattern = FillPattern.Solid, extent = {{-100, 20}, {100, -20}}), Text(origin = {-163, 39}, extent = {{-57, 35}, {57, -35}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)),

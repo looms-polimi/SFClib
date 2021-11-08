@@ -2,7 +2,7 @@ within SFC.Tests;
 
 model Trial_0002
   extends Modelica.Icons.Example;
-  SFC.BasicBlocks.InitialStep S0 annotation(
+  SFC.BasicBlocks.Step S0(initialStep = true)  annotation(
     Placement(visible = true, transformation(origin = {-10, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.Branching.AlternativeSplit2 split1 annotation(
     Placement(visible = true, transformation(origin = {-10, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

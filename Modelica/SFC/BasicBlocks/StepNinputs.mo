@@ -12,9 +12,19 @@ SFC.Interfaces.StepInput IN[n] annotation(
   discrete Integer act_count;
   Real t;
   parameter Integer n=1;
+  parameter Boolean initialStep = false "checked if the Step is the Initial step of the SFC" annotation(
+    Evaluate = true,
+    HideResult = true,
+    choices(__Dymola_checkBox = true));
 equation
   t = if X then time - t_last_activation else duration_last_activity;
   OUT.active=X;
+  if initialStep then 
+     X.InitialStep = true; 
+     else 
+     X.InitialStep = false; 
+  end if;
+  
 algorithm
 for i in 1:n loop
   when change(IN[i].fire) then

@@ -4,13 +4,19 @@ model AlternativeSplit2 "Alternative Split with two branches"
   SFC.Interfaces.StepOutput IN annotation(
     Placement(visible = true, transformation(origin = {4, 32}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {0, 20}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   SFC.Interfaces.StepOutput OUT1 annotation(
-    Placement(visible = true, transformation(origin = {-80, -62}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {-400, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-40, -30}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {-400, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   SFC.Interfaces.StepOutput OUT2 annotation(
-    Placement(visible = true, transformation(origin = {-70, -52}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {400, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {60, -30}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {400, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+
+ // Boolean status(start = false) "0 idle, 1 firing";
+  //EQ vecchie
 equation
-  OUT1.active = IN.active;
-  OUT2.active = IN.active;
-  IN.fire = OUT1.fire or OUT2.fire;
+ OUT1.active = IN.active;
+ OUT2.active = IN.active;
+ IN.fire = change(OUT1.fire) or change(OUT2.fire) 
+ 
+
+  
 annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     Icon(graphics = {Rectangle(origin = {0, 1}, fillColor = {35, 4, 4}, fillPattern = FillPattern.Solid, extent = {{-420, 1}, {420, -1}})}, coordinateSystem(initialScale = 0.1)),

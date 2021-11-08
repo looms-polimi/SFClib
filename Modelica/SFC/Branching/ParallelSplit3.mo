@@ -13,7 +13,6 @@ equation
   OUT1.fire = IN.fire;
   OUT2.fire = IN.fire;
   OUT3.fire = IN.fire;
-  //IN.fire = OUT1.fire and OUT2.fire and OUT3.fire;
 annotation(
     Icon(graphics = {Rectangle(origin = {0, 21}, fillPattern = FillPattern.Solid, extent = {{-420, 1}, {420, -1}}), Rectangle(origin = {0, 1}, fillPattern = FillPattern.Solid, extent = {{-420, 1}, {420, -1}})}),
     Documentation(info = "<html><head></head><body><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><div><b>ParallelSplit3</b> divide the SFC into three parallel sequences. The block has one <i>TransitionOutput </i>input to be preceded by a transition and three&nbsp;<i>TransitionOutput</i> output to be followed by three steps.&nbsp;</div><div><br></div><div>When the transition is triggered, all the three steps becomes active and the SFC proceeds through the three sequences.</div><div><br></div></body></html>"));end ParallelSplit3;

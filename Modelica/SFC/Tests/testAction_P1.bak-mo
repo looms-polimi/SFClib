@@ -9,7 +9,7 @@ model testAction_P1 "Action with P qualifier - connected to an Initial Step"
     Placement(visible = true, transformation(origin = {-10, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Transition T2 annotation(
     Placement(visible = true, transformation(origin = {-10, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action_NP A(qualifierType = SFC.Types.Qualifier.P) annotation(
+  SFC.BasicBlocks.ActionP_SI A annotation(
     Placement(visible = true, transformation(origin = {40, 68}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Condition C1(y = S0.t > 2) annotation(
     Placement(visible = true, transformation(origin = {30, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
