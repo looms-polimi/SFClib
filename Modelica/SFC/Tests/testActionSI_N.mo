@@ -28,9 +28,10 @@ model testActionSI_N "Action with N qualifier - connected to an Initial Step"
     Placement(visible = true, transformation(origin = {108, 94}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.ActionSI_N N2 annotation(
     Placement(visible = true, transformation(origin = {104, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-//  Boolean cond;
+  inner SFC.Utilities.System_logger system_logger(log_on = true)  annotation(
+    Placement(visible = true, transformation(origin = {-121, 101}, extent = {{-19, -19}, {19, 19}}, rotation = 0)));
 equation
-// when c03.y then cond =true; end when;
+
   connect(T03_00.OUT, S00.IN) annotation(
     Line(points = {{-27, -124}, {-27, -139.6}, {-73, -139.6}, {-73, 112.4}, {-27, 112.4}, {-27, 106.4}}));
   connect(S02.OUT, T02_03.IN) annotation(

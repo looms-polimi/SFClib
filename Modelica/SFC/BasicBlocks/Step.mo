@@ -13,11 +13,12 @@ model Step "Step of an SFC"
     Evaluate = true,
     HideResult = true,
     choices(__Dymola_checkBox = true));
- 
+  outer SFC.Utilities.System_logger system_logger;
+  Integer IN_count(start=0),OUT_count(start=0);
 protected
   discrete Real t_last_activation(start=0,fixed=true);
   discrete Real duration_last_activity(start=0,fixed=true);
-  discrete Integer act_count;
+
  
 equation
   active = X.phase_act;
@@ -33,13 +34,28 @@ algorithm
   when change(IN.fire) then
     X.phase_act:=true;
     t_last_activation:= time;
-    act_count := act_count+1;
+    IN_count := IN_count+1;
+    if system_logger.log_on then 
+    Modelica.Utilities.Streams.print(
+     getInstanceName()+": active="+String(X.phase_act)+ " at t="+String(time),
+     system_logger.logFileName);
+  end if;
   end when;
   
   when change(OUT.fire) then
      X.phase_act:=false;
      duration_last_activity := t;
+     OUT_count := OUT_count+1;
+     if system_logger.log_on then 
+    Modelica.Utilities.Streams.print(
+     getInstanceName()+": active="+String(X.phase_act)+ " at t="+String(time),
+     system_logger.logFileName);
+     end if;
   end when;
+  
+
+  
+
   
 initial algorithm
   if initialStep then 
@@ -47,7 +63,7 @@ initial algorithm
      else 
      X.phase_act := false; 
   end if;
-  act_count := 0;
+  
 annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     Icon(graphics = {Rectangle(fillColor = {238, 238, 236}, fillPattern = FillPattern.Solid, extent = {{-100, 100}, {100, -100}}), Text(origin = {-3, 3}, extent = {{-57, 35}, {57, -35}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)),

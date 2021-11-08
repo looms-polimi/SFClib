@@ -62,6 +62,8 @@ model testBranchingAlternative2 "Alternative Split/Join test with three branches
     Placement(visible = true, transformation(origin = {136, -22}, extent = {{-14, -10}, {14, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanPulse Cpulse3(period = 4, startTime = 2, width = 40) annotation(
     Placement(visible = true, transformation(origin = {-24, 78}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
+  inner Utilities.System_logger system_logger(log_on = true)  annotation(
+    Placement(visible = true, transformation(origin = {-186, 76}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(S6.OUT, T5.IN) annotation(
     Line(points = {{6, -70}, {6, -70}, {6, -78}, {6, -78}}));
