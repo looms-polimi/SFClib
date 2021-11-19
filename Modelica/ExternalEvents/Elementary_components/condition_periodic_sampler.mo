@@ -12,7 +12,9 @@ algorithm
     ewait := true;
   end when;
   when ewait and time>=etime then
-    ctr   := ctr+1;
+    if condition then 
+       ctr   := ctr+1;
+    end if;
     ewait := false;
   end when;
 end condition_periodic_sampler;

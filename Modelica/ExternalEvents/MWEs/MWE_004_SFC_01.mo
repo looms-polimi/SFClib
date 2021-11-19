@@ -3,7 +3,7 @@ within ExternalEvents.MWEs;
 model MWE_004_SFC_01
   parameter Real Tc=1;
   Boolean clk;
-  discrete Integer cycle_cnt(start=0);
+  //discrete Integer cycle_cnt(start=0);
   Boolean X0,X1,X2,X3,X4,X5,X6,X7;
   Boolean t_0_1,t_0_23,t_2_4,t_3_5,t_45_6,t_6_1,t_1_7,t_7_0;
   Boolean c_0_1,c_0_23,c_2_4,c_3_5,c_45_6,c_6_1,c_1_7,c_7_0;
@@ -11,7 +11,7 @@ equation
   c_0_1  = false;
   c_0_23 = true;
   c_2_4  = true;
-  c_3_5  = true;//Functions.brectpulse(time-5.5,0.1);
+  c_3_5  = Functions.brectpulse(time-5.5,0.1);
   c_45_6 = true;
   c_6_1  = true;
   c_1_7  = true;

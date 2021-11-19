@@ -1,7 +1,7 @@
 within ExternalEvents.MWEs;
 
 model MWE_002a_Clock_02
-  parameter Boolean futtitinni=false annotation(Evaluate = true);
+  parameter Boolean futtitinni=true;// annotation(Evaluate = true);
   //Boolean futtitinni;
   Real y[100](each start=0);
   discrete Real x;
