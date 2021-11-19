@@ -1,6 +1,0 @@
-within SFC.DiscreteEventSys.Example;
-
-model Test_001
-equation
-
-end Test_001;

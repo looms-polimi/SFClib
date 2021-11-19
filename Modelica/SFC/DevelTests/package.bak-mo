@@ -1,5 +1,0 @@
-within SFC;
-
-package DevelTests
-  extends Modelica.Icons.ExamplesPackage;
-end DevelTests;
