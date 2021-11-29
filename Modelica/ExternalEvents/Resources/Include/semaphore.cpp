@@ -1,8 +1,9 @@
 
 #include <map>
-#include <iostream>
 #include <limits>
 #include <cmath>
+#include <cassert>
+#include <iostream>
 
 #include "semaphore.h"
 
@@ -21,9 +22,11 @@ int new_semaphore()
 
 double get_semaphore(int handle, double time, double phase, double period)
 {
+    auto it=semaphores.find(handle);
+    assert(it!=semaphores.end());
     //Is this a new event?
-    if(time>semaphores[handle])
-        semaphores[handle] = ceil((time-phase)/period)*period+phase;
-    cout << "get_semaphore(" << handle << "," << time << "," << phase << "," << period << ") : " << semaphores[handle] << endl;
-    return semaphores[handle];
+    if(time>it->second) it->second = ceil((time-phase)/period)*period+phase;
+    cout << "get_semaphore(" << handle << ", " << time << ", " << phase << ", "
+         << period << ") : " << it->second << endl;
+    return it->second;
 }
