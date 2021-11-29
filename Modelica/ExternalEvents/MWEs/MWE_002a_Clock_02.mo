@@ -1,13 +1,13 @@
 within ExternalEvents.MWEs;
 
 model MWE_002a_Clock_02
-  parameter Boolean futtitinni=true;// annotation(Evaluate = true);
+  parameter Boolean futtitinni=true annotation(Evaluate = true);
   //Boolean futtitinni;
   Real y[100](each start=0);
   discrete Real x;
 equation
   y+der(y)=sin(time)*ones(size(y,1))*exp(-time);
-  //futtitinni = (y[1]>10);
+  //futtitinni = (y[1]>0);
 algorithm
   when sample(0,0.05) and not futtitinni then
     for i in 1:10000 loop
