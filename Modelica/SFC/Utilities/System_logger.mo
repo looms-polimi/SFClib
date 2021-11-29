@@ -3,7 +3,7 @@ within SFC.Utilities;
 model System_logger
   parameter String logFileName = "logger.log" "log file name";
   parameter Boolean log_on = false "logging active";
-  Integer Blocked(start = 0);
+  //Integer Blocked(start = 0);
   //Integer BlockReq(start = 0);
 
 algorithm
@@ -13,7 +13,7 @@ algorithm
       Modelica.Utilities.Streams.print("*** LOG START");
     end if;
   end when;
-  Blocked := Utilities.sema(3);
+  //Blocked := Utilities.sema(3);
   when terminal() then
     if log_on then
       Modelica.Utilities.Streams.print("*** LOG END");

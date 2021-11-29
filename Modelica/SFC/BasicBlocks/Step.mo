@@ -13,7 +13,6 @@ model Step "Step of an SFC"
     Evaluate = true,
     HideResult = true,
     choices(__Dymola_checkBox = true));
-  outer SFC.Utilities.System_logger system_logger;
   Integer IN_count(start=0),OUT_count(start=0);
 protected
   discrete Real t_last_activation(start=0,fixed=true);
@@ -35,22 +34,16 @@ algorithm
     X.phase_act:=true;
     t_last_activation:= time;
     IN_count := IN_count+1;
-    if system_logger.log_on then 
     Modelica.Utilities.Streams.print(
-     getInstanceName()+": active="+String(X.phase_act)+ " at t="+String(time),
-     system_logger.logFileName);
-  end if;
+     getInstanceName()+": active="+String(X.phase_act)+ " at t="+String(time),"log.txt");
   end when;
   
   when change(OUT.fire) then
      X.phase_act:=false;
      duration_last_activity := t;
      OUT_count := OUT_count+1;
-     if system_logger.log_on then 
     Modelica.Utilities.Streams.print(
-     getInstanceName()+": active="+String(X.phase_act)+ " at t="+String(time),
-     system_logger.logFileName);
-     end if;
+     getInstanceName()+": active="+String(X.phase_act)+ " at t="+String(time),"log.txt");
   end when;
   
 

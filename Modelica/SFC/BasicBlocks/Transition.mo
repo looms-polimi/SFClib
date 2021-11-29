@@ -1,67 +1,40 @@
 within SFC.BasicBlocks;
 
 model Transition "Transition of an SFC"
-  parameter Real Tcycle=0 "if >0 fire Tc after enabling" annotation(Evaluate = true);
   SFC.Interfaces.TransitionInput IN annotation(
     Placement(visible = true, transformation(origin = {-92, 60}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {-1.77636e-15, 20}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   SFC.Interfaces.TransitionOutput OUT annotation(
     Placement(visible = true, transformation(origin = {-54, -62}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {3.55271e-15, -20}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanInput C annotation(
     Placement(visible = true, transformation(origin = {100, 54}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {120, 0}, extent = {{20, -20}, {-20, 20}}, rotation = 0)));
-  discrete Integer status "0 idle, 1 waiting to fire";
-  outer SFC.Utilities.System_logger system_logger;
-  Integer BlockReq(start = 0);
-  Integer Blocked(start = 0);
 
-protected
-  discrete Real t_start_firing;
+
+  discrete Real time_next_firing;
+  outer SFC.BasicBlocks.CyclicGroup cyclicGroup;
   
 equation
   OUT.fire = IN.fire;
 algorithm
-  
-  //Blocked := Utilities.sema(3);
-  Blocked := system_logger.Blocked;
-  
-  when pre(status)== 0 and pre(IN.active) and pre(C) and pre(Blocked) == 0 then
-     if Tcycle<=0 then             
-        IN.fire := not(IN.fire);    /* fire immediately*/
-        t_start_firing := time;
-        if system_logger.log_on then /* log the results*/
-         Modelica.Utilities.Streams.print(
-         getInstanceName()+": status="+String(status)+ " at t="+String(time),
-         system_logger.logFileName);
-        end if;
-     else
-        status := 1;                /* start waiting to fire*/
-        t_start_firing := time;
-        BlockReq := Utilities.sema(1);
-        if system_logger.log_on then  /* log the results*/
-         Modelica.Utilities.Streams.print(
-         getInstanceName()+": status="+String(status)+ " at t="+String(time),
-         system_logger.logFileName);
-         end if;
-     end if; 
+  when IN.active and C then
+    time_next_firing := Functions.get_semaphore
+         (cyclicGroup.handle,
+         time,
+         cyclicGroup.phase,
+         cyclicGroup.period);
   end when;
-  when pre(status)==1 and time-t_start_firing>=Tcycle then
-     BlockReq := Utilities.sema(2);
-     IN.fire := not(IN.fire);   /* fire immediately after waiting a Tc*/
-     status := 0;
-     if system_logger.log_on then /* log the results*/
-         Modelica.Utilities.Streams.print(
-         getInstanceName()+": status="+String(status)+ " at t="+String(time),
-         system_logger.logFileName);
-     end if;
-  end when;
+  
+  when time>=time_next_firing then
+    OUT.fire := not OUT.fire;
+  end when;  
 
 initial algorithm
+   time_next_firing := -1e12;
    if IN.active then 
-   IN.fire     := true;
+     IN.fire     := true;
    else 
-    IN.fire    := false;
-  end if; 
-  t_start_firing := time;
-  status := 0;
+     IN.fire    := false;
+   end if; 
+
 
 annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
