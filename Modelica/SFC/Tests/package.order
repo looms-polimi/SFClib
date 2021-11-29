@@ -10,3 +10,6 @@ StuckEx
 TestBranching
 subSFC
 test_semaphore_001
+test_semaphore_001a
+test_semaphore_001b
+test_semaphore_001_twin

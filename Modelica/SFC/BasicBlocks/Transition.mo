@@ -8,14 +8,14 @@ model Transition "Transition of an SFC"
   Modelica.Blocks.Interfaces.BooleanInput C annotation(
     Placement(visible = true, transformation(origin = {100, 54}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {120, 0}, extent = {{20, -20}, {-20, 20}}, rotation = 0)));
 
-
+  discrete Integer fire_count(start=0);
   discrete Real time_next_firing;
   outer SFC.BasicBlocks.CyclicGroup cyclicGroup;
   
 equation
   OUT.fire = IN.fire;
 algorithm
-  when IN.active and C then
+  when pre(IN.active) and pre(C) then
     time_next_firing := Functions.get_semaphore
          (cyclicGroup.handle,
          time,
@@ -24,7 +24,10 @@ algorithm
   end when;
   
   when time>=time_next_firing then
-    OUT.fire := not OUT.fire;
+    if C then
+      OUT.fire   := not OUT.fire;
+      fire_count := fire_count+1;
+    end if;
   end when;  
 
 initial algorithm

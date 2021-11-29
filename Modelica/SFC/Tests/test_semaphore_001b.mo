@@ -1,7 +1,7 @@
 within SFC.Tests;
 
-model test_semaphore_001 "Action with S qualifier - connected to an Initial Step"
- inner SFC.BasicBlocks.CyclicGroup cyclicGroup(period = 0.5)  annotation(
+model test_semaphore_001b "Action with S qualifier - connected to an Initial Step"
+ inner SFC.BasicBlocks.CyclicGroup cyclicGroup(period = 1)  annotation(
     Placement(visible = true, transformation(origin = {-170, 170}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
  SFC.BasicBlocks.Step S0(initialStep = true)  annotation(
     Placement(visible = true, transformation(origin = {-30, 130}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -41,4 +41,4 @@ protected
   Icon(coordinateSystem(extent = {{-200, -200}, {200, 200}})),
  __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
  __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
-end test_semaphore_001;
+end test_semaphore_001b;
