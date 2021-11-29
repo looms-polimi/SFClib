@@ -1,7 +1,7 @@
 within SFC.Tests.TestBranching;
 
 model testAlt2Brach_Tcnot0 "Alternative Split/Join test with two branches"
-  Boolean res = Cpulse1.y and Cpulse2.y;
+  Boolean res = C1.y and C3.y;
   SFC.BasicBlocks.Step S0(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {-16, 76}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Step S1 annotation(
@@ -12,9 +12,9 @@ model testAlt2Brach_Tcnot0 "Alternative Split/Join test with two branches"
     Placement(visible = true, transformation(origin = {24, 28}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Step S4 annotation(
     Placement(visible = true, transformation(origin = {24, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T4(Tcycle = 1)  annotation(
+  SFC.BasicBlocks.Transition T4(Tcycle = 0.1)  annotation(
     Placement(visible = true, transformation(origin = {24, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T2(Tcycle = 1)  annotation(
+  SFC.BasicBlocks.Transition T2(Tcycle = 0.1)  annotation(
     Placement(visible = true, transformation(origin = {-56, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Condition C4(y = S3.t > 1) annotation(
     Placement(visible = true, transformation(origin = {54, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -23,18 +23,18 @@ model testAlt2Brach_Tcnot0 "Alternative Split/Join test with two branches"
   SFC.BasicBlocks.Condition C2(y = S1.t > 0.5) annotation(
     Placement(visible = true, transformation(origin = {-26, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.Branching.AlternativeSplit2 alternativeSplit21 annotation(
-    Placement(visible = true, transformation(origin = {-8, 62}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T1(Tcycle = 1)  annotation(
+    Placement(visible = true, transformation(origin = {-16, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  SFC.BasicBlocks.Transition T1(Tcycle = 0.1)  annotation(
     Placement(visible = true, transformation(origin = {-56, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T3(Tcycle = 1)  annotation(
+  SFC.BasicBlocks.Transition T3(Tcycle = 0.1)  annotation(
     Placement(visible = true, transformation(origin = {24, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T5(Tcycle = 1)  annotation(
+  SFC.BasicBlocks.Transition T5(Tcycle = 0.1)  annotation(
     Placement(visible = true, transformation(origin = {-16, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.Branching.AlternativeJoin2 alternativeJoin21 annotation(
     Placement(visible = true, transformation(origin = {-16, -42}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T25(Tcycle = 1)  annotation(
+  SFC.BasicBlocks.Transition T25(Tcycle = 0.1)  annotation(
     Placement(visible = true, transformation(origin = {-56, -32}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T45(Tcycle = 1)  annotation(
+  SFC.BasicBlocks.Transition T45(Tcycle = 0.1)  annotation(
     Placement(visible = true, transformation(origin = {24, -32}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Step S5 annotation(
     Placement(visible = true, transformation(origin = {-16, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -76,15 +76,15 @@ equation
   connect(T5.OUT, S0.IN) annotation(
     Line(points = {{-16, -82}, {-16, -90}, {-80, -90}, {-80, 92}, {-16, 92}, {-16, 86}}));
   connect(alternativeSplit21.OUT2, T3.IN) annotation(
-    Line(points = {{32, 62}, {32, 50}, {24, 50}}));
+    Line(points = {{24, 60}, {24, 50}}));
   connect(T3.OUT, S3.IN) annotation(
     Line(points = {{24, 46}, {24, 46}, {24, 46}, {24, 46}, {24, 38}, {24, 38}, {24, 38}, {24, 38}}));
   connect(alternativeSplit21.OUT1, T1.IN) annotation(
-    Line(points = {{-48, 62}, {-48, 50}, {-56, 50}}));
+    Line(points = {{-56, 60}, {-56, 50}}));
   connect(T1.OUT, S1.IN) annotation(
     Line(points = {{-56, 46}, {-56, 46}, {-56, 38}, {-56, 38}}));
   connect(S0.OUT, alternativeSplit21.IN) annotation(
-    Line(points = {{-16, 66}, {-16, 63}, {-8, 63}, {-8, 64}}));
+    Line(points = {{-16, 66}, {-16, 62}}));
   connect(T2.C, C2.y) annotation(
     Line(points = {{-44, 8}, {-37, 8}}, color = {255, 0, 255}));
   connect(T4.C, C4.y) annotation(
@@ -105,10 +105,10 @@ equation
     <table border=\"1\" cellspacing=\"0\" cellpadding=\"2\">
   <tbody><tr bgcolor=\"#e0e0e0\"><th>C1</th><th>C3</th>
   </tr><tr>  <td>Cpulse1.y</td><td>Cpulse2.y and not Cpulse1.y</td>
-  </tr></tbody></table></span></div><div><br></div><div>The result of the test shows in the figure below that after Step S0, S1 and S3 are never active at the same time.</div><div><b><u>Note</u></b> that if the mutual exclusivity of the conditions cannot be ensured the library can not give any guaranty about the correctness of the SFC evolution.</div><div><br></div><div>&nbsp;
+  </tr></tbody></table></span></div><div><br></div><div>The result of the test shows in the figure below that after Step S0, S1 and S3 are never active at the same time.</div><div><b><u>Note</u></b> that if the mutual exclusivity of the conditions cannot be ensured the library can not give any guaranty about the correctness of the SFC evolution.</div><div><br></div><div><b>Funziona MA&nbsp;grafici da cambiare&nbsp;</b></div><div><br></div><div>&nbsp;
   
     <img width=\"400\" src=\"modelica://SFC/Images/Test/AltBranches2.png\">&nbsp;</div></body></html>"),
-    experiment(StartTime = 0, StopTime = 20, Tolerance = 1e-06, Interval = 0.04),
+    experiment(StartTime = 0, StopTime = 25, Tolerance = 1e-06, Interval = 0.05),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
 end testAlt2Brach_Tcnot0;

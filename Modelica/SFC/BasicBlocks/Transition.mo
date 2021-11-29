@@ -10,64 +10,33 @@ model Transition "Transition of an SFC"
     Placement(visible = true, transformation(origin = {100, 54}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {120, 0}, extent = {{20, -20}, {-20, 20}}, rotation = 0)));
   discrete Integer status "0 idle, 1 waiting to fire";
   outer SFC.Utilities.System_logger system_logger;
+  Integer BlockReq(start = 0);
+  Integer Blocked(start = 0);
+
 protected
   discrete Real t_start_firing;
   
-//equation
-//  OUT.fire = IN.fire;
-  
-//algorithm
-//  when status==0 and pre(IN.active) and C then
-//     if Tcycle<=0 then             
-//        IN.fire := not(IN.fire);  /* fire immediately*/
-//        t_start_firing := 0;
-//        if system_logger.log_on then 
-//         Modelica.Utilities.Streams.print(
-//         getInstanceName()+": status="+String(status)+ " at t="+String(time),
-//         system_logger.logFileName);
-//        end if;
-//     else
-//        status := 1;              /* start waiting to fire*/
-//        t_start_firing := time;
-//        if system_logger.log_on then 
-//         Modelica.Utilities.Streams.print(
-//         getInstanceName()+": status="+String(status)+ " at t="+String(time),
-//         system_logger.logFileName);
-//        end if;
-//     end if; 
-//  end when;
-//  when status==1 and time-t_start_firing>=Tcycle then
-//     IN.fire := not(IN.fire);     /* fire immediately after waiting a Tc*/
-//     status := 0;
-//     if system_logger.log_on then 
-//         Modelica.Utilities.Streams.print(
-//         getInstanceName()+": status="+String(status)+ " at t="+String(time),
-//         system_logger.logFileName);
-//     end if;
-//  end when;
-
-//initial algorithm
-//  IN.fire := false;
-//  t_start_firing := time;
-//  status := 0;
-///////////////////////////////////////////////////codice con IN.fire diverso da OUT.fire
+equation
+  OUT.fire = IN.fire;
 algorithm
   
-  when pre(status)==0 and pre(IN.active) and pre(C) then
+  //Blocked := Utilities.sema(3);
+  Blocked := system_logger.Blocked;
+  
+  when pre(status)== 0 and pre(IN.active) and pre(C) and pre(Blocked) == 0 then
      if Tcycle<=0 then             
-        IN.fire := not(IN.fire);    /* fire immediately IN and OUT - min. branch requirement: mutually exclusive conditions */
-        OUT.fire := not(OUT.fire); 
+        IN.fire := not(IN.fire);    /* fire immediately*/
         t_start_firing := time;
-        if system_logger.log_on then 
+        if system_logger.log_on then /* log the results*/
          Modelica.Utilities.Streams.print(
          getInstanceName()+": status="+String(status)+ " at t="+String(time),
          system_logger.logFileName);
         end if;
      else
-        status := 1;                /* start waiting to fire: fire IN to deactivate the previous Step and wait Tc to fire OUT*/
+        status := 1;                /* start waiting to fire*/
         t_start_firing := time;
-        //IN.fire := not(IN.fire);  /* escludo i Tc dallo stato precedente */
-        if system_logger.log_on then 
+        BlockReq := Utilities.sema(1);
+        if system_logger.log_on then  /* log the results*/
          Modelica.Utilities.Streams.print(
          getInstanceName()+": status="+String(status)+ " at t="+String(time),
          system_logger.logFileName);
@@ -75,10 +44,10 @@ algorithm
      end if; 
   end when;
   when pre(status)==1 and time-t_start_firing>=Tcycle then
-     IN.fire := not(IN.fire);       /* includo i Tc dallo stato precedente - ma così non funziona l'alternative, ovvero nell'aspettare il Tc potrebbe esserci un altro fire*/
-     OUT.fire := not(OUT.fire);     /* fire immediately after waiting a Tc: fire OUT to activate the next Step after a Tc */
+     BlockReq := Utilities.sema(2);
+     IN.fire := not(IN.fire);   /* fire immediately after waiting a Tc*/
      status := 0;
-     if system_logger.log_on then 
+     if system_logger.log_on then /* log the results*/
          Modelica.Utilities.Streams.print(
          getInstanceName()+": status="+String(status)+ " at t="+String(time),
          system_logger.logFileName);
@@ -94,32 +63,6 @@ initial algorithm
   t_start_firing := time;
   status := 0;
 
-/////////////////////////////////////////////////////////////////////////////////////////////status integer - OUT.fire = IN.fire 
-//discrete Real t_start_firing;
-//  discrete Integer status "0 idle, 1 waiting to fire";
-
-//equation
-//  OUT.fire = IN.fire;
-//  IN.Tr_status = status;
-//algorithm
-//  when status==0 and pre(IN.active) and C then
-//     if Tcycle<=0 then             
-//        IN.fire := not(IN.fire);  /* fire immediately*/
-//        t_start_firing := 0;
-//     else
-//        status := 1;              /* start waiting to fire*/
-//        t_start_firing := time;
-//     end if; 
-//  end when;
-//  when status==1 and time-t_start_firing>=Tcycle then
-//     IN.fire := not(IN.fire);     /* fire immediately after waiting a Tc*/
-//     status := 0;
-//  end when;
-
-//initial algorithm
-//  IN.fire := false;
-//  t_start_firing := time;
-//  status := 0;
 annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     Icon(graphics = {Rectangle(fillPattern = FillPattern.Solid, extent = {{-100, 20}, {100, -20}}), Text(origin = {-163, 39}, extent = {{-57, 35}, {57, -35}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)),

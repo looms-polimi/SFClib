@@ -1,7 +1,7 @@
 within SFC.Tests.TestBranching;
 
 model testAlt2Brach_Tc0 "Alternative Split/Join test with two branches"
-  Boolean res = Cpulse1.y and Cpulse2.y;
+  Boolean res = C1.y and C3.y;
   SFC.BasicBlocks.Step S0(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {-16, 76}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Step S1 annotation(
@@ -105,10 +105,10 @@ equation
     <table border=\"1\" cellspacing=\"0\" cellpadding=\"2\">
   <tbody><tr bgcolor=\"#e0e0e0\"><th>C1</th><th>C3</th>
   </tr><tr>  <td>Cpulse1.y</td><td>Cpulse2.y and not Cpulse1.y</td>
-  </tr></tbody></table></span></div><div><br></div><div>The result of the test shows in the figure below that after Step S0, S1 and S3 are never active at the same time.</div><div><b><u>Note</u></b> that if the mutual exclusivity of the conditions cannot be ensured the library can not give any guaranty about the correctness of the SFC evolution.</div><div><br></div><div>&nbsp;
+  </tr></tbody></table></span></div><div><br></div><div>The result of the test shows in the figure below that after Step S0, S1 and S3 are never active at the same time.</div><div><b><u>Note</u></b> that if the mutual exclusivity of the conditions cannot be ensured the library can not give any guaranty about the correctness of the SFC evolution.</div><div><br></div><div><b>FUNZIONA MA&nbsp;NOTA: S0 NON SEMPRE VIENE VISUALIZZATO ATTIVO CON T1 E T3 CHE NON ASPETTANO UN MINIMO TC, grafici da cambiare&nbsp;</b></div><div><br></div><div>&nbsp;
   
     <img width=\"400\" src=\"modelica://SFC/Images/Test/AltBranches2.png\">&nbsp;</div></body></html>"),
-    experiment(StartTime = 0, StopTime = 20, Tolerance = 1e-06, Interval = 0.04),
+    experiment(StartTime = 0, StopTime = 25, Tolerance = 1e-06, Interval = 0.05),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
 end testAlt2Brach_Tc0;

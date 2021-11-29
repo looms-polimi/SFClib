@@ -1,11 +1,11 @@
-within SFC.Tests;
+within SFC.Tests.TestBranching;
 
-model ex_000 "Alternative Split/Join test with three branches"
-  Boolean C13  = C1.y and C3.y; 
-  Boolean C63  = C6.y and C3.y; 
-  Boolean C16  = C1.y and C6.y;
+model testAlt3Branch_Tc0 "Alternative Split/Join test with three branches"
+  Boolean C13 = C1.y and C3.y;
+  Boolean C63 = C6.y and C3.y;
+  Boolean C16 = C1.y and C6.y;
   Boolean C136 = C1.y and C3.y and C6.y;
-  SFC.BasicBlocks.Step S0(initialStep = true)  annotation(
+  SFC.BasicBlocks.Step S0(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {6, 76}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Step S1 annotation(
     Placement(visible = true, transformation(origin = {-42, 28}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -55,7 +55,7 @@ model ex_000 "Alternative Split/Join test with three branches"
     Placement(visible = true, transformation(origin = {6, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Step S6 annotation(
     Placement(visible = true, transformation(origin = {6, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T6(Tcycle = 0.1)  annotation(
+  SFC.BasicBlocks.Transition T6(Tcycle = 0.1) annotation(
     Placement(visible = true, transformation(origin = {100, 38}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Transition T65(Tcycle = 0.1) annotation(
     Placement(visible = true, transformation(origin = {100, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -134,5 +134,7 @@ equation
   </tbody></table><div><br></div><div><div>The result of the test shows in the figure below that after Step <b>S0</b>,&nbsp;<b>S1</b>,&nbsp;<b>S3&nbsp;</b>and&nbsp;<b>S5</b>&nbsp;are never active at the same time.</div><div><b><u>Note</u></b>&nbsp;that if the mutual exclusivity of the conditions cannot be ensured the library can not give any guaranty about the correctness of the SFC evolution.</div><div>&nbsp;
   
    <img width=\"400\" src=\"modelica://SFC/Images/Test/AltBranches3.png\"></div></div></body></html>"),
-    experiment(StartTime = 0, StopTime = 50, Tolerance = 1e-06, Interval = 0.1));
-end ex_000;
+    experiment(StartTime = 0, StopTime = 50, Tolerance = 1e-06, Interval = 0.1),
+  __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
+  __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
+end testAlt3Branch_Tc0;
