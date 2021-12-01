@@ -3,3 +3,4 @@ test_semaphore_002
 test_sem_TwoPeriod
 test_TrueCond
 TestWithSubBrach_CG
+test_semaphore_003_pulse

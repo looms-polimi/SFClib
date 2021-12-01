@@ -13,37 +13,37 @@ model testAlt2Brach_Tc0 "Alternative Split/Join test with two branches"
     Placement(visible = true, transformation(origin = {24, 28}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Step S4 annotation(
     Placement(visible = true, transformation(origin = {24, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T4 annotation(
+  SFC.BasicBlocks.Transition T4(label = "T4")  annotation(
     Placement(visible = true, transformation(origin = {24, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T2 annotation(
+  SFC.BasicBlocks.Transition T2(label = "T2")  annotation(
     Placement(visible = true, transformation(origin = {-56, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Condition C4(y = S3.t > 1) annotation(
     Placement(visible = true, transformation(origin = {54, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.BooleanPulse Cpulse1(period = 4, startTime = 0.1, width = 30) annotation(
-    Placement(visible = true, transformation(origin = {-66, 78}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
+  Modelica.Blocks.Sources.BooleanPulse Cpulse1(period = 4, startTime = 0.1, width = 50) annotation(
+    Placement(visible = true, transformation(origin = {-116, 162}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
   SFC.BasicBlocks.Condition C2(y = S1.t > 0.5) annotation(
     Placement(visible = true, transformation(origin = {-26, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.Branching.AlternativeSplit2 alternativeSplit21 annotation(
     Placement(visible = true, transformation(origin = {-16, 58}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T1 annotation(
+  SFC.BasicBlocks.Transition T1(label = "T1")  annotation(
     Placement(visible = true, transformation(origin = {-56, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T3 annotation(
+  SFC.BasicBlocks.Transition T3(label = "T3")  annotation(
     Placement(visible = true, transformation(origin = {24, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T5 annotation(
+  SFC.BasicBlocks.Transition T5(label = "T5")  annotation(
     Placement(visible = true, transformation(origin = {-16, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.Branching.AlternativeJoin2 alternativeJoin21 annotation(
     Placement(visible = true, transformation(origin = {-16, -42}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T25 annotation(
+  SFC.BasicBlocks.Transition T25(label = "T25")  annotation(
     Placement(visible = true, transformation(origin = {-56, -32}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T45 annotation(
+  SFC.BasicBlocks.Transition T45(label = "T45")  annotation(
     Placement(visible = true, transformation(origin = {24, -32}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Step S5 annotation(
     Placement(visible = true, transformation(origin = {-16, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.BooleanPulse Cpulse2(period = 3, startTime = 2, width = 30) annotation(
-    Placement(visible = true, transformation(origin = {-42, 78}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
-  SFC.BasicBlocks.Condition C1(y = Cpulse1.y) annotation(
+  Modelica.Blocks.Sources.BooleanPulse Cpulse2(period = 3, startTime = 2, width = 60) annotation(
+    Placement(visible = true, transformation(origin = {-58, 172}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
+  SFC.BasicBlocks.Condition C1(y = Cpulse1.y and not Cpulse2.y) annotation(
     Placement(visible = true, transformation(origin = {-23, 48}, extent = {{-13, -10}, {13, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition C3(y = Cpulse2.y and not Cpulse1.y) annotation(
+  SFC.BasicBlocks.Condition C3(y = Cpulse2.y) annotation(
     Placement(visible = true, transformation(origin = {54, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Condition C25(y = S2.t > 1) annotation(
     Placement(visible = true, transformation(origin = {-26, -32}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

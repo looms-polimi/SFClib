@@ -31,7 +31,7 @@ extends SFC.BasicBlocks.ModelWithCyclicGroup;
   SFC.BasicBlocks.Condition C2(y = S1.t > 0.5) annotation(
     Placement(visible = true, transformation(origin = {-10, -10}, extent = {{-26, -10}, {26, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanPulse Cpulse(period = 2, width = 30) annotation(
-    Placement(visible = true, transformation(origin = {-64, 72}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-150, 70}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
   Branching.ParallelJoin2 pJoin annotation(
     Placement(visible = true, transformation(origin = {-16, -88}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation

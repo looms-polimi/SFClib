@@ -1,6 +1,10 @@
 within SFC.BasicBlocks;
 
 model Transition "Transition of an SFC"
+  
+  // REMOVE ME
+  parameter String label="T";
+  
   SFC.Interfaces.TransitionInput IN annotation(
     Placement(visible = true, transformation(origin = {-92, 60}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {-1.77636e-15, 20}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   SFC.Interfaces.TransitionOutput OUT annotation(
@@ -21,12 +25,34 @@ algorithm
          time,
          cyclicGroup.phase,
          cyclicGroup.period);
+    Modelica.Utilities.Streams.print(
+             "###"
+             +label
+             +": event at t="
+             +String(time)
+             +", INact="
+             +String(pre(IN.active))
+             +", C="
+             +String(pre(C))
+             +", next firing at "
+             +String(time_next_firing));
   end when;
   
-  when time>=time_next_firing then
+  when time>time_next_firing then
     if C then
       OUT.fire   := not OUT.fire;
       fire_count := fire_count+1;
+      Modelica.Utilities.Streams.print(
+             "   "
+             +label
+             +" --- firing No. "
+             +String(fire_count)
+             +" at t="
+             +String(time)
+             +", C="
+             +String(pre(C))
+             +" : "
+             +(if OUT.fire then "F->T" else "T->F"));
     end if;
   end when;  
 

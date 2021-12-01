@@ -24,8 +24,13 @@ double get_semaphore(int handle, double time, double phase, double period)
 {
     auto it=semaphores.find(handle);
     assert(it!=semaphores.end());
-    //Is this a new event?
+    // Is this a new event?
     if(time>it->second) it->second = ceil((time-phase)/period)*period+phase;
+ 
+    // Advance to next period if event on clock tick
+    // if(it->second<=time) it->second = it->second+period;
+
+
     cout << "get_semaphore(" << handle << ", " << time << ", " << phase << ", "
          << period << ") : " << it->second << endl;
     return it->second;
