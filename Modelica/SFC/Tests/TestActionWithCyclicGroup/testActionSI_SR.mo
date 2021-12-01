@@ -1,8 +1,10 @@
-within SFC.Tests;
+within SFC.Tests.TestActionWithCyclicGroup;
+
 
 model testActionSI_SR "Set/Reset Action with a single set signal and reset signal"
+extends SFC.BasicBlocks.ModelWithCyclicGroup;
   SFC.BasicBlocks.Condition condition2(y = S0.t > 2) annotation(
-    Placement(visible = true, transformation(origin = {-264, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-254, 16}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   SFC.BasicBlocks.Transition transition annotation(
     Placement(visible = true, transformation(origin = {-305, -45}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
   SFC.BasicBlocks.Step S0(initialStep = true) annotation(
@@ -12,7 +14,7 @@ model testActionSI_SR "Set/Reset Action with a single set signal and reset signa
   SFC.BasicBlocks.Step S1 annotation(
     Placement(visible = true, transformation(origin = {-305, -13}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
   SFC.BasicBlocks.Condition condition3(y = S1.t > 1) annotation(
-    Placement(visible = true, transformation(origin = {-260, -44}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-244, -44}, extent = {{-26, -10}, {26, 10}}, rotation = 0)));
   SFC.BasicBlocks.ActionSI_SR actionSR_SI annotation(
     Placement(visible = true, transformation(origin = {-210, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Step S11 annotation(
@@ -24,7 +26,7 @@ model testActionSI_SR "Set/Reset Action with a single set signal and reset signa
   SFC.BasicBlocks.Step S03 annotation(
     Placement(visible = true, transformation(origin = {-129, -73}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
   SFC.BasicBlocks.Condition c00(y = S00.t > 2) annotation(
-    Placement(visible = true, transformation(origin = {-87, 78}, extent = {{-13, -10}, {13, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-80, 78}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   SFC.BasicBlocks.Step S01 annotation(
     Placement(visible = true, transformation(origin = {-129, 45}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
   SFC.BasicBlocks.Condition condition4(y = S13.t > 1) annotation(
@@ -36,7 +38,7 @@ model testActionSI_SR "Set/Reset Action with a single set signal and reset signa
   SFC.BasicBlocks.Condition C2(y = S11.t > 1) annotation(
     Placement(visible = true, transformation(origin = {108, 19}, extent = {{-14, -11}, {14, 11}}, rotation = 0)));
   SFC.BasicBlocks.Condition C1(y = S10.t > 2) annotation(
-    Placement(visible = true, transformation(origin = {106, 80}, extent = {{-16, -10}, {16, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {106, 82}, extent = {{-16, -10}, {16, 10}}, rotation = 0)));
   SFC.BasicBlocks.Transition T02_03 annotation(
     Placement(visible = true, transformation(origin = {-129, -47}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
   SFC.BasicBlocks.Transition T13_10 annotation(
@@ -46,7 +48,7 @@ model testActionSI_SR "Set/Reset Action with a single set signal and reset signa
   SFC.BasicBlocks.Step S13 annotation(
     Placement(visible = true, transformation(origin = {59, -71}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
   SFC.BasicBlocks.Condition c01(y = S01.t > 1) annotation(
-    Placement(visible = true, transformation(origin = {-85, 14}, extent = {{-13, -10}, {13, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-79, 14}, extent = {{-19, -10}, {19, 10}}, rotation = 0)));
   SFC.BasicBlocks.Transition T03_00 annotation(
     Placement(visible = true, transformation(origin = {-129, -105}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
   SFC.BasicBlocks.Transition T10_11 annotation(
@@ -67,11 +69,13 @@ model testActionSI_SR "Set/Reset Action with a single set signal and reset signa
     Placement(visible = true, transformation(origin = {-34, 108}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.ActionSI_SR SR_1 annotation(
     Placement(visible = true, transformation(origin = {188, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  SFC.BasicBlocks.ActionSI_SR actionSI_SR annotation(
+    Placement(visible = true, transformation(origin = {-210, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(transition1.OUT, S1.IN) annotation(
     Line(points = {{-305, 12.4}, {-305, -1.6}}));
   connect(transition1.C, condition2.y) annotation(
-    Line(points = {{-289.4, 15}, {-280.4, 15}, {-280.4, 16}, {-275.4, 16}}, color = {255, 0, 255}));
+    Line(points = {{-289.4, 15}, {-280.4, 15}, {-280.4, 16}, {-276, 16}}, color = {255, 0, 255}));
   connect(S1.OUT, transition.IN) annotation(
     Line(points = {{-305, -24}, {-305, -42}}));
   connect(S0.X, actionSR_SI.IN_R) annotation(
@@ -79,7 +83,7 @@ equation
   connect(S0.OUT, transition1.IN) annotation(
     Line(points = {{-305, 36}, {-305, 18}}));
   connect(transition.C, condition3.y) annotation(
-    Line(points = {{-289.4, -45}, {-280.4, -45}, {-280.4, -44}, {-271.4, -44}}, color = {255, 0, 255}));
+    Line(points = {{-289.4, -45}, {-280.7, -45}, {-280.7, -44}, {-273, -44}}, color = {255, 0, 255}));
   connect(transition.OUT, S0.IN) annotation(
     Line(points = {{-305, -47.6}, {-305, -55.6}, {-338, -55.6}, {-338, 64.4}, {-305, 64.4}, {-305, 58.4}}));
   connect(S0.X, actionSR_SI.IN_S) annotation(
@@ -89,7 +93,7 @@ equation
   connect(T12_13.C, condition.y) annotation(
     Line(points = {{74.6, -45}, {86, -45}, {86, -47}}, color = {255, 0, 255}));
   connect(T00_01.C, c00.y) annotation(
-    Line(points = {{-113.4, 77}, {-110.4, 77}, {-110.4, 78}, {-101, 78}}, color = {255, 0, 255}));
+    Line(points = {{-113.4, 77}, {-110.4, 77}, {-110.4, 78}, {-102, 78}}, color = {255, 0, 255}));
   connect(S11.OUT, T11_10.IN) annotation(
     Line(points = {{59, 40}, {59, 22}}));
   connect(T10_11.OUT, S11.IN) annotation(
@@ -109,7 +113,7 @@ equation
   connect(S01.OUT, T01_02.IN) annotation(
     Line(points = {{-129, 34}, {-129, 18}}));
   connect(T01_02.C, c01.y) annotation(
-    Line(points = {{-113.4, 15}, {-107.9, 15}, {-107.9, 14}, {-99, 14}}, color = {255, 0, 255}));
+    Line(points = {{-113.4, 15}, {-107.9, 15}, {-107.9, 14}, {-100, 14}}, color = {255, 0, 255}));
   connect(T00_01.OUT, S01.IN) annotation(
     Line(points = {{-129, 74.4}, {-129, 56.4}}));
   connect(S00.OUT, T00_01.IN) annotation(
@@ -131,7 +135,7 @@ equation
   connect(T11_10.OUT, S12.IN) annotation(
     Line(points = {{59, 16.4}, {59, -5.6}}));
   connect(T10_11.C, C1.y) annotation(
-    Line(points = {{74.6, 79}, {83.6, 79}, {83.6, 80}, {88, 80}}, color = {255, 0, 255}));
+    Line(points = {{74.6, 79}, {83.6, 79}, {83.6, 82}, {88, 82}}, color = {255, 0, 255}));
   connect(S00.X, SR_0.IN_S) annotation(
     Line(points = {{-114, 112}, {-48, 112}}));
   connect(S02.X, SR_0.IN_R) annotation(
@@ -140,10 +144,14 @@ equation
     Line(points = {{74, -16}, {174, -16}}));
   connect(SR_1.IN_R, S10.X) annotation(
     Line(points = {{174, -24}, {144, -24}, {144, 112}, {74, 112}}));
+  connect(S1.X, actionSI_SR.IN_S) annotation(
+    Line(points = {{-290, -12}, {-250, -12}, {-250, -8}, {-224, -8}}));
+  connect(actionSI_SR.IN_R, S1.X) annotation(
+    Line(points = {{-224, -16}, {-264, -16}, {-264, -12}, {-290, -12}}));
 protected
   annotation(
-    Documentation(info = "<html><head></head><body><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><div><div>Action&nbsp;<b>A</b>&nbsp;is connected to Step&nbsp;<u>S1</u>. When S1 becomes active, action A is set and remains set until the end of the simulation.&nbsp;</div><div></div></div><div><br></div><div><br></div><div>&nbsp;<img width=\"400\" src=\"modelica://SFC/Images/Test/S2.png\"></div></body></html>"),
+    Documentation(info = "<html><head></head><body><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><div><div><div><b>MEMO: set/reset actions, da sinistra a destra:</b></div><div><b>-S/R connessi a stesso step (NON HA SENSO! esempio per sconsigliare questa configurazione che si comporta come un N solo all'inizio della simulazione, se lo facciamo allo step dopo infatti il set non si attiva mai);</b></div><div><b>-S connesso a step iniziale / R connesso in un altro step (Funziona)</b></div><div><b>-S connesso ad uno step casuale, R connesso ad initial step (Funziona)&nbsp;</b></div><div><br></div><div><br></div><div>Action&nbsp;<b>A</b>&nbsp;is connected to Step&nbsp;<u>S0</u>. When S0 becomes active, action A is set and remains set until the end of the simulation. Being&nbsp;S0&nbsp;the initial Step, both A and S0 are active from the beginning of the simulation.</div><div><div><br></div><img width=\"400\" src=\"modelica://SFC/Images/Test/S1.png\"></div></div><div><br></div><div><br></div><div>Action&nbsp;<b>A</b>&nbsp;is connected to Step&nbsp;<u>S1</u>. When S1 becomes active, action A is set and remains set until the end of the simulation.&nbsp;</div><div></div></div><div><br></div><div><br></div><div>&nbsp;<img width=\"400\" src=\"modelica://SFC/Images/Test/S2.png\"></div></body></html>"),
     experiment(StartTime = 0, StopTime = 10, Tolerance = 1e-6, Interval = 0.02),
-  Diagram(coordinateSystem(extent = {{-300, -100}, {300, 100}})),
-  Icon(coordinateSystem(extent = {{-300, -100}, {300, 100}})));
+  Diagram(coordinateSystem(extent = {{-300, -200}, {300, 200}})),
+  Icon(coordinateSystem(extent = {{-300, -200}, {300, 200}})));
 end testActionSI_SR;

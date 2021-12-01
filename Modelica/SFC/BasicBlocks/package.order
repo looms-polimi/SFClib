@@ -12,5 +12,6 @@ ActionMI_N
 ActionMI_SR
 ActionMI_P
 Transition__
-SubBranch
 CyclicGroup
+SubBranchWithCyclicGroup
+ModelWithCyclicGroup

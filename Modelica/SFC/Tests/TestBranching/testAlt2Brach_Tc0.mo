@@ -1,6 +1,7 @@
 within SFC.Tests.TestBranching;
 
 model testAlt2Brach_Tc0 "Alternative Split/Join test with two branches"
+  extends SFC.BasicBlocks.ModelWithCyclicGroup;
   Boolean res = C1.y and C3.y;
   SFC.BasicBlocks.Step S0(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {-16, 76}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

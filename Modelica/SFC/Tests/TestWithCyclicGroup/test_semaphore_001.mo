@@ -1,8 +1,7 @@
-within SFC.Tests;
+within SFC.Tests.TestWithCyclicGroup;
 
-model test_semaphore_001a "Action with S qualifier - connected to an Initial Step"
- inner SFC.BasicBlocks.CyclicGroup cyclicGroup(period = 0.5)  annotation(
-    Placement(visible = true, transformation(origin = {-170, 170}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+model test_semaphore_001 "Semaphore test with period=1"
+ extends SFC.BasicBlocks.ModelWithCyclicGroup;
  SFC.BasicBlocks.Step S0(initialStep = true)  annotation(
     Placement(visible = true, transformation(origin = {-30, 130}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
  SFC.BasicBlocks.Transition T01 annotation(
@@ -30,9 +29,7 @@ equation
     Line(points = {{-30, 8}, {-30, -8}, {-70, -8}, {-70, 152}, {-30, 152}, {-30, 140}}));
 protected
   annotation(
-    Documentation(info = "<html><head></head><body><div><b>DA CAMBIARE --- test con e senza Tc, con e senza due condizioni true</b></div><div><br></div><div>Action&nbsp;<b>A</b>&nbsp;is connected to Step&nbsp;<u>S0</u>. When S0 becomes active, action A is set and remains set until the end of the simulation. Being&nbsp;S0&nbsp;the initial Step, both A and S0 are active from the beginning of the simulation.</div><div><div><br></div>
-    
-<img width=\"400\" src=\"modelica://SFC/Images/Test/S1.png\"><br>
+    Documentation(info = "<html><head></head><body><div>Far vedere che nonostante le condizioni si verifichino in mezzo al periodo, lo scatto dell'SFC avviene sempre ad un multiplo del periodo &nbsp;</div><div>
 
 <p></p>
 </div></body></html>"),
@@ -41,4 +38,4 @@ protected
   Icon(coordinateSystem(extent = {{-200, -200}, {200, 200}})),
  __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
  __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
-end test_semaphore_001a;
+end test_semaphore_001;

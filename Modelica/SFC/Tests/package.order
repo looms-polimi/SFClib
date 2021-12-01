@@ -1,5 +1,5 @@
-test_Tcycle
-testActionSI_SR
+TestWithCyclicGroup
+TestActionWithCyclicGroup
 testActionSI_P
 testActionSI_N
 testActionMI_SR
@@ -9,7 +9,3 @@ Trial_0002
 StuckEx
 TestBranching
 subSFC
-test_semaphore_001
-test_semaphore_001a
-test_semaphore_001b
-test_semaphore_001_twin

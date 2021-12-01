@@ -1,6 +1,7 @@
 within SFC.Tests.TestBranching;
 
 model testPar2Branch_Tc0 "Parallel Split/Join test with two branches - Tc=0"
+extends SFC.BasicBlocks.ModelWithCyclicGroup;
   SFC.BasicBlocks.Step S0(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {-16, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Transition T13 annotation(
@@ -17,7 +18,7 @@ model testPar2Branch_Tc0 "Parallel Split/Join test with two branches - Tc=0"
     Placement(visible = true, transformation(origin = {24, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Transition T4  annotation(
     Placement(visible = true, transformation(origin = {24, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T2( Tcycle = 0.2)  annotation(
+  SFC.BasicBlocks.Transition T2  annotation(
     Placement(visible = true, transformation(origin = {-56, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Transition T5 annotation(
     Placement(visible = true, transformation(origin = {-16, -102}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -26,18 +27,18 @@ model testPar2Branch_Tc0 "Parallel Split/Join test with two branches - Tc=0"
   SFC.BasicBlocks.Condition C4(y = S3.t > 1) annotation(
     Placement(visible = true, transformation(origin = {66, -11}, extent = {{-22, -11}, {22, 11}}, rotation = 0)));
   SFC.BasicBlocks.Condition C5(y = Cpulse.y) annotation(
-    Placement(visible = true, transformation(origin = {14, -102}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {27, -102}, extent = {{-23, -10}, {23, 10}}, rotation = 0)));
   SFC.BasicBlocks.Condition C2(y = S1.t > 0.5) annotation(
-    Placement(visible = true, transformation(origin = {-17, -10}, extent = {{-19, -10}, {19, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-10, -10}, extent = {{-26, -10}, {26, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanPulse Cpulse(period = 2, width = 30) annotation(
     Placement(visible = true, transformation(origin = {-64, 72}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
   Branching.ParallelJoin2 pJoin annotation(
     Placement(visible = true, transformation(origin = {-16, -88}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T2.C, C2.y) annotation(
-    Line(points = {{-44, -10}, {-38, -10}}, color = {255, 0, 255}));
+    Line(points = {{-44, -10}, {-39, -10}}, color = {255, 0, 255}));
   connect(T5.C, C5.y) annotation(
-    Line(points = {{-4, -102}, {2, -102}, {2, -102}, {2, -102}}, color = {255, 0, 255}));
+    Line(points = {{-4, -102}, {2, -102}}, color = {255, 0, 255}));
   connect(T4.C, C4.y) annotation(
     Line(points = {{36, -10}, {39, -10}, {39, -11}, {42, -11}}, color = {255, 0, 255}));
   connect(T13.C, C13.y) annotation(
