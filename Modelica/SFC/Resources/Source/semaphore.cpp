@@ -35,3 +35,11 @@ double get_semaphore(int handle, double time, double phase, double period)
          << period << ") : " << it->second << endl;
     return it->second;
 }
+
+double query_semaphore(int handle)
+{
+    auto it=semaphores.find(handle);
+    assert(it!=semaphores.end());
+    cout << "query_semaphore(" << handle << ") : " << it->second << endl;
+    return it->second;
+}

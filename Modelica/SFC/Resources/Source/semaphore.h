@@ -7,6 +7,7 @@ extern "C" {
 
 int new_semaphore();
 double get_semaphore(int handle, double time, double phase, double period);
+double query_semaphore(int handle);
 
 #ifdef __cplusplus
 }
