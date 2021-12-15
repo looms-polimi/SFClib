@@ -3,5 +3,7 @@ S_action
 R_action
 boolean_get
 boolean_set
+real_get
+real_set
 test_001
 test_002_SFC_actions_N_SR
