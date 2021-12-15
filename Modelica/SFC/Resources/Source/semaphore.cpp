@@ -44,6 +44,7 @@ double get_semaphore(int handle, double time, double phase, double period)
 
 
 
+
 ////////Functions for actions
 
 int register_var(string val_name, boost::variant <int, double, bool> value){
@@ -90,3 +91,12 @@ int set_real(const char* val_name, double value){
   return set_var(str, value);
 }
  
+
+double query_semaphore(int handle)
+{
+    auto it=semaphores.find(handle);
+    assert(it!=semaphores.end());
+    cout << "query_semaphore(" << handle << ") : " << it->second << endl;
+    return it->second;
+}
+
