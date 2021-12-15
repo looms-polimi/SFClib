@@ -7,8 +7,8 @@ model Step "Step of an SFC"
     Placement(visible = true, transformation(origin = {0, -100}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {0, -100}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Boolean active;
   Real t(start=0);
-  SFC.Interfaces.StepOUT X annotation(
-    Placement(visible = true, transformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {140, 5.32907e-15}, extent = {{-40, -40}, {40, 40}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.BooleanOutput X annotation(
+    Placement(visible = true, transformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {120, 3.55271e-15}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
    parameter Boolean initialStep = false "checked if the Step is the Initial step of the SFC" annotation(
     Evaluate = true,
     HideResult = true,
@@ -20,42 +20,29 @@ protected
 
  
 equation
-  active = X.phase_act;
-  t = if X.phase_act then time - t_last_activation else duration_last_activity;
-  OUT.active=X.phase_act;
-  if initialStep then 
-     X.InitialStep = true; 
-     else 
-     X.InitialStep = false; 
-  end if;
+  active = X;
+  t = if X then time - t_last_activation else duration_last_activity;
+  OUT.active=X;
   
 algorithm
   when change(IN.fire) then
-    X.phase_act:=true;
+    X:=true;
     t_last_activation:= time;
     IN_count := IN_count+1;
     Modelica.Utilities.Streams.print(
-     getInstanceName()+": active="+String(X.phase_act)+ " at t="+String(time),"log.txt");
+     getInstanceName()+": active="+String(X)+ " at t="+String(time),"log.txt");
   end when;
   
   when change(OUT.fire) then
-     X.phase_act:=false;
+     X:=false;
      duration_last_activity := t;
      OUT_count := OUT_count+1;
     Modelica.Utilities.Streams.print(
-     getInstanceName()+": active="+String(X.phase_act)+ " at t="+String(time),"log.txt");
+     getInstanceName()+": active="+String(X)+ " at t="+String(time),"log.txt");
   end when;
   
-
-  
-
-  
 initial algorithm
-  if initialStep then 
-     X.phase_act := true; 
-     else 
-     X.phase_act := false; 
-  end if;
+  X := initialStep;
   
 annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),

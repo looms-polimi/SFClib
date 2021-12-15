@@ -9,6 +9,8 @@
 #include <variant>
 #include "semaphore.h"
 
+#define debug_level 0
+
 using namespace std;
 
 static map<int,double> semaphores;
@@ -23,7 +25,7 @@ int new_semaphore()
 {
     int result = handles++;
     semaphores[result] = numeric_limits<double>::min();
-    cout << "new_semaphore() : " << result << endl;
+    if(debug_level>0) cout << "new_semaphore() : " << result << endl;
     return result;
 }
 
@@ -38,7 +40,7 @@ double get_semaphore(int handle, double time, double phase, double period)
     // if(it->second<=time) it->second = it->second+period;
 
 
-    cout << "get_semaphore(" << handle << ", " << time << ", " << phase << ", "
+    if(debug_level>0) cout << "get_semaphore(" << handle << ", " << time << ", " << phase << ", "
          << period << ") : " << it->second << endl;
     return it->second;
 }
@@ -47,7 +49,7 @@ double query_semaphore(int handle)
 {
     auto it=semaphores.find(handle);
     assert(it!=semaphores.end());
-    cout << "query_semaphore(" << handle << ") : " << it->second << endl;
+    if(debug_level>0) cout << "query_semaphore(" << handle << ") : " << it->second << endl;
     return it->second;
 }
 
@@ -91,59 +93,59 @@ void set_type(int handle, T value)
 int register_boolean_variable(const char* name)
 {
     int handle = register_type<bool>(name);
-    cout << "register_boolean_variable(" << name << ") : " << handle << endl;
+    if(debug_level>0) cout << "register_boolean_variable(" << name << ") : " << handle << endl;
     return handle;
 }
 
 int register_integer_variable(const char* name)
 {
     int handle = register_type<int>(name);
-    cout << "register_integer_variable(" << name << ") : " << handle << endl;
+    if(debug_level>0) cout << "register_integer_variable(" << name << ") : " << handle << endl;
     return handle;
 }
 
 int register_real_variable(const char* name)
 {
     int handle = register_type<double>(name);
-    cout << "register_real_variable(" << name << ") : " << handle << endl;
+    if(debug_level>0) cout << "register_real_variable(" << name << ") : " << handle << endl;
     return handle;
 }
 
 bool get_boolean_variable(int handle)
 {
     auto value = get_type<bool>(handle);
-    cout << "get_boolean_variable(" << handle << ") : " << value << endl;
+    if(debug_level>0) cout << "get_boolean_variable(" << handle << ") : " << value << endl;
     return value;
 }
 
 int get_integer_variable(int handle)
 {
     auto value = get_type<int>(handle);
-    cout << "get_integer_variable(" << handle << ") : " << value << endl;
+    if(debug_level>0) cout << "get_integer_variable(" << handle << ") : " << value << endl;
     return value;
 }
 
 double get_real_variable(int handle)
 {
     auto value = get_type<double>(handle);
-    cout << "get_real_variable(" << handle << ") : " << value << endl;
+    if(debug_level>0) cout << "get_real_variable(" << handle << ") : " << value << endl;
     return value;
 }
 
 void set_boolean_variable(int handle, bool value)
 {
-    cout << "set_boolean_variable(" << handle << ", " << value << ")" << endl;
+    if(debug_level>0) cout << "set_boolean_variable(" << handle << ", " << value << ")" << endl;
     set_type<bool>(handle,value);
 }
 
 void set_integer_variable(int handle, int value)
 {
-    cout << "set_integer_variable(" << handle << ", " << value << ")" << endl;
+    if(debug_level>0) cout << "set_integer_variable(" << handle << ", " << value << ")" << endl;
     set_type<int>(handle,value);
 }
 
 void set_real_variable(int handle, double value)
 {
-    cout << "set_real_variable(" << handle << ", " << value << ")" << endl;
+    if(debug_level>0) cout << "set_real_variable(" << handle << ", " << value << ")" << endl;
     set_type<double>(handle,value);
 }
