@@ -9,7 +9,7 @@ model Cyclic_object_01
     Placement(visible = true, transformation(origin = {-10, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Transition T01 annotation(
     Placement(visible = true, transformation(origin = {-10, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  inner SFC.BasicBlocks.CyclicGroup cyclicGroup(period = 0.0001) annotation(
+  inner SFC.BasicBlocks.CyclicGroup cyclicGroup(period = 0.001) annotation(
     Placement(visible = true, transformation(origin = {-90, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Transition T10 annotation(
     Placement(visible = true, transformation(origin = {-10, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
