@@ -6,16 +6,18 @@
 #include <iostream>
 
 #include <string>
-#include <boost/variant.hpp>
+#include <variant>
 #include "semaphore.h"
+
 using namespace std;
 
 static map<int,double> semaphores;
 static int handles=0;
 
 // Var for Actions 
-static map<string,boost::variant <int, double, bool>> var_list;
-static int list_handle, var_set=0; 
+static map<string,int> var_symbol_table;
+static map<int,variant<bool, int, double>> var_list;
+static int var_last_handle=0; 
 
 int new_semaphore()
 {
@@ -41,76 +43,6 @@ double get_semaphore(int handle, double time, double phase, double period)
     return it->second;
 }
 
-
-
-
-////////Functions for actions
-
-int register_var(string val_name, boost::variant <int, double, bool> value){
-    int handle,dex;
-    cout << "\nRequest to register " << val_name << " with value " << value << endl;
-    dex = 0;
-    handle = -1;
-    for (auto pair : var_list) {
-	if (pair.first == val_name) { // name exists, return its handle
-	    handle = dex;
-            cout << "--> " << val_name << " found at handle " << handle << endl;
-            break; // FIXME check duplicates?
-        }
-        dex++;
-    }
-    if(handle==-1) { // new variable, create new handle and FIXME set value
-        handle = list_handle++;
-        var_list[val_name] = value;
-        cout << "--> created handle " << handle << " for " << val_name << endl;
-    	}
-   cout << "*** var_list ----------------------------";
-   dex = 0
-   for(auto pair : var_list)
-      cout << i << "\t" << var_list->first << "\t" << endl;
-
-   cout << "-----------------------------------------";
-   return handle;
-}
-
-int register_real(const char* val_name, double value){
-  std::string str;
-  str.assign(val_name);
-  return register_var(str, value);
-}
-
-int register_bool(const char* val_name, bool value){
-  std::string str;
-  str.assign(val_name);
-  return register_var(str, value);
-}
-
-
-int set_var(string val_name, boost::variant <int, double, bool> value){
-    
-    for (auto pair : var_list) {
-	    if (pair.first == val_name) {
-	      pair.second = value;
-	      var_set++;
-	    }
-	    cout << "var " << pair.first << " : " << pair.second << endl;
-    }
-    return var_set; 
-}
-
-int set_bool(const char* val_name, bool value){
-  std::string str;
-  str.assign(val_name);
-  return set_var(str, value);
-}
-
-int set_real(const char* val_name, double value){
-  std::string str;
-  str.assign(val_name);
-  return set_var(str, value);
-}
- 
-
 double query_semaphore(int handle)
 {
     auto it=semaphores.find(handle);
@@ -119,3 +51,99 @@ double query_semaphore(int handle)
     return it->second;
 }
 
+////////Functions for actions
+
+template<typename T>
+int register_type(const char *name)
+{
+    auto it=var_symbol_table.find(name);
+    int handle;
+    if(it==var_symbol_table.end())
+    {
+        handle = var_last_handle++;
+        var_symbol_table[name] = handle;
+        var_list[handle] = static_cast<T>(0);
+    } else {
+        handle = it->second;
+        assert(holds_alternative<T>(var_list[handle]));
+    }
+    return handle;
+}
+
+template<typename T>
+T get_type(int handle)
+{
+    auto it = var_list.find(handle);
+    assert(it != var_list.end());
+    assert(holds_alternative<T>(it->second));
+    return get<T>(it->second);
+}
+
+template<typename T>
+void set_type(int handle, T value)
+{
+    auto it = var_list.find(handle);
+    assert(it != var_list.end());
+    assert(holds_alternative<T>(it->second));
+    it->second=value;
+}
+
+int register_boolean_variable(const char* name)
+{
+    int handle = register_type<bool>(name);
+    cout << "register_boolean_variable(" << name << ") : " << handle << endl;
+    return handle;
+}
+
+int register_integer_variable(const char* name)
+{
+    int handle = register_type<int>(name);
+    cout << "register_integer_variable(" << name << ") : " << handle << endl;
+    return handle;
+}
+
+int register_real_variable(const char* name)
+{
+    int handle = register_type<double>(name);
+    cout << "register_real_variable(" << name << ") : " << handle << endl;
+    return handle;
+}
+
+bool get_boolean_variable(int handle)
+{
+    auto value = get_type<bool>(handle);
+    cout << "get_boolean_variable(" << handle << ") : " << value << endl;
+    return value;
+}
+
+int get_integer_variable(int handle)
+{
+    auto value = get_type<int>(handle);
+    cout << "get_integer_variable(" << handle << ") : " << value << endl;
+    return value;
+}
+
+double get_real_variable(int handle)
+{
+    auto value = get_type<double>(handle);
+    cout << "get_real_variable(" << handle << ") : " << value << endl;
+    return value;
+}
+
+void set_boolean_variable(int handle, bool value)
+{
+    cout << "set_boolean_variable(" << handle << ", " << value << ")" << endl;
+    set_type<bool>(handle,value);
+}
+
+void set_integer_variable(int handle, int value)
+{
+    cout << "set_integer_variable(" << handle << ", " << value << ")" << endl;
+    set_type<int>(handle,value);
+}
+
+void set_real_variable(int handle, double value)
+{
+    cout << "set_real_variable(" << handle << ", " << value << ")" << endl;
+    set_type<double>(handle,value);
+}

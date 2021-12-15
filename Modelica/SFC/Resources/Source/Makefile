@@ -4,8 +4,8 @@ OBJ := semaphore.o
 LIB := libsemaphore.so
 
 all:
-	g++ -O2 -fPIC -c $(SRC)
-	g++ -O2 -fPIC -shared -o $(LIB) $(OBJ)
+	g++ -O2 -std=c++17 -fPIC -c $(SRC)
+	g++ -O2 -std=c++17 -fPIC -shared -o $(LIB) $(OBJ)
 
 clean:
 	rm $(OBJ) $(LIB)
