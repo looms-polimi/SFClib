@@ -1,15 +1,19 @@
 within ProvaInOut;
 
-model IO
- parameter Integer N_real = 3, N_bool = 3; 
- parameter String vec_name_real[:] = {"a","b","c"}; 
- parameter String vec_name_bool[:] = {"d","e","f"}; 
- parameter Real vec_value_real[N_real] = {0,1,2};// = {"0","true","5"};
- parameter Boolean vec_value_bool[N_bool] = {true, true, false};// = {"0","true","5"};
+model PLC_IO
+
+
+ parameter String vec_name_real[:] = {"r1","r2"}; 
+ parameter String vec_name_bool[:] = {"b1","b2","b3"}; 
+ parameter Real vec_value_real[N_real] = {5,6};
+ parameter Boolean vec_value_bool[N_bool] = {true, true, false};
  
  String A[N_real];
  Real B[N_real];
 
+//protected
+ final parameter Integer N_real=size(vec_name_real,1);
+ final parameter Integer N_bool=size(vec_name_bool,1);
 
 // memo controllo da fare se soluzione corretta:
 // 1. non devono esserci nomi uguali in vector_name_real e vec_name_bool,
@@ -25,6 +29,8 @@ for i in 1:N_real loop
   SFC.Functions.register_real(vec_name_real[i],vec_value_real[i]);
 end for; 
 
-annotation(
+annotation(defaultComponentName="IO",
+    defaultComponentPrefixes="inner",
+    missingInnerMessage="Your model is using an outer \"PLC_IO\" component but an inner \"PLC_IO\" component is not defined. Drag PLC_IO your model to specify the PLC IO connections.",
     Diagram(graphics = {Rectangle(extent = {{-100, 100}, {100, -100}})}));
-end IO;
+end PLC_IO;

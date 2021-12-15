@@ -7,7 +7,6 @@
 
 #include <string>
 #include <boost/variant.hpp>
-#include <stdbool.h>
 #include "semaphore.h"
 using namespace std;
 
@@ -48,10 +47,30 @@ double get_semaphore(int handle, double time, double phase, double period)
 ////////Functions for actions
 
 int register_var(string val_name, boost::variant <int, double, bool> value){
-   int result = list_handle++;
-   var_list[val_name] = value; 
-   cout << "register_var(" << val_name << ") : " << value << endl;
-   return result;
+    int handle,dex;
+    cout << "\nRequest to register " << val_name << " with value " << value << endl;
+    dex = 0;
+    handle = -1;
+    for (auto pair : var_list) {
+	if (pair.first == val_name) { // name exists, return its handle
+	    handle = dex;
+            cout << "--> " << val_name << " found at handle " << handle << endl;
+            break; // FIXME check duplicates?
+        }
+        dex++;
+    }
+    if(handle==-1) { // new variable, create new handle and FIXME set value
+        handle = list_handle++;
+        var_list[val_name] = value;
+        cout << "--> created handle " << handle << " for " << val_name << endl;
+    	}
+   cout << "*** var_list ----------------------------";
+   dex = 0
+   for(auto pair : var_list)
+      cout << i << "\t" << var_list->first << "\t" << endl;
+
+   cout << "-----------------------------------------";
+   return handle;
 }
 
 int register_real(const char* val_name, double value){

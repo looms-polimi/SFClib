@@ -6,7 +6,7 @@ model MWE_002a_Clock_02
   Real y[100](each start=0);
   discrete Real x;
 equation
-  y+der(y)=sin(time)*ones(size(y,1))*exp(-time);
+  y+der(y)=sin(time)*ones(size(y,1));//*exp(-time);
   //futtitinni = (y[1]>0);
 algorithm
   when sample(0,0.05) and not futtitinni then

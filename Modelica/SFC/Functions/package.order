@@ -2,7 +2,7 @@ get_semaphore
 new_semaphore
 register_real
 register_bool
+C_register_bool
 set_boolVar
 set_realVar
 query_semaphore
-

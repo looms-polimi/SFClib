@@ -12,6 +12,12 @@ algorithm
     ewait := true;
   end when;
   when ewait and time>=etime then
+    Modelica.Utilities.Streams.print(
+        "Event by "
+        +getInstanceName()
+        +" at time = "
+        +String(time)
+        );
     if condition then 
        ctr   := ctr+1;
     end if;
