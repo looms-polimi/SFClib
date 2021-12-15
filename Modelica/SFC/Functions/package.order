@@ -1,2 +1,6 @@
 get_semaphore
 new_semaphore
+register_real
+register_bool
+set_boolVar
+set_realVar

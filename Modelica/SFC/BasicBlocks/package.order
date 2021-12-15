@@ -16,3 +16,4 @@ CyclicGroup
 SubBranchWithCyclicGroup
 ModelWithCyclicGroup
 BooleanPulse_mod_from_MSL
+VarRecord
