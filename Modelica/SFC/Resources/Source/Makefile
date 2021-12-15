@@ -1,7 +1,7 @@
 
-SRC := semaphore.cpp
-OBJ := semaphore.o
-LIB := libsemaphore.so
+SRC := sfc.cpp
+OBJ := sfc.o
+LIB := libsfc.so
 
 all:
 	g++ -O2 -std=c++17 -fPIC -c $(SRC)
