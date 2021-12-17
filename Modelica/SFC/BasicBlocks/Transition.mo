@@ -20,7 +20,7 @@ equation
   OUT.fire = IN.fire;
 algorithm
   when pre(IN.active) and pre(C) then
-    time_next_firing := Functions.get_semaphore
+    time_next_firing := Functions.schedule_next_aligned_event
          (cyclicGroup.handle,
          time,
          cyclicGroup.phase,

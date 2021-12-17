@@ -19,8 +19,8 @@ model test_TrueCond "Two consecutive true conditions with a CyclicGroup"
     Placement(visible = true, transformation(origin = {61, -64}, extent = {{-27, -14}, {27, 14}}, rotation = 0)));
  SFC.BasicBlocks.Transition T22_20 annotation(
     Placement(visible = true, transformation(origin = {-16, -68}, extent = {{-18, -18}, {18, 18}}, rotation = 0)));
- inner BasicBlocks.CyclicGroup cyclicGroup(period = 0.5) annotation(
-    Placement(visible = true, transformation(origin = {-192, 194}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+ inner SFC.BasicBlocks.CyclicGroup cyclicGroup(period = 0.5) annotation(
+    Placement(visible = true, transformation(origin = {-190, 190}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T20_21.C, C20_21.y) annotation(
     Line(points = {{3.8, 63}, {30, 63}}, color = {255, 0, 255}));

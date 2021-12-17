@@ -4,7 +4,7 @@ model real_get
   parameter String name = "real1";
 
   Modelica.Blocks.Interfaces.RealOutput value annotation(
-    Placement(visible = true, transformation(origin = {-130, -4}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {120, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-122, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {120, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
 
   Integer handle;
 
@@ -17,5 +17,5 @@ algorithm
 
 
 annotation(
-    Icon(graphics = {Rectangle(origin = {-70, 0},fillColor = {238, 238, 236}, fillPattern = FillPattern.Solid, extent = {{-30, 40}, {30, -40}}), Rectangle(origin = {30, 0}, fillColor = {238, 238, 236}, fillPattern = FillPattern.Solid, extent = {{-70, 40}, {70, -40}})}));
+    Icon(graphics = {Rectangle(fillColor = {238, 238, 236}, fillPattern = FillPattern.Solid, extent = {{-100, 100}, {100, -100}}), Text(origin = {-3, 50}, extent = {{-59, 58}, {59, -58}}, textString = "Real"), Text(origin = {-3, -34}, extent = {{-45, 42}, {45, -42}}, textString = "GET")}));
 end real_get;

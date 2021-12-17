@@ -1,11 +1,10 @@
-get_semaphore
-new_semaphore
-register_real
-set_realVar
 query_semaphore
+set_debug_level
+new_aligned_event
+register_real_variable
 register_boolean_variable
 get_boolean_variable
 set_boolean_variable
-register_real_variable
 get_real_variable
 set_real_variable
+schedule_next_aligned_event

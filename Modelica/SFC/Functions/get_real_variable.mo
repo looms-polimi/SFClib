@@ -5,7 +5,7 @@ function get_real_variable
  output Real value;
  external "C" value = get_real_variable(handle) annotation(
       LibraryDirectory="modelica://SFC/Resources/Source/",
-      Library="semaphore",
+      Library="sfc",
       IncludeDirectory="modelica://SFC/Resources/Source/",
-      Include="#include \"semaphore.h\"");
+      Include="#include \"sfc.h\"");
 end get_real_variable;

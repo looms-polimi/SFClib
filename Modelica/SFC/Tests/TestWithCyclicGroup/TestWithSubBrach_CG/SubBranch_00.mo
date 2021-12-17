@@ -34,7 +34,8 @@ equation
   connect(OUT, S2.OUT) annotation(
     Line(points = {{0, -100}, {0, -74}}));
   annotation(
-    Diagram);
+    Diagram,
+    Icon(graphics = {Rectangle(extent = {{-100, 100}, {100, -100}})}));
 
 
 end SubBranch_00;

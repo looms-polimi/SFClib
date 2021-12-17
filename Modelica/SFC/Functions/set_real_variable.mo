@@ -5,7 +5,7 @@ function set_real_variable
  input Real value;
  external "C" set_real_variable(handle, value) annotation(
       LibraryDirectory="modelica://SFC/Resources/Source/",
-      Library="semaphore",
+      Library="sfc",
       IncludeDirectory="modelica://SFC/Resources/Source/",
-      Include="#include \"semaphore.h\"");
+      Include="#include \"sfc.h\"");
 end set_real_variable;

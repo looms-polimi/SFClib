@@ -5,7 +5,7 @@ function register_boolean_variable
  output Integer handle;
  external "C" handle = register_boolean_variable(name) annotation(
       LibraryDirectory="modelica://SFC/Resources/Source/",
-      Library="semaphore",
+      Library="sfc",
       IncludeDirectory="modelica://SFC/Resources/Source/",
-      Include="#include \"semaphore.h\"");
+      Include="#include \"sfc.h\"");
 end register_boolean_variable;

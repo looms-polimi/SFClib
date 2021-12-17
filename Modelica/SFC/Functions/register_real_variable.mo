@@ -5,7 +5,7 @@ function register_real_variable
  output Integer handle;
  external "C" handle = register_real_variable(name) annotation(
       LibraryDirectory="modelica://SFC/Resources/Source/",
-      Library="semaphore",
+      Library="sfc",
       IncludeDirectory="modelica://SFC/Resources/Source/",
-      Include="#include \"semaphore.h\"");
+      Include="#include \"sfc.h\"");
 end register_real_variable;

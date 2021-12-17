@@ -17,5 +17,5 @@ algorithm
 
 
 annotation(
-    Icon(graphics = {Rectangle(origin = {-70, 0},fillColor = {238, 238, 236}, fillPattern = FillPattern.Solid, extent = {{-30, 40}, {30, -40}}), Rectangle(origin = {30, 0}, fillColor = {238, 238, 236}, fillPattern = FillPattern.Solid, extent = {{-70, 40}, {70, -40}})}));
+    Icon(graphics = {Rectangle(fillColor = {238, 238, 236}, fillPattern = FillPattern.Solid, extent = {{-100, 100}, {100, -100}}), Text(origin = {-3, 43}, extent = {{-73, 61}, {73, -61}}, textString = "Boolean"), Text(origin = {-3, -34}, extent = {{-45, 42}, {45, -42}}, textString = "GET")}));
 end boolean_get;

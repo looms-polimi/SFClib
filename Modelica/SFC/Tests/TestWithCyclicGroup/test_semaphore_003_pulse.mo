@@ -1,7 +1,6 @@
 within SFC.Tests.TestWithCyclicGroup;
 
 model test_semaphore_003_pulse "Semaphore test with period=1"
- extends SFC.BasicBlocks.ModelWithCyclicGroup;
  SFC.BasicBlocks.Step S0(initialStep = true)  annotation(
     Placement(visible = true, transformation(origin = {-30, 130}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
  SFC.BasicBlocks.Transition T01(label = "T01")  annotation(
@@ -14,8 +13,10 @@ model test_semaphore_003_pulse "Semaphore test with period=1"
     Placement(visible = true, transformation(origin = {30, 90}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
  Modelica.Blocks.Sources.BooleanExpression booleanExpression(y = sin(time) > 0) annotation(
     Placement(visible = true, transformation(origin = {52, 10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
- SFC.BasicBlocks.BooleanPulse_mod_from_MSL bp(period = 2, width = 70)  annotation(
-    Placement(visible = true, transformation(origin = {64, -38}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+ Modelica.Blocks.Sources.BooleanPulse booleanPulse(period = 2, width = 70)  annotation(
+    Placement(visible = true, transformation(origin = {54, -34}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+ inner SFC.BasicBlocks.CyclicGroup cyclicGroup annotation(
+    Placement(visible = true, transformation(origin = {-190, 190}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(S0.OUT, T01.IN) annotation(
     Line(points = {{-30, 120}, {-30, 92}}));
@@ -27,8 +28,8 @@ equation
     Line(points = {{-30, 40}, {-30, 12}}));
   connect(T10.OUT, S0.IN) annotation(
     Line(points = {{-30, 8}, {-30, -16}, {-66, -16}, {-66, 154}, {-30, 154}, {-30, 140}}));
- connect(T10.C, bp.y) annotation(
-    Line(points = {{-18, 10}, {12, 10}, {12, -38}, {54, -38}}, color = {255, 0, 255}));
+ connect(booleanPulse.y, T10.C) annotation(
+    Line(points = {{44, -34}, {2, -34}, {2, 10}, {-18, 10}}, color = {255, 0, 255}));
 protected
   annotation(
     Documentation(info = "<html><head></head><body><div>Far vedere che nonostante le condizioni si verifichino in mezzo al periodo, lo scatto dell'SFC avviene sempre ad un multiplo del periodo &nbsp;</div><div>

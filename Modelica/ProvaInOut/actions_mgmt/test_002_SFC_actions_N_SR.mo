@@ -6,7 +6,7 @@ model test_002_SFC_actions_N_SR
   ProvaInOut.actions_mgmt.N_action a2(name = "action_001")  annotation(
     Placement(visible = true, transformation(origin = {-30, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   ProvaInOut.actions_mgmt.boolean_get bg1(name = "action_001") annotation(
-    Placement(visible = true, transformation(origin = {130, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {120, 2.66454e-15}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   SFC.BasicBlocks.Step S0(initialStep = true)  annotation(
     Placement(visible = true, transformation(origin = {-70, 160}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Step S1 annotation(
