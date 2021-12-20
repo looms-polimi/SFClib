@@ -1,4 +1,4 @@
-within SFC.Tests.TestWithCyclicGroup.TestWithSubBrach_CG;
+within SFC.Tests.TestWithCyclicGroup.TestWithSubBranch_CG;
 
 model SubBranch_00
   extends SFC.BasicBlocks.SubBranchWithCyclicGroup;

@@ -3,7 +3,7 @@ within SFC.Tests.TestBranching;
 model testPar2Branch_Tcnot0__notworking "Parallel Split/Join test with two branches - Tc=0"
   SFC.BasicBlocks.Step S0(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {-16, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T13(Tcycle = 2) annotation(
+  SFC.BasicBlocks.Transition T13 annotation(
     Placement(visible = true, transformation(origin = {-16, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.Branching.ParallelJoin2 pJoin annotation(
     Placement(visible = true, transformation(origin = {-16, -56}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -17,27 +17,29 @@ model testPar2Branch_Tcnot0__notworking "Parallel Split/Join test with two branc
     Placement(visible = true, transformation(origin = {24, 14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Step S4 annotation(
     Placement(visible = true, transformation(origin = {24, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T4(Tcycle = 0) annotation(
+  SFC.BasicBlocks.Transition T4 annotation(
     Placement(visible = true, transformation(origin = {24, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T2(Tcycle = 1) annotation(
+  SFC.BasicBlocks.Transition T2 annotation(
     Placement(visible = true, transformation(origin = {-56, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T5(Tcycle = 1) annotation(
+  SFC.BasicBlocks.Transition T5 annotation(
     Placement(visible = true, transformation(origin = {-16, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Condition C13(y = S0.t > 2) annotation(
     Placement(visible = true, transformation(origin = {23, 50}, extent = {{-19, -10}, {19, 10}}, rotation = 0)));
   SFC.BasicBlocks.Condition C4(y = S3.t > 1) annotation(
     Placement(visible = true, transformation(origin = {54, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Condition C5(y = Cpulse.y) annotation(
-    Placement(visible = true, transformation(origin = {14, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {16, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanPulse Cpulse(period = 2, width = 30) annotation(
     Placement(visible = true, transformation(origin = {-64, 72}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
   SFC.BasicBlocks.Condition C2(y = S1.t > 0.5) annotation(
     Placement(visible = true, transformation(origin = {-21, -10}, extent = {{-15, -10}, {15, 10}}, rotation = 0)));
+  inner SFC.BasicBlocks.CyclicGroup cyclicGroup annotation(
+    Placement(visible = true, transformation(origin = {90, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T2.C, C2.y) annotation(
     Line(points = {{-44, -10}, {-37.5, -10}}, color = {255, 0, 255}));
   connect(T5.C, C5.y) annotation(
-    Line(points = {{-4, -70}, {2, -70}, {2, -70}, {2, -70}}, color = {255, 0, 255}));
+    Line(points = {{-4, -70}, {5, -70}}, color = {255, 0, 255}));
   connect(T4.C, C4.y) annotation(
     Line(points = {{36, -10}, {39, -10}, {39, -10}, {42, -10}, {42, -10}, {42, -10}, {42, -10}, {42, -10}}, color = {255, 0, 255}));
   connect(T13.C, C13.y) annotation(

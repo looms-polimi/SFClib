@@ -1,9 +1,6 @@
-testPar2Branch_Tc0
-testPar2Branch_Tcnot0
-testPar3Branch_Tc0
-testPar3Branch_Tcnot0
-testAlt2Brach_Tc0
-testAlt2Brach_Tcnot0
-testAlt3Branch_Tc0
 testPar2Branch_Tcnot0__notworking
 testPar2Brach
+testPar2Branch
+testPar3Branch
+testAlt2Brach
+testAlt3Branch

@@ -7,3 +7,4 @@ real_get
 real_set
 test_001
 test_002_SFC_actions_N_SR
+Test_booleanPulse

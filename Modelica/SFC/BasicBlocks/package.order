@@ -12,3 +12,6 @@ ActionSI_S
 ActionSI_R
 boolean_get
 real_get
+real_set
+boolean_set
+BooleanPulseSFC

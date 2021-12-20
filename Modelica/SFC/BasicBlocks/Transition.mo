@@ -12,13 +12,16 @@ model Transition "Transition of an SFC"
   Modelica.Blocks.Interfaces.BooleanInput C annotation(
     Placement(visible = true, transformation(origin = {100, 54}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {120, 0}, extent = {{20, -20}, {-20, 20}}, rotation = 0)));
 
-  discrete Integer fire_count(start=0);
+  discrete Integer fire_count(start=0), enter_when(start = 0);
   discrete Real time_next_firing;
   outer SFC.BasicBlocks.CyclicGroup cyclicGroup;
   
 equation
   OUT.fire = IN.fire;
 algorithm
+
+  
+
   when pre(IN.active) and pre(C) then
     time_next_firing := Functions.schedule_next_aligned_event
          (cyclicGroup.handle,
@@ -38,7 +41,8 @@ algorithm
              +String(time_next_firing));
   end when;
   
-  when time>time_next_firing then
+when time>time_next_firing then
+    enter_when   := enter_when + 1; 
     if C then
       OUT.fire   := not OUT.fire;
       fire_count := fire_count+1;
@@ -54,15 +58,11 @@ algorithm
              +" : "
              +(if OUT.fire then "F->T" else "T->F"));
     end if;
-  end when;  
+  end when; 
 
 initial algorithm
    time_next_firing := -1e12;
-   if IN.active then 
-     IN.fire     := true;
-   else 
-     IN.fire    := false;
-   end if; 
+   IN.active := IN.fire;
 
 
 annotation(

@@ -1,6 +1,6 @@
 within SFC.Tests.TestWithCyclicGroup;
 
-model test_TrueCond "Two consecutive true conditions with a CyclicGroup"
+model test_cg_003 "Two consecutive true conditions with a CyclicGroup"
  SFC.BasicBlocks.Step S20(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {-17, 95}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
  SFC.BasicBlocks.Condition C20_21(y = S20.t > 2) annotation(
@@ -42,11 +42,11 @@ equation
     Line(points = {{-17, -44}, {-17, -64}}));
 protected
   annotation(
-    Documentation(info = "<html><head></head><body><div><b>SFC con due condizioni consecutive true, come previsto entrambe scattano al multiplo del periodo successivo, gestite dal cyclicGroup&nbsp;</b></div><div><br></div><div>
+    Documentation(info = "<html><head></head><body><div>Caso particolare&nbsp;<b>SFC con due condizioni consecutive già \"true\".&nbsp;</b></div><div><b><br></b></div><div><b>Senza cyclic group sarebbe un problema e potrebbe causare perdita di conoscenza sullo stato del sistema (es. fatto sulla tesi)</b></div><div><b><br></b></div><div><b>Il cyclic group può gestirle facendo evolvere l'SFC al multiplo del periodo successivo dal momento in cui lo stato prima della transizione diventa attivo. &nbsp;</b></div><div><br></div><div>
 
 <p></p>
 </div></body></html>"),
     experiment(StartTime = 0, StopTime = 10, Tolerance = 1e-6, Interval = 0.02),
   Diagram(coordinateSystem(extent = {{-200, -200}, {200, 200}})),
   Icon(coordinateSystem(extent = {{-200, -200}, {200, 200}})));
-end test_TrueCond;
+end test_cg_003;
