@@ -58,12 +58,7 @@ algorithm
 
 initial algorithm
    time_next_firing := -1e12;
-   if IN.active then 
-     IN.fire     := true;
-   else 
-     IN.fire    := false;
-   end if; 
-
+   IN.fire          := IN.active;
 
 annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
