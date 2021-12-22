@@ -73,7 +73,7 @@ public:
         if(qualifier==QUALIFIER_N) active_N_phases--;
         assert(active_N_phases>=0);
         if(qualifier==QUALIFIER_R) active_R_phases--;
-        assert(active_R_phases==0);
+        assert(active_R_phases>=0);
         on = active_R_phases<=0 &&       // no (prevailing) reset active, and
              active_N_phases>0;          // at least one N phase active
         return on;
