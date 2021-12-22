@@ -1,7 +1,6 @@
-test_sem_TwoPeriod
-test_TrueCond
-TestWithSubBrach_CG
-test_semaphore_003_pulse
 test_cg_001
 test_cg_002
-test_semaphore_002
+test_cg_003
+TestWithSubBranch_CG
+test_cg_004
+test_cg_005

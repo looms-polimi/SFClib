@@ -1,6 +1,6 @@
 within SFC.Tests.TestBranching;
 
-model testAlt3Branch_Tc0 "Alternative Split/Join test with three branches"
+model testAlt3Branch "Alternative Split/Join test with three branches"
   Boolean C13 = C1.y and C3.y;
   Boolean C63 = C6.y and C3.y;
   Boolean C16 = C1.y and C6.y;
@@ -25,9 +25,9 @@ model testAlt3Branch_Tc0 "Alternative Split/Join test with three branches"
     Placement(visible = true, transformation(origin = {-76, 78}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
   SFC.BasicBlocks.Condition C2(y = S1.t > 2) annotation(
     Placement(visible = true, transformation(origin = {-77, 8}, extent = {{15, -10}, {-15, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T1(Tcycle = 0.01) annotation(
+  SFC.BasicBlocks.Transition T1 annotation(
     Placement(visible = true, transformation(origin = {-42, 48}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T5(Tcycle = 0.1) annotation(
+  SFC.BasicBlocks.Transition T5 annotation(
     Placement(visible = true, transformation(origin = {6, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Transition T25 annotation(
     Placement(visible = true, transformation(origin = {-42, -32}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
@@ -51,13 +51,13 @@ model testAlt3Branch_Tc0 "Alternative Split/Join test with three branches"
     Placement(visible = true, transformation(origin = {6, 58}, extent = {{-12, -12}, {12, 12}}, rotation = 0)));
   SFC.Branching.AlternativeJoin3 alternativeJoin31 annotation(
     Placement(visible = true, transformation(origin = {6, -42}, extent = {{-12, -12}, {12, 12}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T3(Tcycle = 0.01) annotation(
+  SFC.BasicBlocks.Transition T3 annotation(
     Placement(visible = true, transformation(origin = {6, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Step S6 annotation(
     Placement(visible = true, transformation(origin = {6, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T6(Tcycle = 0.1) annotation(
+  SFC.BasicBlocks.Transition T6 annotation(
     Placement(visible = true, transformation(origin = {100, 38}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T65(Tcycle = 0.1) annotation(
+  SFC.BasicBlocks.Transition T65 annotation(
     Placement(visible = true, transformation(origin = {100, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.BasicBlocks.Condition C6(y = Cpulse3.y and not Cpulse2.y and not Cpulse1.y) annotation(
     Placement(visible = true, transformation(origin = {139, 39}, extent = {{-17, -9}, {17, 9}}, rotation = 0)));
@@ -65,6 +65,8 @@ model testAlt3Branch_Tc0 "Alternative Split/Join test with three branches"
     Placement(visible = true, transformation(origin = {136, -22}, extent = {{-14, -10}, {14, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanPulse Cpulse3(period = 4, startTime = 2, width = 40) annotation(
     Placement(visible = true, transformation(origin = {-24, 78}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
+  inner SFC.BasicBlocks.CyclicGroup cyclicGroup annotation(
+    Placement(visible = true, transformation(origin = {90, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(S6.OUT, T5.IN) annotation(
     Line(points = {{6, -70}, {6, -70}, {6, -78}, {6, -78}}));
@@ -126,7 +128,7 @@ equation
     Line(points = {{6, 6}, {6, -2}}));
   annotation(
     uses(Modelica(version = "3.2.3")),
-    Documentation(info = "<html><head></head><body><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><div><span class=\"Apple-style-span\" style=\"font-size: 12px; \"><span class=\"Apple-style-span\" style=\"font-size: 12px; \">This test is equivalent to <i>testBranchingAlternative2</i>&nbsp;with the only dfference of choosing among&nbsp;</span></span><b style=\"font-size: 12px;\">three</b><span class=\"Apple-style-span\" style=\"font-size: 12px;\">&nbsp;sequences.</span></div><div><span class=\"Apple-style-span\" style=\"font-size: 12px;\"><span class=\"Apple-style-span\" style=\"font-size: 12px; \"><br></span></span></div><div><div>Step&nbsp;<b>S0</b>&nbsp;is connected to&nbsp;<i>AlternativeSplit3</i>, that in turn is connected to two transitions&nbsp;<b>T1</b>&nbsp;and&nbsp;<b>T3 </b>and<b> T6</b>, with different conditions. Based on which condition will be first verified, the system will evolve from step&nbsp;<b>S0</b>&nbsp;to&nbsp;<b>S1</b>,&nbsp;<b>S3 </b>or <b>S5</b>&nbsp;and the evolution of the SFC will continue in the chosen sequence. At the end of the branching, with the&nbsp;<i>AlternativeJoin3</i>, the system returns to the main sequence of events.</div></div><div><br></div><div><div>The conditions&nbsp;<b>C1</b>,&nbsp;<b>C3 </b>and<b> C6</b>&nbsp;must be mutually exclusive to avoid conflicts in case they simultaneously become true.This result can be achieved setting:</div></div><div><br></div><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">
+    Documentation(info = "<html><head></head><body><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><div><span class=\"Apple-style-span\" style=\"font-size: 12px; \"><span class=\"Apple-style-span\" style=\"font-size: 12px; \"><b>Come test_cg_005</b></span></span></div><div><span class=\"Apple-style-span\" style=\"font-size: 12px; \"><span class=\"Apple-style-span\" style=\"font-size: 12px; \"><br></span></span></div><div><span class=\"Apple-style-span\" style=\"font-size: 12px; \"><span class=\"Apple-style-span\" style=\"font-size: 12px; \"><br></span></span></div><div><span class=\"Apple-style-span\" style=\"font-size: 12px; \"><span class=\"Apple-style-span\" style=\"font-size: 12px; \"><br></span></span></div><div><span class=\"Apple-style-span\" style=\"font-size: 12px; \"><span class=\"Apple-style-span\" style=\"font-size: 12px; \">This test is equivalent to <i>testBranchingAlternative2</i>&nbsp;with the only dfference of choosing among&nbsp;</span></span><b style=\"font-size: 12px;\">three</b><span class=\"Apple-style-span\" style=\"font-size: 12px;\">&nbsp;sequences.</span></div><div><span class=\"Apple-style-span\" style=\"font-size: 12px;\"><span class=\"Apple-style-span\" style=\"font-size: 12px; \"><br></span></span></div><div><div>Step&nbsp;<b>S0</b>&nbsp;is connected to&nbsp;<i>AlternativeSplit3</i>, that in turn is connected to two transitions&nbsp;<b>T1</b>&nbsp;and&nbsp;<b>T3 </b>and<b> T6</b>, with different conditions. Based on which condition will be first verified, the system will evolve from step&nbsp;<b>S0</b>&nbsp;to&nbsp;<b>S1</b>,&nbsp;<b>S3 </b>or <b>S5</b>&nbsp;and the evolution of the SFC will continue in the chosen sequence. At the end of the branching, with the&nbsp;<i>AlternativeJoin3</i>, the system returns to the main sequence of events.</div></div><div><br></div><div><div>The conditions&nbsp;<b>C1</b>,&nbsp;<b>C3 </b>and<b> C6</b>&nbsp;must be mutually exclusive to avoid conflicts in case they simultaneously become true.This result can be achieved setting:</div></div><div><br></div><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">
     
     <table border=\"1\" cellspacing=\"0\" cellpadding=\"2\">
   <tbody><tr bgcolor=\"#e0e0e0\"><th>C1</th><th>C3</th><th>C6</th></tr>
@@ -137,4 +139,4 @@ equation
     experiment(StartTime = 0, StopTime = 50, Tolerance = 1e-06, Interval = 0.1),
   __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
   __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
-end testAlt3Branch_Tc0;
+end testAlt3Branch;

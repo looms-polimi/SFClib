@@ -1,4 +1,4 @@
-within SFC.Tests.TestWithCyclicGroup.TestWithSubBrach_CG;
+within SFC.Tests.TestWithCyclicGroup.TestWithSubBranch_CG;
 
 model test_withSubBranch
  BasicBlocks.Transition T01 annotation(

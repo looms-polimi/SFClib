@@ -2,11 +2,13 @@ within SFC.Branching;
 
 model ParallelJoin2 "Parallel Join with two branches"
   SFC.Interfaces.TransitionInput IN1 annotation(
-    Placement(visible = true, transformation(origin = {-80, -62}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {-400, 2}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-120, 68}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {-400, 2}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   SFC.Interfaces.TransitionInput IN2 annotation(
-    Placement(visible = true, transformation(origin = {-70, -52}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {400, 2}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
-  SFC.Interfaces.TransitionInput OUT annotation(
-    Placement(visible = true, transformation(origin = {4, 32}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {0, -38}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {100, 68}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {400, 2}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+  /*SFC.Interfaces.TransitionInput OUT annotation(
+      Placement(visible = true, transformation(origin = {4, 32}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {0, -38}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));*/
+  SFC.Interfaces.StepOutput OUT annotation(
+    Placement(visible = true, transformation(origin = {0, -28}, extent = {{-20, -10}, {20, 10}}, rotation = 0), iconTransformation(origin = {-6, -36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   OUT.active = IN1.active and IN2.active;
   IN1.fire = OUT.fire;
