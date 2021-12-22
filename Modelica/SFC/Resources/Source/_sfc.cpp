@@ -40,117 +40,6 @@
 
 using namespace std;
 
-// Classes for action management
-
-class action
-{
-    protected:
-
-    int active_N_phases;
-    int active_R_phases;
-    bool on;
-
-    public:
-
-    action(void)
-    {
-        active_N_phases = 0;
-        active_R_phases = 0;
-    }
-
-    bool on_phase_activation(int qualifier)
-    {
-        if(qualifier==QUALIFIER_N) active_N_phases++;
-        if(qualifier==QUALIFIER_R) active_R_phases++;
-        on = active_R_phases==0 &&       // no (prevailing) reset active, and
-             (active_N_phases>0 ||       // either at least one N phase active
-              qualifier==QUALIFIER_S);   // or the qualifier is set
-        return on;
-    }
-
-    bool on_phase_deactivation(int qualifier)
-    {
-        if(qualifier==QUALIFIER_N) active_N_phases--;
-        assert(active_N_phases>=0);
-        if(qualifier==QUALIFIER_R) active_R_phases--;
-        assert(active_R_phases==0);
-        on = active_R_phases<=0 &&       // no (prevailing) reset active, and
-             active_N_phases>0;          // at least one N phase active
-        return on;
-    }
-
-};
-
-class action_pool
-{
-     map<string,int> action_symbol_table;
-     map<int,action*> action_list;
-     int action_last_handle;
-
-     public:
-
-     action_pool(void)
-     {
-         action_last_handle = 0;
-     }
-
-     ~action_pool(void)
-     {
-         auto it=action_list.begin();
-         while(it!=action_list.end())
-             {
-             delete &it;
-             it++;
-             }
-     }
-
-    int register_action(const char *name)
-    {
-        auto it=action_symbol_table.find(name);
-        int handle;
-        if(it==action_symbol_table.end())
-        {
-           handle = action_last_handle++;
-           action_symbol_table[name] = handle;
-           action_list[handle] = new action;
-        } else {
-           handle = it->second;
-        }
-        return handle;
-    }
-
-    bool on_phase_activation(int handle, int qualifier)
-    {
-        return action_list[handle]->on_phase_activation(qualifier);
-    }
-
-    bool on_phase_deactivation(int handle, int qualifier)
-    {
-        return action_list[handle]->on_phase_deactivation(qualifier);
-    }
-
-};
-
-static action_pool(actions);
-
-int register_action(const char *name)
-{
-    return actions.register_action(name);
-}
-
-bool on_phase_activation(int handle, int qualifier)
-{
-    return actions.on_phase_activation(handle, qualifier);
-}
-
-bool on_phase_deactivation(int handle, int qualifier)
-{
-    return actions.on_phase_deactivation(handle, qualifier);
-}
-
-
-
-
 // Var for debug
 int debug_level = 1;
 
@@ -169,13 +58,6 @@ void set_debug_level(int level)
 {
     debug_level = level;
 }
-
-// Functions for actions
-
-
-
-
-
 
 // Functions for aligned events
 
@@ -295,6 +177,14 @@ double get_real_variable(int handle)
     if(debug_level>0) cout << "get_real_variable(" << handle << ") : " << value << endl;
     return value;
 }
+
+double get_real_variable_by_name(const char* name)
+{
+    auto value = get_type_by_name<double>(name);
+    if(debug_level>0) cout << "get_real_variable_by_name(" << name << ") : " << value << endl;
+    return value;
+}
+
 
 void set_boolean_variable(int handle, bool value)
 {

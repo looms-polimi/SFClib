@@ -1,11 +1,11 @@
 within SFC.Functions;
 
-impure function get_boolean_variable
+function set_integer_variable
  input Integer handle;
- output Boolean value;
- external "C" value = get_boolean_variable(handle) annotation(
+ input Integer value;
+ external "C" set_integer_variable(handle, value) annotation(
       LibraryDirectory="modelica://SFC/Resources/Source/",
       Library="sfc",
       IncludeDirectory="modelica://SFC/Resources/Source/",
       Include="#include \"sfc.h\"");
-end get_boolean_variable;
+end set_integer_variable;

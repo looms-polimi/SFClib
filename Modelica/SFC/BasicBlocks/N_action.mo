@@ -1,21 +1,39 @@
 within SFC.BasicBlocks; 
 
-model ActionSI_S "Action Set associated in different SFC Steps - Single Input"
+model N_action 
   parameter String name = "action1";
   Integer handle;
   Modelica.Blocks.Interfaces.BooleanInput phase_active annotation(
     Placement(visible = true, transformation(origin = {-130, -4}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-120, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
-  
+
+protected
+  Boolean phase_active_neg;
+  Integer count;
+
+equation
+  phase_active_neg = not(phase_active);
+
 initial equation
   SFC.Functions.set_boolean_variable(handle,phase_active);
     
 algorithm
   when initial() then
-    handle := SFC.Functions.register_boolean_variable(name);
+    handle_bool := SFC.Functions.register_boolean_variable(name);
+    handle_int  := SFC.Functions.register_integer_variable(name+"_int");
   end when;
-  when edge(phase_active) then
-    SFC.Functions.set_boolean_variable(handle,false);
+  when phase_active then
+    count := SFC.Functions.get_integer_variable(handle_int);
+    count := count+1;
+    SFC.Functions.set_integer_variable(count);
+    SFC.Functions.set_boolean_variable(handle_bool,count>0);
   end when;
+  when phase_active_neg then
+    count := SFC.Functions.get_integer_variable(handle_int);
+    count := count-1;
+    SFC.Functions.set_integer_variable(count);
+    SFC.Functions.set_boolean_variable(handle_bool,count>0);
+  end when;
+
   annotation(
     Icon(graphics = {Rectangle(origin = {-70, 0}, fillColor = {238, 238, 236}, fillPattern = FillPattern.Solid, extent = {{-30, 40}, {30, -40}}), Text(origin = {-72, 0}, extent = {{-34, 42}, {34, -42}}, textString = "S"), Rectangle(origin = {30, 0}, fillColor = {238, 238, 236}, fillPattern = FillPattern.Solid, extent = {{-70, 40}, {70, -40}})}),
     Documentation(info = "<html><head></head><body><div style=\"text-align: justify;\">MEMO per riscrivere: blocco Set/reset, deve esserci almeno un segnale di set altrimenti non ha senso il reset</div><div style=\"text-align: justify;\"><br></div><div style=\"text-align: justify;\"><br></div><div style=\"text-align: justify;\"><br></div><div style=\"text-align: justify;\"><br></div><div style=\"text-align: justify;\">At each step of an SFC, one or more actions can be generated. One Action block is required for a single action to be performed at each step (e.g. if a step must perform 3 actions, there will be 3 Action blocks connected to that step).</div><div><br></div>
@@ -34,4 +52,4 @@ The structure of the block consists of a sequence of when statements that detect
   </tr><tr>  <th>R</th><td>the action is deactivated; it is useful when combined with qualifier S*.</td>
   </tr><tr>  <th>P</th><td>the action, when the step it is associated becomes active, is instantaneously activated and deactivated.</td>
   </tr></tbody></table></div><div>(*) in order to combine actions see block MergeActions.&nbsp;</div><div><br></div><div><br></div><div>&nbsp;</div></div></body></html>"));
-end ActionSI_S;
+end N_action;

@@ -1,6 +1,6 @@
 within SFC.BasicBlocks; 
 
-model ActionSI_N "Action Non-Stored associated to an SFC Step - Single Input" 
+model R_action 
   parameter String name = "action1";
   Integer handle;
   Modelica.Blocks.Interfaces.BooleanInput phase_active annotation(
@@ -19,10 +19,7 @@ algorithm
   when initial() then
     handle := SFC.Functions.register_boolean_variable(name);
   end when;
-  when edge(phase_active) then
-    SFC.Functions.set_boolean_variable(handle,true);
-  end when;
-  when edge(phase_active_neg) then
+  when phase_active_neg then
     SFC.Functions.set_boolean_variable(handle,false);
   end when;
 
@@ -44,4 +41,4 @@ The structure of the block consists of a sequence of when statements that detect
   </tr><tr>  <th>R</th><td>the action is deactivated; it is useful when combined with qualifier S*.</td>
   </tr><tr>  <th>P</th><td>the action, when the step it is associated becomes active, is instantaneously activated and deactivated.</td>
   </tr></tbody></table></div><div>(*) in order to combine actions see block MergeActions.&nbsp;</div><div><br></div><div><br></div><div>&nbsp;</div></div></body></html>"));
-end ActionSI_N;
+end R_action;

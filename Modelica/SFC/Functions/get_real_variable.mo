@@ -1,6 +1,6 @@
 within SFC.Functions;
 
-function get_real_variable
+impure function get_real_variable
  input Integer handle;
  output Real value;
  external "C" value = get_real_variable(handle) annotation(

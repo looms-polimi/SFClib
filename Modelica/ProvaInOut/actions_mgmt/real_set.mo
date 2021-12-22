@@ -1,7 +1,7 @@
 within ProvaInOut.actions_mgmt;
 
 model real_set
-  parameter String name = "bool1";
+  parameter String name = "real1";
 
   Modelica.Blocks.Interfaces.RealInput value annotation(
     Placement(visible = true, transformation(origin = {-130, -4}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-120, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));

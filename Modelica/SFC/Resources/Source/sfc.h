@@ -32,6 +32,10 @@
 
 #include <stdbool.h>
 
+#define QUALIFIER_N 0
+#define QUALIFIER_S 1
+#define QUALIFIER_R 2
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -50,9 +54,15 @@ bool get_boolean_variable(int handle);
 int get_integer_variable(int handle);
 double get_real_variable(int handle);
 
+double get_real_variable_by_name(const char* name);
+
 void set_boolean_variable(int handle, bool value);
 void set_integer_variable(int handle, int value);
 void set_real_variable(int handle, double value);
+
+int register_action(const char *name);
+bool on_phase_activation(int handle, int qualifier);
+bool on_phase_deactivation(int handle, int qualifier);
 
 #ifdef __cplusplus
 }
