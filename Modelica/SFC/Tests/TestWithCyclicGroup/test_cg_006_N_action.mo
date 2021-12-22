@@ -39,6 +39,12 @@ model test_cg_006_N_action "SFC - Two separate SFC with the same Cyclic Group wi
     Placement(visible = true, transformation(origin = {184, -56}, extent = {{-40, -14}, {40, 14}}, rotation = 0)));
  BasicBlocks.Transition transition2 annotation(
     Placement(visible = true, transformation(origin = {90, -60}, extent = {{-18, -18}, {18, 18}}, rotation = 0)));
+ SFC.BasicBlocks.N_action na1(action_name = "aa1")  annotation(
+    Placement(visible = true, transformation(origin = {-82, 40}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
+ SFC.BasicBlocks.N_action n_action(action_name = "aa1")  annotation(
+    Placement(visible = true, transformation(origin = {158, 42}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
+ BasicBlocks.boolean_get boolean_get(name = "aa1")  annotation(
+    Placement(visible = true, transformation(origin = {-34, -98}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T20_21.C, C20_21.y) annotation(
     Line(points = {{-136.2, 69}, {-110, 69}}, color = {255, 0, 255}));
@@ -76,13 +82,19 @@ equation
     Line(points = {{89, -36}, {89, -56}}));
   connect(transition2.OUT, S10.IN) annotation(
     Line(points = {{90, -63.6}, {90, -75.6}, {26, -75.6}, {26, 126.4}, {90, 126.4}, {90, 114.4}}));
+ connect(S21.X, na1.phase_active) annotation(
+    Line(points = {{-142, 40}, {-104, 40}}, color = {255, 0, 255}));
+ connect(S11.X, n_action.phase_active) annotation(
+    Line(points = {{104, 42}, {136, 42}}, color = {255, 0, 255}));
 protected
   annotation(
     Documentation(info = "<html><head></head><body><div>The two SFC evolve indipendently following the same cyclic group period.&nbsp;</div><div>
 
 <p></p>
 </div></body></html>"),
-    experiment(StartTime = 0, StopTime = 10, Tolerance = 1e-6, Interval = 0.02),
+ experiment(StartTime = 0, StopTime = 30, Tolerance = 1e-6, Interval = 0.06),
   Diagram(coordinateSystem(extent = {{-200, -200}, {200, 200}})),
-  Icon(coordinateSystem(extent = {{-200, -200}, {200, 200}})));
+  Icon(coordinateSystem(extent = {{-200, -200}, {200, 200}})),
+ __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
+ __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
 end test_cg_006_N_action;

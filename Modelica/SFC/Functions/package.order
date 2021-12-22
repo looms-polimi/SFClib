@@ -10,3 +10,6 @@ get_boolean_variable
 set_real_variable
 set_integer_variable
 set_boolean_variable
+on_phase_activation
+on_phase_deactivation
+register_action

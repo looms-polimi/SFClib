@@ -64,7 +64,7 @@ public:
         if(qualifier==QUALIFIER_R) active_R_phases++;
         on = active_R_phases==0 &&       // no (prevailing) reset active, and
              (active_N_phases>0 ||       // either at least one N phase active
-              qualifier==QUALIFIER_S);   // or the qualifier is set
+              qualifier==QUALIFIER_S);   // or the qualifier is S
         return on;
     }
 
@@ -74,7 +74,7 @@ public:
         assert(active_N_phases>=0);
         if(qualifier==QUALIFIER_R) active_R_phases--;
         assert(active_R_phases>=0);
-        on = active_R_phases<=0 &&       // no (prevailing) reset active, and
+        on = active_R_phases==0 &&       // no (prevailing) reset active, and
              active_N_phases>0;          // at least one N phase active
         return on;
     }
