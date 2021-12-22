@@ -40,6 +40,10 @@
 
 using namespace std;
 
+// Var for debug
+int debug_level = 0;
+int actions_log = 1;
+
 // Class for action management
 
 class Action
@@ -48,7 +52,7 @@ protected:
 
     int active_N_phases;
     int active_R_phases;
-    bool on;
+    bool was_set,on;
 
 public:
 
@@ -61,10 +65,22 @@ public:
     bool on_phase_activation(int qualifier)
     {
         if(qualifier==QUALIFIER_N) active_N_phases++;
-        if(qualifier==QUALIFIER_R) active_R_phases++;
+        if(qualifier==QUALIFIER_S) was_set = true;
+        if(qualifier==QUALIFIER_R)
+        {
+            active_R_phases++;
+            was_set = false;
+        }
         on = active_R_phases==0 &&       // no (prevailing) reset active, and
              (active_N_phases>0 ||       // either at least one N phase active
-              qualifier==QUALIFIER_S);   // or the qualifier is S
+              was_set);                  // or action was set with S
+
+        if(actions_log>0)
+            cout << "Phase   ACT, qualifier " << qualifier <<
+            ", active R " << active_R_phases <<
+            ", active N " << active_R_phases <<
+            ", " << on << endl;
+
         return on;
     }
 
@@ -75,7 +91,15 @@ public:
         if(qualifier==QUALIFIER_R) active_R_phases--;
         assert(active_R_phases>=0);
         on = active_R_phases==0 &&       // no (prevailing) reset active, and
-             active_N_phases>0;          // at least one N phase active
+             (active_N_phases>0 ||       // either at least one N phase active
+              was_set);                  // or action was set with S
+        if(actions_log>0)
+            cout << "Phase DEACT, qualifier " << qualifier <<
+            ", active R " << active_R_phases <<
+            ", active N " << active_R_phases <<
+            ", " << on << endl;
+
+        return on;
         return on;
     }
 
@@ -105,16 +129,17 @@ int register_action(const char *name)
 bool on_phase_activation(int handle, int qualifier)
 {
     return action_list[handle].on_phase_activation(qualifier);
+        if(actions_log>0) cout << "handle " << handle << "\t";
 }
 
 bool on_phase_deactivation(int handle, int qualifier)
 {
     return action_list[handle].on_phase_deactivation(qualifier);
+        if(actions_log>0) cout << "handle " << handle << "\t";
 }
 
 
-// Var for debug
-int debug_level = 1;
+
 
 // Var for aligned events
 static map<int,double> events;                        // handle, next_event_time
@@ -131,12 +156,6 @@ void set_debug_level(int level)
 {
     debug_level = level;
 }
-
-// Functions for actions
-
-
-
-
 
 
 // Functions for aligned events
