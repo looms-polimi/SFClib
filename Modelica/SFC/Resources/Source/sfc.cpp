@@ -40,19 +40,19 @@
 
 using namespace std;
 
-// Classes for action management
+// Class for action management
 
-class action
+class Action
 {
-    protected:
+protected:
 
     int active_N_phases;
     int active_R_phases;
     bool on;
 
-    public:
+public:
 
-    action(void)
+    Action()
     {
         active_N_phases = 0;
         active_R_phases = 0;
@@ -81,74 +81,36 @@ class action
 
 };
 
-class action_pool
-{
-     map<string,int> action_symbol_table;
-     map<int,action*> action_list;
-     int action_last_handle;
+// Var for actions
 
-     public:
-
-     action_pool(void)
-     {
-         action_last_handle = 0;
-     }
-
-     ~action_pool(void)
-     {
-         auto it=action_list.begin();
-         while(it!=action_list.end())
-             {
-             delete &it;
-             it++;
-             }
-     }
-
-    int register_action(const char *name)
-    {
-        auto it=action_symbol_table.find(name);
-        int handle;
-        if(it==action_symbol_table.end())
-        {
-           handle = action_last_handle++;
-           action_symbol_table[name] = handle;
-           action_list[handle] = new action;
-        } else {
-           handle = it->second;
-        }
-        return handle;
-    }
-
-    bool on_phase_activation(int handle, int qualifier)
-    {
-        return action_list[handle]->on_phase_activation(qualifier);
-    }
-
-    bool on_phase_deactivation(int handle, int qualifier)
-    {
-        return action_list[handle]->on_phase_deactivation(qualifier);
-    }
-
-};
-
-static action_pool(actions);
+static map<string,int> action_symbol_table;
+static map<int,Action> action_list;
+static int action_last_handle;
 
 int register_action(const char *name)
 {
-    return actions.register_action(name);
+    auto it=action_symbol_table.find(name);
+    int handle;
+    if(it==action_symbol_table.end())
+    {   
+        handle = action_last_handle++;
+        action_symbol_table[name] = handle;
+        action_list[handle] = Action();
+    } else {
+        handle = it->second;
+    }
+    return handle;
 }
 
 bool on_phase_activation(int handle, int qualifier)
 {
-    return actions.on_phase_activation(handle, qualifier);
+    return action_list[handle].on_phase_activation(qualifier);
 }
 
 bool on_phase_deactivation(int handle, int qualifier)
 {
-    return actions.on_phase_deactivation(handle, qualifier);
+    return action_list[handle].on_phase_deactivation(qualifier);
 }
-
-
 
 
 // Var for debug
