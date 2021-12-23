@@ -41,7 +41,7 @@ algorithm
              +String(time_next_firing));
   end when;
   
-when time>time_next_firing then
+when time>=time_next_firing then
     enter_when   := enter_when + 1; 
     if C then
       OUT.fire   := not OUT.fire;

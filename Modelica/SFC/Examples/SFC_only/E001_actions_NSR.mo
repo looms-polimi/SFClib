@@ -1,6 +1,7 @@
 within SFC.Examples.SFC_only;
 
 model E001_actions_NSR
+  extends Modelica.Icons.Example;
   Real N = Functions.bool_to_int_with_offset(S11.X, 5);
   Real S = Functions.bool_to_int_with_offset(S21.X, 3.5);
   Real R = Functions.bool_to_int_with_offset(S31.X, 2);

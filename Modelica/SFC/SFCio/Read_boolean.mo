@@ -19,5 +19,5 @@ algorithm
 
 
 annotation(
-    Icon(graphics = {Text(origin = {2, -1}, extent = {{-198, 19}, {198, -19}}, textString = "%variable_name", horizontalAlignment = TextAlignment.Left)}));
+    Icon(graphics = {Text(origin = {2, -1}, extent = {{-198, 19}, {198, -19}}, textString = "%variable_name")}));
 end Read_boolean;
