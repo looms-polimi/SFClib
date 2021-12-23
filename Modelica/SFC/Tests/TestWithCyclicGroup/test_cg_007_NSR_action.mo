@@ -1,6 +1,12 @@
 within SFC.Tests.TestWithCyclicGroup;
 
-model test_cg_007_NSR_action "SFC - Two separate SFC with the same Cyclic Group with period=1 "
+model test_cg_007_NSR_action 
+  Real N=Functions.bool_to_int_with_offset(S11.X,5);
+  Real S=Functions.bool_to_int_with_offset(S21.X,3.5);
+  Real R=Functions.bool_to_int_with_offset(S31.X,2);
+  Real A=Functions.bool_to_int_with_offset(bg1.value,0.5);
+
+
  inner SFC.BasicBlocks.CyclicGroup cyclicGroup(period = 0.5)  annotation(
     Placement(visible = true, transformation(origin = {-190, 190}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
  SFC.BasicBlocks.Step S10(initialStep = true)  annotation(
@@ -29,13 +35,13 @@ model test_cg_007_NSR_action "SFC - Two separate SFC with the same Cyclic Group 
     Placement(visible = true, transformation(origin = {90, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
  Modelica.Blocks.Sources.BooleanExpression c101(y = S10.t > 1)  annotation(
     Placement(visible = true, transformation(origin = {-100, 100}, extent = {{20, -10}, {-20, 10}}, rotation = 0)));
- Modelica.Blocks.Sources.BooleanExpression c110(y = S11.t > 1)  annotation(
+ Modelica.Blocks.Sources.BooleanExpression c110(y = S11.t > 1.5)  annotation(
     Placement(visible = true, transformation(origin = {-100, 40}, extent = {{20, -10}, {-20, 10}}, rotation = 0)));
  Modelica.Blocks.Sources.BooleanExpression c201(y = S20.t > 5)  annotation(
     Placement(visible = true, transformation(origin = {20, 100}, extent = {{20, -10}, {-20, 10}}, rotation = 0)));
  Modelica.Blocks.Sources.BooleanExpression c210(y = S21.t > 5)  annotation(
     Placement(visible = true, transformation(origin = {20, 40}, extent = {{20, -10}, {-20, 10}}, rotation = 0)));
- Modelica.Blocks.Sources.BooleanExpression c301(y = S30.t > 10)  annotation(
+ Modelica.Blocks.Sources.BooleanExpression c301(y = S30.t > 12)  annotation(
     Placement(visible = true, transformation(origin = {140, 100}, extent = {{20, -10}, {-20, 10}}, rotation = 0)));
  Modelica.Blocks.Sources.BooleanExpression c310(y = S31.t > 10)  annotation(
     Placement(visible = true, transformation(origin = {140, 40}, extent = {{20, -10}, {-20, 10}}, rotation = 0)));

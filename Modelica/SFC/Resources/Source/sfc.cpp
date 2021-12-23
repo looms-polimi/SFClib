@@ -50,9 +50,10 @@ class Action
 {
 protected:
 
-    int active_N_phases;
-    int active_R_phases;
-    bool was_set,on;
+    int active_N_phases; // No. of active phases on this action with qualifier N
+    int active_R_phases; // No. of active phases on this action with qualifier R
+    bool was_set;        // the action was set by a phase with S qualifier
+    bool on;             // the action is on (true)
 
 public:
 
@@ -65,7 +66,8 @@ public:
     bool on_phase_activation(int qualifier)
     {
         if(qualifier==QUALIFIER_N) active_N_phases++;
-        if(qualifier==QUALIFIER_S) was_set = true;
+        if(qualifier==QUALIFIER_S
+           and active_R_phases==0) was_set = true; // active R cuts off S
         if(qualifier==QUALIFIER_R)
         {
             active_R_phases++;
@@ -93,13 +95,13 @@ public:
         on = active_R_phases==0 &&       // no (prevailing) reset active, and
              (active_N_phases>0 ||       // either at least one N phase active
               was_set);                  // or action was set with S
+
         if(actions_log>0)
             cout << "Phase DEACT, qualifier " << qualifier <<
             ", active R " << active_R_phases <<
             ", active N " << active_R_phases <<
             ", " << on << endl;
 
-        return on;
         return on;
     }
 
