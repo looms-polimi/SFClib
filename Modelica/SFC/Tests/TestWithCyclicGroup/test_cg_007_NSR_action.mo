@@ -7,31 +7,31 @@ model test_cg_007_NSR_action
   Real A=Functions.bool_to_int_with_offset(bg1.value,0.5);
 
 
- inner SFC.BasicBlocks.CyclicGroup cyclicGroup(period = 0.5)  annotation(
+ inner SFC.SFCelements.CyclicGroup cyclicGroup(period = 0.5)  annotation(
     Placement(visible = true, transformation(origin = {-190, 190}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- SFC.BasicBlocks.Step S10(initialStep = true)  annotation(
+ SFC.SFCelements.Step S10(initialStep = true)  annotation(
     Placement(visible = true, transformation(origin = {-150, 130}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- SFC.BasicBlocks.Step S20(initialStep = true)  annotation(
+ SFC.SFCelements.Step S20(initialStep = true)  annotation(
     Placement(visible = true, transformation(origin = {-30, 130}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- SFC.BasicBlocks.Step S21 annotation(
+ SFC.SFCelements.Step S21 annotation(
     Placement(visible = true, transformation(origin = {-30, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- SFC.BasicBlocks.Step S11 annotation(
+ SFC.SFCelements.Step S11 annotation(
     Placement(visible = true, transformation(origin = {-150, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- SFC.BasicBlocks.Step S30(initialStep = true)  annotation(
+ SFC.SFCelements.Step S30(initialStep = true)  annotation(
     Placement(visible = true, transformation(origin = {90, 130}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- SFC.BasicBlocks.Step S31 annotation(
+ SFC.SFCelements.Step S31 annotation(
     Placement(visible = true, transformation(origin = {90, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- SFC.BasicBlocks.Transition T101 annotation(
+ SFC.SFCelements.Transition T101 annotation(
     Placement(visible = true, transformation(origin = {-150, 100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- SFC.BasicBlocks.Transition T110 annotation(
+ SFC.SFCelements.Transition T110 annotation(
     Placement(visible = true, transformation(origin = {-150, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- BasicBlocks.Transition T201 annotation(
+ SFCelements.Transition T201 annotation(
     Placement(visible = true, transformation(origin = {-30, 100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- SFC.BasicBlocks.Transition T210 annotation(
+ SFC.SFCelements.Transition T210 annotation(
     Placement(visible = true, transformation(origin = {-30, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- SFC.BasicBlocks.Transition T301 annotation(
+ SFC.SFCelements.Transition T301 annotation(
     Placement(visible = true, transformation(origin = {90, 100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- SFC.BasicBlocks.Transition T310 annotation(
+ SFC.SFCelements.Transition T310 annotation(
     Placement(visible = true, transformation(origin = {90, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
  Modelica.Blocks.Sources.BooleanExpression c101(y = S10.t > 1)  annotation(
     Placement(visible = true, transformation(origin = {-100, 100}, extent = {{20, -10}, {-20, 10}}, rotation = 0)));
@@ -45,13 +45,13 @@ model test_cg_007_NSR_action
     Placement(visible = true, transformation(origin = {140, 100}, extent = {{20, -10}, {-20, 10}}, rotation = 0)));
  Modelica.Blocks.Sources.BooleanExpression c310(y = S31.t > 10)  annotation(
     Placement(visible = true, transformation(origin = {140, 40}, extent = {{20, -10}, {-20, 10}}, rotation = 0)));
- SFC.BasicBlocks.N_action an1 annotation(
+ SFC.SFCelements.N_action an1 annotation(
     Placement(visible = true, transformation(origin = {-100, 70}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
- SFC.BasicBlocks.S_action as1 annotation(
+ SFC.SFCelements.S_action as1 annotation(
     Placement(visible = true, transformation(origin = {20, 70}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
- SFC.BasicBlocks.R_action ar1 annotation(
+ SFC.SFCelements.R_action ar1 annotation(
     Placement(visible = true, transformation(origin = {140, 70}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
- SFC.BasicBlocks.boolean_get bg1(name = "action1")  annotation(
+ SFC.SFCelements.boolean_get bg1(name = "action1")  annotation(
     Placement(visible = true, transformation(origin = {-10, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(S20.OUT, T201.IN) annotation(

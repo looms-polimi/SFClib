@@ -2,29 +2,29 @@ within SFC.ContinuousSys.ContinuousTests;
 model tankEx
   Modelica.StateGraph.Examples.Utilities.Tank tank1 annotation(
     Placement(visible = true, transformation(origin = {46, 18}, extent = {{-36, -36}, {36, 36}}, rotation = 0)));
-  SFC.BasicBlocks.Step fill annotation(
+  SFC.SFCelements.Step fill annotation(
     Placement(visible = true, transformation(origin = {-90, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.FinalStep End annotation(
+  SFC.SFCelements.FinalStep End annotation(
     Placement(visible = true, transformation(origin = {-90, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t1 annotation(
+  SFC.SFCelements.Transition t1 annotation(
     Placement(visible = true, transformation(origin = {-90, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t2 annotation(
+  SFC.SFCelements.Transition t2 annotation(
     Placement(visible = true, transformation(origin = {-90, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c1(y = idle.t > 2) annotation(
+  SFC.SFCelements.Condition c1(y = idle.t > 2) annotation(
     Placement(visible = true, transformation(origin = {-56, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c2(y = tank1.levelSensor > 5) annotation(
+  SFC.SFCelements.Condition c2(y = tank1.levelSensor > 5) annotation(
     Placement(visible = true, transformation(origin = {-56, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action open_valve annotation(
+  SFC.SFCelements.Action open_valve annotation(
     Placement(visible = true, transformation(origin = {-56, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.StateGraph.Examples.Utilities.valve valveON annotation(
     Placement(visible = true, transformation(origin = {28, 60}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   Modelica.StateGraph.Examples.Utilities.Source source1 annotation(
     Placement(visible = true, transformation(origin = {28, 88}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action close_valve(qualifierType = SFC.Types.Qualifier.R) annotation(
+  SFC.SFCelements.Action close_valve(qualifierType = SFC.Types.Qualifier.R) annotation(
     Placement(visible = true, transformation(origin = {-56, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.StateGraph.Examples.Utilities.valve valveOFF annotation(
     Placement(visible = true, transformation(origin = {68, -18}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  BasicBlocks.InitialStepNI idle annotation(
+  SFCelements.InitialStepNI idle annotation(
     Placement(visible = true, transformation(origin = {-90, 66}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(idle.OUT, t1.IN) annotation(

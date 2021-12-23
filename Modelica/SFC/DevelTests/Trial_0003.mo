@@ -2,21 +2,21 @@ within SFC.DevelTests;
 
 model Trial_0003
   extends Modelica.Icons.Example;
-  SFC.BasicBlocks.InitialStep S0 annotation(
+  SFC.SFCelements.InitialStep S0 annotation(
     Placement(visible = true, transformation(origin = {-10, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T012 annotation(
+  SFC.SFCelements.Transition T012 annotation(
     Placement(visible = true, transformation(origin = {-10, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S1 annotation(
+  SFC.SFCelements.Step S1 annotation(
     Placement(visible = true, transformation(origin = {-50, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S2 annotation(
+  SFC.SFCelements.Step S2 annotation(
     Placement(visible = true, transformation(origin = {30, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T13 annotation(
+  SFC.SFCelements.Transition T13 annotation(
     Placement(visible = true, transformation(origin = {-50, -40}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T23 annotation(
+  SFC.SFCelements.Transition T23 annotation(
     Placement(visible = true, transformation(origin = {30, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S3 annotation(
+  SFC.SFCelements.Step S3 annotation(
     Placement(visible = true, transformation(origin = {-50, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T340 annotation(
+  SFC.SFCelements.Transition T340 annotation(
     Placement(visible = true, transformation(origin = {-10, -120}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression C012(y = S0.t > 1)  annotation(
     Placement(visible = true, transformation(origin = {34, 40}, extent = {{14, -10}, {-14, 10}}, rotation = 0)));
@@ -30,7 +30,7 @@ model Trial_0003
     Placement(visible = true, transformation(origin = {-156, 70}, extent = {{-24, -10}, {24, 10}}, rotation = 0)));
   SFC.Branching.ParallelSplit2 split1 annotation(
     Placement(visible = true, transformation(origin = {-10, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S4 annotation(
+  SFC.SFCelements.Step S4 annotation(
     Placement(visible = true, transformation(origin = {30, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.Branching.ParallelJoin2 join1 annotation(
     Placement(visible = true, transformation(origin = {-10, -98}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

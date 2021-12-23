@@ -2,27 +2,27 @@ within SFC.DevelTests;
 
 model Trial_0002
   extends Modelica.Icons.Example;
-  SFC.BasicBlocks.InitialStep S0 annotation(
+  SFC.SFCelements.InitialStep S0 annotation(
     Placement(visible = true, transformation(origin = {-10, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.Branching.AlternativeSplit2 split1 annotation(
     Placement(visible = true, transformation(origin = {-10, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T01 annotation(
+  SFC.SFCelements.Transition T01 annotation(
     Placement(visible = true, transformation(origin = {-50, 20}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T02 annotation(
+  SFC.SFCelements.Transition T02 annotation(
     Placement(visible = true, transformation(origin = {30, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S1 annotation(
+  SFC.SFCelements.Step S1 annotation(
     Placement(visible = true, transformation(origin = {-50, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S2 annotation(
+  SFC.SFCelements.Step S2 annotation(
     Placement(visible = true, transformation(origin = {30, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T13 annotation(
+  SFC.SFCelements.Transition T13 annotation(
     Placement(visible = true, transformation(origin = {-50, -40}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T23 annotation(
+  SFC.SFCelements.Transition T23 annotation(
     Placement(visible = true, transformation(origin = {30, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.Branching.AlternativeJoin2 join1 annotation(
     Placement(visible = true, transformation(origin = {-10, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S3 annotation(
+  SFC.SFCelements.Step S3 annotation(
     Placement(visible = true, transformation(origin = {-10, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T30 annotation(
+  SFC.SFCelements.Transition T30 annotation(
     Placement(visible = true, transformation(origin = {-10, -120}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression C01(y = S0.t > 1 and CC.y)  annotation(
     Placement(visible = true, transformation(origin = {-123, 20}, extent = {{-27, -10}, {27, 10}}, rotation = 0)));

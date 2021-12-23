@@ -1,49 +1,49 @@
 within SFC.Tests.TestWithCyclicGroup;
 
 model test_cg_006_N_action "SFC - Two separate SFC with the same Cyclic Group with period=1 "
- inner SFC.BasicBlocks.CyclicGroup cyclicGroup(period = 0.5)  annotation(
+ inner SFC.SFCelements.CyclicGroup cyclicGroup(period = 0.5)  annotation(
     Placement(visible = true, transformation(origin = {-190, 190}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- SFC.BasicBlocks.Step S20(initialStep = true) annotation(
+ SFC.SFCelements.Step S20(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {-157, 101}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
- SFC.BasicBlocks.Condition C20_21(y = S20.t > 1) annotation(
+ SFC.SFCelements.Condition C20_21(y = S20.t > 1) annotation(
     Placement(visible = true, transformation(origin = {-68, 69}, extent = {{-38, -11}, {38, 11}}, rotation = 0)));
- SFC.BasicBlocks.Transition T20_21 annotation(
+ SFC.SFCelements.Transition T20_21 annotation(
     Placement(visible = true, transformation(origin = {-159, 69}, extent = {{-19, -19}, {19, 19}}, rotation = 0)));
- SFC.BasicBlocks.Step S21 annotation(
+ SFC.SFCelements.Step S21 annotation(
     Placement(visible = true, transformation(origin = {-155, 39}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
- SFC.BasicBlocks.Condition C21_22(y = S21.t > 1) annotation(
+ SFC.SFCelements.Condition C21_22(y = S21.t > 1) annotation(
     Placement(visible = true, transformation(origin = {-65, 5}, extent = {{-37, -13}, {37, 13}}, rotation = 0)));
- SFC.BasicBlocks.Transition T21_22 annotation(
+ SFC.SFCelements.Transition T21_22 annotation(
     Placement(visible = true, transformation(origin = {-156, 2}, extent = {{-18, -18}, {18, 18}}, rotation = 0)));
- SFC.BasicBlocks.Step S22 annotation(
+ SFC.SFCelements.Step S22 annotation(
     Placement(visible = true, transformation(origin = {-157, -27}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
- SFC.BasicBlocks.Condition C22_20(y = S22.t > 1) annotation(
+ SFC.SFCelements.Condition C22_20(y = S22.t > 1) annotation(
     Placement(visible = true, transformation(origin = {-66, -58}, extent = {{-36, -14}, {36, 14}}, rotation = 0)));
- SFC.BasicBlocks.Transition T22_20 annotation(
+ SFC.SFCelements.Transition T22_20 annotation(
     Placement(visible = true, transformation(origin = {-156, -62}, extent = {{-18, -18}, {18, 18}}, rotation = 0)));
- BasicBlocks.Step S10(initialStep = true) annotation(
+ SFCelements.Step S10(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {89, 103}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
- BasicBlocks.Condition condition2(y = S10.t > 10) annotation(
+ SFCelements.Condition condition2(y = S10.t > 10) annotation(
     Placement(visible = true, transformation(origin = {178, 71}, extent = {{-38, -11}, {38, 11}}, rotation = 0)));
- BasicBlocks.Transition transition annotation(
+ SFCelements.Transition transition annotation(
     Placement(visible = true, transformation(origin = {87, 71}, extent = {{-19, -19}, {19, 19}}, rotation = 0)));
- BasicBlocks.Step S11 annotation(
+ SFCelements.Step S11 annotation(
     Placement(visible = true, transformation(origin = {91, 41}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
- SFC.BasicBlocks.Condition condition1(y = S11.t > 5) annotation(
+ SFC.SFCelements.Condition condition1(y = S11.t > 5) annotation(
     Placement(visible = true, transformation(origin = {183, 7}, extent = {{-39, -13}, {39, 13}}, rotation = 0)));
- BasicBlocks.Transition transition1 annotation(
+ SFCelements.Transition transition1 annotation(
     Placement(visible = true, transformation(origin = {90, 4}, extent = {{-18, -18}, {18, 18}}, rotation = 0)));
- BasicBlocks.Step S12 annotation(
+ SFCelements.Step S12 annotation(
     Placement(visible = true, transformation(origin = {89, -25}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
- SFC.BasicBlocks.Condition condition(y = S12.t > 1.5) annotation(
+ SFC.SFCelements.Condition condition(y = S12.t > 1.5) annotation(
     Placement(visible = true, transformation(origin = {184, -56}, extent = {{-40, -14}, {40, 14}}, rotation = 0)));
- BasicBlocks.Transition transition2 annotation(
+ SFCelements.Transition transition2 annotation(
     Placement(visible = true, transformation(origin = {90, -60}, extent = {{-18, -18}, {18, 18}}, rotation = 0)));
- SFC.BasicBlocks.N_action na1(action_name = "aa1")  annotation(
+ SFC.SFCelements.N_action na1(action_name = "aa1")  annotation(
     Placement(visible = true, transformation(origin = {-82, 40}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
- SFC.BasicBlocks.N_action n_action(action_name = "aa1")  annotation(
+ SFC.SFCelements.N_action n_action(action_name = "aa1")  annotation(
     Placement(visible = true, transformation(origin = {158, 42}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
- BasicBlocks.boolean_get boolean_get(name = "aa1")  annotation(
+ SFCelements.boolean_get boolean_get(name = "aa1")  annotation(
     Placement(visible = true, transformation(origin = {-34, -98}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T20_21.C, C20_21.y) annotation(

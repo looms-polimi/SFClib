@@ -1,47 +1,47 @@
 within SFC.Tests.TestBranching;
 
 model testPar3Branch "Parallel Split/Join test with three branches"
-  SFC.BasicBlocks.Step S0(initialStep = true) annotation(
+  SFC.SFCelements.Step S0(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {0, 82}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T1 annotation(
+  SFC.SFCelements.Transition T1 annotation(
     Placement(visible = true, transformation(origin = {0, 62}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.Branching.ParallelSplit3 parallelSplit31 annotation(
     Placement(visible = true, transformation(origin = {0, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S1 annotation(
+  SFC.SFCelements.Step S1 annotation(
     Placement(visible = true, transformation(origin = {-40, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S2 annotation(
+  SFC.SFCelements.Step S2 annotation(
     Placement(visible = true, transformation(origin = {0, 28}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S3 annotation(
+  SFC.SFCelements.Step S3 annotation(
     Placement(visible = true, transformation(origin = {40, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S4 annotation(
+  SFC.SFCelements.Step S4 annotation(
     Placement(visible = true, transformation(origin = {0, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S5 annotation(
+  SFC.SFCelements.Step S5 annotation(
     Placement(visible = true, transformation(origin = {40, -42}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S6 annotation(
+  SFC.SFCelements.Step S6 annotation(
     Placement(visible = true, transformation(origin = {0, -52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T4 annotation(
+  SFC.SFCelements.Transition T4 annotation(
     Placement(visible = true, transformation(origin = {0, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T5 annotation(
+  SFC.SFCelements.Transition T5 annotation(
     Placement(visible = true, transformation(origin = {40, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T6 annotation(
+  SFC.SFCelements.Transition T6 annotation(
     Placement(visible = true, transformation(origin = {0, -32}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.Branching.ParallelJoin3 parallelJoin31 annotation(
     Placement(visible = true, transformation(origin = {0, -74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T7 annotation(
+  SFC.SFCelements.Transition T7 annotation(
     Placement(visible = true, transformation(origin = {0, -88}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition C1(y = S0.t > 2) annotation(
+  SFC.SFCelements.Condition C1(y = S0.t > 2) annotation(
     Placement(visible = true, transformation(origin = {32, 62}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition C4(y = S2.t > 1) annotation(
+  SFC.SFCelements.Condition C4(y = S2.t > 1) annotation(
     Placement(visible = true, transformation(origin = {70, 38}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition C5(y = S3.t > 2) annotation(
+  SFC.SFCelements.Condition C5(y = S3.t > 2) annotation(
     Placement(visible = true, transformation(origin = {70, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition C6(y = S4.t > 0.5) annotation(
+  SFC.SFCelements.Condition C6(y = S4.t > 0.5) annotation(
     Placement(visible = true, transformation(origin = {101, -68}, extent = {{-23, -10}, {23, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition C7(y = S1.t > 3) annotation(
+  SFC.SFCelements.Condition C7(y = S1.t > 3) annotation(
     Placement(visible = true, transformation(origin = {30, -88}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanPulse Cpulse(period = 2, startTime = 0.2, width = 20) annotation(
     Placement(visible = true, transformation(origin = {-38, 78}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  inner SFC.BasicBlocks.CyclicGroup cyclicGroup annotation(
+  inner SFC.SFCelements.CyclicGroup cyclicGroup annotation(
     Placement(visible = true, transformation(origin = {-90, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T4.OUT, S4.IN) annotation(

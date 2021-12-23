@@ -1,21 +1,21 @@
 within SFC.Tests.TestWithCyclicGroup;
 
 model test_cg_005 "Two consecutive true conditions with a CyclicGroup"
- SFC.BasicBlocks.Step S20(initialStep = true) annotation(
+ SFC.SFCelements.Step S20(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {-17, 95}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
- SFC.BasicBlocks.Transition T20_21 annotation(
+ SFC.SFCelements.Transition T20_21 annotation(
     Placement(visible = true, transformation(origin = {-19, 63}, extent = {{-19, -19}, {19, 19}}, rotation = 0)));
- inner SFC.BasicBlocks.CyclicGroup cyclicGroup annotation(
+ inner SFC.SFCelements.CyclicGroup cyclicGroup annotation(
     Placement(visible = true, transformation(origin = {-190, 190}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
  Modelica.Blocks.Sources.BooleanPulse Cpulse(period = 2, width = 30) annotation(
     Placement(visible = true, transformation(origin = {258, 68}, extent = {{26, -26}, {-26, 26}}, rotation = 0)));
- SFC.BasicBlocks.Condition C5(y = Cpulse.y) annotation(
+ SFC.SFCelements.Condition C5(y = Cpulse.y) annotation(
     Placement(visible = true, transformation(origin = {77, 51}, extent = {{-51, -19}, {51, 19}}, rotation = 0)));
- BasicBlocks.Step S21 annotation(
+ SFCelements.Step S21 annotation(
     Placement(visible = true, transformation(origin = {-15, 33}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
- BasicBlocks.Transition T21_22 annotation(
+ SFCelements.Transition T21_22 annotation(
     Placement(visible = true, transformation(origin = {-16, -4}, extent = {{-18, -18}, {18, 18}}, rotation = 0)));
- SFC.BasicBlocks.Condition condition(y = S21.t > 2)  annotation(
+ SFC.SFCelements.Condition condition(y = S21.t > 2)  annotation(
     Placement(visible = true, transformation(origin = {65, -6}, extent = {{-23, -10}, {23, 10}}, rotation = 0)));
 equation
   connect(S20.OUT, T20_21.IN) annotation(

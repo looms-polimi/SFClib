@@ -1,6 +1,7 @@
 within SFC.Functions;
 
 function schedule_next_aligned_event
+  extends Modelica.Icons.Function;
  input Integer handle;
  input Real t;
  input Real phase;

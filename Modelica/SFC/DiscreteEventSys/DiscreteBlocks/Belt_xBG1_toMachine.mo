@@ -9,7 +9,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {170, -4}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {170, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -17,11 +17,11 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {-122, 54}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-80, 40}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanInput xBG1 annotation(
     Placement(visible = true, transformation(origin = {-122, -18}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-80, -40}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition1(y = Belt == true and (xBG1 == false or xBG1 == true))  annotation(
+  SFC.SFCelements.Condition condition1(y = Belt == true and (xBG1 == false or xBG1 == true))  annotation(
     Placement(visible = true, transformation(origin = {-64, 74}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition2(y = Belt == false and xBG1 == true)  annotation(
+  SFC.SFCelements.Condition condition2(y = Belt == false and xBG1 == true)  annotation(
     Placement(visible = true, transformation(origin = {-68, 40}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition3(y = Belt == false and xBG1 == false)  annotation(
+  SFC.SFCelements.Condition condition3(y = Belt == false and xBG1 == false)  annotation(
     Placement(visible = true, transformation(origin = {-64, -6}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tE annotation(
     Placement(visible = true, transformation(origin = {166, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -31,7 +31,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -47,7 +47,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -63,7 +63,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -79,7 +79,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -95,7 +95,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -111,7 +111,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -127,7 +127,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -143,7 +143,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -159,7 +159,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -175,7 +175,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -191,7 +191,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -207,7 +207,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -223,7 +223,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -239,7 +239,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -255,7 +255,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -271,7 +271,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -287,7 +287,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -303,7 +303,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -319,7 +319,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -335,7 +335,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -351,7 +351,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -367,7 +367,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -383,7 +383,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -399,7 +399,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -415,7 +415,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));
@@ -431,7 +431,7 @@ model Belt_xBG1_toMachine
     Placement(visible = true, transformation(origin = {142, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput tW annotation(
     Placement(visible = true, transformation(origin = {142, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition annotation(
+  SFC.SFCelements.Condition condition annotation(
     Placement(visible = true, transformation(origin = {26, -48}, extent = {{10, 10}, {-10, -10}}, rotation = 0)));
   SFC.DiscreteEventSys.DiscreteBlocks.MachineStates machineStates annotation(
     Placement(visible = true, transformation(origin = {76, 28}, extent = {{-44, -44}, {44, 44}}, rotation = 0)));

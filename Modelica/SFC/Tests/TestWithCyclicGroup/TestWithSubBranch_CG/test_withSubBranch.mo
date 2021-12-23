@@ -1,9 +1,9 @@
 within SFC.Tests.TestWithCyclicGroup.TestWithSubBranch_CG;
 
 model test_withSubBranch
- BasicBlocks.Transition T01 annotation(
+ SFCelements.Transition T01 annotation(
     Placement(visible = true, transformation(origin = {-8, 22}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- SFC.BasicBlocks.Step S0(initialStep = true) annotation(
+ SFC.SFCelements.Step S0(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {-8, 62}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
  Modelica.Blocks.Sources.BooleanExpression C01(y = S0.t > 1.2) annotation(
     Placement(visible = true, transformation(origin = {70, 22}, extent = {{28, -10}, {-28, 10}}, rotation = 0)));
@@ -11,9 +11,9 @@ model test_withSubBranch
     Placement(visible = true, transformation(origin = {-8, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
  Modelica.Blocks.Sources.BooleanExpression C10(y = true) annotation(
     Placement(visible = true, transformation(origin = {52, -58}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
- SFC.BasicBlocks.Transition T10 annotation(
+ SFC.SFCelements.Transition T10 annotation(
     Placement(visible = true, transformation(origin = {-6, -58}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- inner SFC.BasicBlocks.CyclicGroup cyclicGroup annotation(
+ inner SFC.SFCelements.CyclicGroup cyclicGroup annotation(
     Placement(visible = true, transformation(origin = {-90, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
  connect(S0.OUT, T01.IN) annotation(

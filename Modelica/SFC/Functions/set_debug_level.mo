@@ -1,6 +1,7 @@
 within SFC.Functions;
 
-function set_debug_level
+impure function set_debug_level
+  extends Modelica.Icons.Function;
  input Integer debug_level;
  external "C" set_debug_level(debug_level) annotation(
       LibraryDirectory="modelica://SFC/Resources/Source/",

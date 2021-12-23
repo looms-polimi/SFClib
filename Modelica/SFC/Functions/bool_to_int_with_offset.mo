@@ -1,6 +1,7 @@
 within SFC.Functions;
 
 function bool_to_int_with_offset
+  extends Modelica.Icons.Function;
   input Boolean bool;
   input Real offset;
   input Real amp=1;

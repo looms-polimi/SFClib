@@ -1,6 +1,7 @@
 within SFC.Functions;
 
-function register_integer_variable
+impure function register_integer_variable
+  extends Modelica.Icons.Function;
  input String name;
  output Integer handle;
  external "C" handle = register_integer_variable(name) annotation(

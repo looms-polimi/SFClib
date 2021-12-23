@@ -2,74 +2,74 @@ within SFC.Tests.TestActionWithCyclicGroup;
 
 
 model testActionSI_SR "Set/Reset Action with a single set signal and reset signal"
-extends SFC.BasicBlocks.ModelWithCyclicGroup;
-  SFC.BasicBlocks.Condition condition2(y = S0.t > 2) annotation(
+extends SFC.SFCelements.ModelWithCyclicGroup;
+  SFC.SFCelements.Condition condition2(y = S0.t > 2) annotation(
     Placement(visible = true, transformation(origin = {-254, 16}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition transition annotation(
+  SFC.SFCelements.Transition transition annotation(
     Placement(visible = true, transformation(origin = {-305, -45}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
-  SFC.BasicBlocks.Step S0(initialStep = true) annotation(
+  SFC.SFCelements.Step S0(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {-305, 47}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
-  SFC.BasicBlocks.Transition transition1 annotation(
+  SFC.SFCelements.Transition transition1 annotation(
     Placement(visible = true, transformation(origin = {-305, 15}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
-  SFC.BasicBlocks.Step S1 annotation(
+  SFC.SFCelements.Step S1 annotation(
     Placement(visible = true, transformation(origin = {-305, -13}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition3(y = S1.t > 1) annotation(
+  SFC.SFCelements.Condition condition3(y = S1.t > 1) annotation(
     Placement(visible = true, transformation(origin = {-244, -44}, extent = {{-26, -10}, {26, 10}}, rotation = 0)));
-  SFC.BasicBlocks.ActionSI_SR actionSR_SI annotation(
+  SFC.SFCelements.ActionSI_SR actionSR_SI annotation(
     Placement(visible = true, transformation(origin = {-210, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S11 annotation(
+  SFC.SFCelements.Step S11 annotation(
     Placement(visible = true, transformation(origin = {59, 51}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T00_01 annotation(
+  SFC.SFCelements.Transition T00_01 annotation(
     Placement(visible = true, transformation(origin = {-129, 77}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition(y = S12.t > 0.5) annotation(
+  SFC.SFCelements.Condition condition(y = S12.t > 0.5) annotation(
     Placement(visible = true, transformation(origin = {104, -47}, extent = {{-16, -11}, {16, 11}}, rotation = 0)));
-  SFC.BasicBlocks.Step S03 annotation(
+  SFC.SFCelements.Step S03 annotation(
     Placement(visible = true, transformation(origin = {-129, -73}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c00(y = S00.t > 2) annotation(
+  SFC.SFCelements.Condition c00(y = S00.t > 2) annotation(
     Placement(visible = true, transformation(origin = {-80, 78}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S01 annotation(
+  SFC.SFCelements.Step S01 annotation(
     Placement(visible = true, transformation(origin = {-129, 45}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition4(y = S13.t > 1) annotation(
+  SFC.SFCelements.Condition condition4(y = S13.t > 1) annotation(
     Placement(visible = true, transformation(origin = {103, -104}, extent = {{-13, -10}, {13, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T12_13 annotation(
+  SFC.SFCelements.Transition T12_13 annotation(
     Placement(visible = true, transformation(origin = {59, -45}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
-  SFC.BasicBlocks.Step S00(initialStep = true) annotation(
+  SFC.SFCelements.Step S00(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {-129, 111}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
-  SFC.BasicBlocks.Condition C2(y = S11.t > 1) annotation(
+  SFC.SFCelements.Condition C2(y = S11.t > 1) annotation(
     Placement(visible = true, transformation(origin = {108, 19}, extent = {{-14, -11}, {14, 11}}, rotation = 0)));
-  SFC.BasicBlocks.Condition C1(y = S10.t > 2) annotation(
+  SFC.SFCelements.Condition C1(y = S10.t > 2) annotation(
     Placement(visible = true, transformation(origin = {106, 82}, extent = {{-16, -10}, {16, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T02_03 annotation(
+  SFC.SFCelements.Transition T02_03 annotation(
     Placement(visible = true, transformation(origin = {-129, -47}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T13_10 annotation(
+  SFC.SFCelements.Transition T13_10 annotation(
     Placement(visible = true, transformation(origin = {59, -103}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T11_10 annotation(
+  SFC.SFCelements.Transition T11_10 annotation(
     Placement(visible = true, transformation(origin = {59, 19}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
-  SFC.BasicBlocks.Step S13 annotation(
+  SFC.SFCelements.Step S13 annotation(
     Placement(visible = true, transformation(origin = {59, -71}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c01(y = S01.t > 1) annotation(
+  SFC.SFCelements.Condition c01(y = S01.t > 1) annotation(
     Placement(visible = true, transformation(origin = {-79, 14}, extent = {{-19, -10}, {19, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T03_00 annotation(
+  SFC.SFCelements.Transition T03_00 annotation(
     Placement(visible = true, transformation(origin = {-129, -105}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T10_11 annotation(
+  SFC.SFCelements.Transition T10_11 annotation(
     Placement(visible = true, transformation(origin = {59, 79}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
-  SFC.BasicBlocks.Step S10(initialStep = true) annotation(
+  SFC.SFCelements.Step S10(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {59, 111}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c02(y = S02.t > 0.5) annotation(
+  SFC.SFCelements.Condition c02(y = S02.t > 0.5) annotation(
     Placement(visible = true, transformation(origin = {-84, -48}, extent = {{-16, -10}, {16, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T01_02 annotation(
+  SFC.SFCelements.Transition T01_02 annotation(
     Placement(visible = true, transformation(origin = {-129, 15}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c03(y = S03.t > 1) annotation(
+  SFC.SFCelements.Condition c03(y = S03.t > 1) annotation(
     Placement(visible = true, transformation(origin = {-85, -106}, extent = {{-13, -10}, {13, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S02 annotation(
+  SFC.SFCelements.Step S02 annotation(
     Placement(visible = true, transformation(origin = {-129, -19}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
-  SFC.BasicBlocks.Step S12 annotation(
+  SFC.SFCelements.Step S12 annotation(
     Placement(visible = true, transformation(origin = {59, -17}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
-  SFC.BasicBlocks.ActionSI_SR SR_0 annotation(
+  SFC.SFCelements.ActionSI_SR SR_0 annotation(
     Placement(visible = true, transformation(origin = {-34, 108}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.ActionSI_SR SR_1 annotation(
+  SFC.SFCelements.ActionSI_SR SR_1 annotation(
     Placement(visible = true, transformation(origin = {188, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.ActionSI_SR actionSI_SR annotation(
+  SFC.SFCelements.ActionSI_SR actionSI_SR annotation(
     Placement(visible = true, transformation(origin = {-210, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(transition1.OUT, S1.IN) annotation(

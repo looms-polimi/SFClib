@@ -1,6 +1,7 @@
 within SFC.Functions;
 
 impure function get_integer_variable
+  extends Modelica.Icons.Function;
  input Integer handle;
  output Integer value;
  external "C" value = get_integer_variable(handle) annotation(

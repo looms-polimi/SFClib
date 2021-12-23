@@ -1,41 +1,41 @@
 within SFC.ExampleADCOM;
 
 model CosmeticProduct
-  SFC.BasicBlocks.Step DryingProc annotation(
+  SFC.SFCelements.Step DryingProc annotation(
     Placement(visible = true, transformation(origin = {-89, -171}, extent = {{-31, -31}, {31, 31}}, rotation = 0)));
-  SFC.BasicBlocks.Step BulkInj annotation(
+  SFC.SFCelements.Step BulkInj annotation(
     Placement(visible = true, transformation(origin = {-90, -70}, extent = {{-30, -30}, {30, 30}}, rotation = 0)));
-  SFC.BasicBlocks.Action collect(qualifierType = SFC.Types.Qualifier.P) annotation(
+  SFC.SFCelements.Action collect(qualifierType = SFC.Types.Qualifier.P) annotation(
     Placement(visible = true, transformation(origin = {2, 50}, extent = {{-26, -26}, {26, 26}}, rotation = 0)));
   SFC.Tests.subSFC.Utilities.sub_packing Sub_packing annotation(
     Placement(visible = true, transformation(origin = {161, -179}, extent = {{-19, -19}, {19, 19}}, rotation = 0)));
-  SFC.BasicBlocks.Step BulkProd annotation(
+  SFC.SFCelements.Step BulkProd annotation(
     Placement(visible = true, transformation(origin = {-90, 36}, extent = {{-30, -30}, {30, 30}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t1 annotation(
+  SFC.SFCelements.Transition t1 annotation(
     Placement(visible = true, transformation(origin = {-90, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition prep_done(y = Sub_ingr_prep.y) annotation(
+  SFC.SFCelements.Condition prep_done(y = Sub_ingr_prep.y) annotation(
     Placement(visible = true, transformation(origin = {32, -16}, extent = {{-70, -22}, {70, 22}}, rotation = 0)));
   SFC.Tests.subSFC.Utilities.sub_cooking Sub_cooking annotation(
     Placement(visible = true, transformation(origin = {170, -84}, extent = {{-28, -28}, {28, 28}}, rotation = 0)));
-  SFC.BasicBlocks.Condition start(y = start) annotation(
+  SFC.SFCelements.Condition start(y = start) annotation(
     Placement(visible = true, transformation(origin = {14, 79}, extent = {{-48, -21}, {48, 21}}, rotation = 0)));
-  SFC.BasicBlocks.Action cook(qualifierType = SFC.Types.Qualifier.P) annotation(
+  SFC.SFCelements.Action cook(qualifierType = SFC.Types.Qualifier.P) annotation(
     Placement(visible = true, transformation(origin = {-3, -71}, extent = {{-25, -25}, {25, 25}}, rotation = 0)));
-  SFC.BasicBlocks.Condition packed(y = Sub_packing.y) annotation(
+  SFC.SFCelements.Condition packed(y = Sub_packing.y) annotation(
     Placement(visible = true, transformation(origin = {-48, -220}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t3 annotation(
+  SFC.SFCelements.Transition t3 annotation(
     Placement(visible = true, transformation(origin = {-90, -124}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t2 annotation(
+  SFC.SFCelements.Transition t2 annotation(
     Placement(visible = true, transformation(origin = {-90, -16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action pack(qualifierType = SFC.Types.Qualifier.P) annotation(
+  SFC.SFCelements.Action pack(qualifierType = SFC.Types.Qualifier.P) annotation(
     Placement(visible = true, transformation(origin = {-6, -170}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.Tests.subSFC.Utilities.sub_ingr_prep Sub_ingr_prep annotation(
     Placement(visible = true, transformation(origin = {159, 51}, extent = {{-23, -23}, {23, 23}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t4 annotation(
+  SFC.SFCelements.Transition t4 annotation(
     Placement(visible = true, transformation(origin = {-90, -218}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition coocked(y = Sub_cooking.y) annotation(
+  SFC.SFCelements.Condition coocked(y = Sub_cooking.y) annotation(
     Placement(visible = true, transformation(origin = {30, -123}, extent = {{-60, -25}, {60, 25}}, rotation = 0)));
-  SFC.BasicBlocks.InitialStepNI InitalState annotation(
+  SFC.SFCelements.InitialStepNI InitalState annotation(
     Placement(visible = true, transformation(origin = {-90, 130}, extent = {{-30, -30}, {30, 30}}, rotation = 0)));
 equation
   connect(t3.OUT, DryingProc.IN) annotation(

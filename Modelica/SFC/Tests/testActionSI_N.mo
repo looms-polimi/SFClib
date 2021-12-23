@@ -1,33 +1,33 @@
 within SFC.Tests;
 
 model testActionSI_N "Action with N qualifier - connected to an Initial Step"
-  SFC.BasicBlocks.Transition T01_02(Tcycle = 1) annotation(
+  SFC.SFCelements.Transition T01_02(Tcycle = 1) annotation(
     Placement(visible = true, transformation(origin = {-27, -1}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c02(y = S02.t > 0.5) annotation(
+  SFC.SFCelements.Condition c02(y = S02.t > 0.5) annotation(
     Placement(visible = true, transformation(origin = {24, -64}, extent = {{-22, -10}, {22, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c00(y = S00.t > 2) annotation(
+  SFC.SFCelements.Condition c00(y = S00.t > 2) annotation(
     Placement(visible = true, transformation(origin = {26, 62}, extent = {{-24, -10}, {24, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T03_00(Tcycle = 0) annotation(
+  SFC.SFCelements.Transition T03_00(Tcycle = 0) annotation(
     Placement(visible = true, transformation(origin = {-27, -121}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T02_03(Tcycle = 0) annotation(
+  SFC.SFCelements.Transition T02_03(Tcycle = 0) annotation(
     Placement(visible = true, transformation(origin = {-27, -63}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c01(y = S01.t > 1) annotation(
+  SFC.SFCelements.Condition c01(y = S01.t > 1) annotation(
     Placement(visible = true, transformation(origin = {27, -2}, extent = {{-23, -10}, {23, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T00_01(Tcycle = 1) annotation(
+  SFC.SFCelements.Transition T00_01(Tcycle = 1) annotation(
     Placement(visible = true, transformation(origin = {-29, 61}, extent = {{-13, -13}, {13, 13}}, rotation = 0)));
-  SFC.BasicBlocks.Step S02 annotation(
+  SFC.SFCelements.Step S02 annotation(
     Placement(visible = true, transformation(origin = {-27, -35}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
-  SFC.BasicBlocks.Step S00(initialStep = true) annotation(
+  SFC.SFCelements.Step S00(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {-27, 95}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
-  SFC.BasicBlocks.Step S03 annotation(
+  SFC.SFCelements.Step S03 annotation(
     Placement(visible = true, transformation(origin = {-27, -89}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c03(y = S03.t > 1) annotation(
+  SFC.SFCelements.Condition c03(y = S03.t > 1) annotation(
     Placement(visible = true, transformation(origin = {24, -122}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S01 annotation(
+  SFC.SFCelements.Step S01 annotation(
     Placement(visible = true, transformation(origin = {-27, 29}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
-  SFC.BasicBlocks.ActionSI_N N1 annotation(
+  SFC.SFCelements.ActionSI_N N1 annotation(
     Placement(visible = true, transformation(origin = {108, 94}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.ActionSI_N N2 annotation(
+  SFC.SFCelements.ActionSI_N N2 annotation(
     Placement(visible = true, transformation(origin = {104, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner SFC.Utilities.System_logger system_logger(log_on = true) annotation(
     Placement(visible = true, transformation(origin = {-121, 101}, extent = {{-19, -19}, {19, 19}}, rotation = 0)));

@@ -1,6 +1,7 @@
 within SFC.Functions;
 
-function register_boolean_variable
+impure function register_boolean_variable
+  extends Modelica.Icons.Function;
  input String name;
  output Integer handle;
  external "C" handle = register_boolean_variable(name) annotation(

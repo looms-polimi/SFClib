@@ -2,35 +2,35 @@ within SFC.Tests.subSFC.Examples;
 
 model Piadina
 
-  SFC.BasicBlocks.InitialStep S0 annotation(
+  SFC.SFCelements.InitialStep S0 annotation(
     Placement(visible = true, transformation(origin = {-90, 110}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t1 annotation(
+  SFC.SFCelements.Transition t1 annotation(
     Placement(visible = true, transformation(origin = {-90, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step ingr_prep annotation(
+  SFC.SFCelements.Step ingr_prep annotation(
     Placement(visible = true, transformation(origin = {-90, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step cooking annotation(
+  SFC.SFCelements.Step cooking annotation(
     Placement(visible = true, transformation(origin = {-90, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step packing annotation(
+  SFC.SFCelements.Step packing annotation(
     Placement(visible = true, transformation(origin = {-90, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t2 annotation(
+  SFC.SFCelements.Transition t2 annotation(
     Placement(visible = true, transformation(origin = {-90, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t3 annotation(
+  SFC.SFCelements.Transition t3 annotation(
     Placement(visible = true, transformation(origin = {-90, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t4 annotation(
+  SFC.SFCelements.Transition t4 annotation(
     Placement(visible = true, transformation(origin = {-90, -100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition prep_done(y = Sub_ingr_prep.y)  annotation(
+  SFC.SFCelements.Condition prep_done(y = Sub_ingr_prep.y)  annotation(
     Placement(visible = true, transformation(origin = {-36, 21}, extent = {{-26, -9}, {26, 9}}, rotation = 0)));
-  SFC.BasicBlocks.Condition start(y = S0.t > 2)  annotation(
+  SFC.SFCelements.Condition start(y = S0.t > 2)  annotation(
     Placement(visible = true, transformation(origin = {-60, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition coocked(y = Sub_cooking.y)  annotation(
+  SFC.SFCelements.Condition coocked(y = Sub_cooking.y)  annotation(
     Placement(visible = true, transformation(origin = {-60, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition packed(y = Sub_packing.y)  annotation(
+  SFC.SFCelements.Condition packed(y = Sub_packing.y)  annotation(
     Placement(visible = true, transformation(origin = {-60, -100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action collect(qualifierType = SFC.Types.Qualifier.P)  annotation(
+  SFC.SFCelements.Action collect(qualifierType = SFC.Types.Qualifier.P)  annotation(
     Placement(visible = true, transformation(origin = {-60, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action cook(qualifierType = SFC.Types.Qualifier.P)  annotation(
+  SFC.SFCelements.Action cook(qualifierType = SFC.Types.Qualifier.P)  annotation(
     Placement(visible = true, transformation(origin = {-60, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action pack(qualifierType = SFC.Types.Qualifier.P)  annotation(
+  SFC.SFCelements.Action pack(qualifierType = SFC.Types.Qualifier.P)  annotation(
     Placement(visible = true, transformation(origin = {-60, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.Tests.subSFC.Utilities.sub_ingr_prep Sub_ingr_prep annotation(
     Placement(visible = true, transformation(origin = {-10, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

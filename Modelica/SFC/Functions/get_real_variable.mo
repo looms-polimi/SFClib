@@ -1,6 +1,7 @@
 within SFC.Functions;
 
 impure function get_real_variable
+  extends Modelica.Icons.Function;
  input Integer handle;
  output Real value;
  external "C" value = get_real_variable(handle) annotation(

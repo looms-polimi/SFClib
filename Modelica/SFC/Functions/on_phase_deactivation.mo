@@ -1,8 +1,9 @@
 within SFC.Functions;
 
-function on_phase_deactivation
+impure function on_phase_deactivation
+  extends Modelica.Icons.Function;
  input Integer handle;
- input Integer qualifier "0 N, 1 S, 2 R";
+ input Integer qualifier;
  output Boolean on;
  external "C" on=on_phase_deactivation(handle, qualifier) annotation(
       LibraryDirectory="modelica://SFC/Resources/Source/",

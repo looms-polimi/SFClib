@@ -1,34 +1,34 @@
 within SFC.ContinuousSys.ContinuousTests;
 model HeaterTankExample
-  SFC.BasicBlocks.InitialStep idle annotation(
+  SFC.SFCelements.InitialStep idle annotation(
     Placement(visible = true, transformation(origin = {-90, 100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step fill_tank annotation(
+  SFC.SFCelements.Step fill_tank annotation(
     Placement(visible = true, transformation(origin = {-90, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step empty_tank annotation(
+  SFC.SFCelements.Step empty_tank annotation(
     Placement(visible = true, transformation(origin = {-90, -100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t1 annotation(
+  SFC.SFCelements.Transition t1 annotation(
     Placement(visible = true, transformation(origin = {-90, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t2 annotation(
+  SFC.SFCelements.Transition t2 annotation(
     Placement(visible = true, transformation(origin = {-90, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t3 annotation(
+  SFC.SFCelements.Transition t3 annotation(
     Placement(visible = true, transformation(origin = {-90, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t4 annotation(
+  SFC.SFCelements.Transition t4 annotation(
     Placement(visible = true, transformation(origin = {-90, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t5 annotation(
+  SFC.SFCelements.Transition t5 annotation(
     Placement(visible = true, transformation(origin = {-90, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t6 annotation(
+  SFC.SFCelements.Transition t6 annotation(
     Placement(visible = true, transformation(origin = {-90, -120}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c1(y = start.y)  annotation(
+  SFC.SFCelements.Condition c1(y = start.y)  annotation(
     Placement(visible = true, transformation(origin = {-50, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c2(y = tank.levelSensor > 30)  annotation(
+  SFC.SFCelements.Condition c2(y = tank.levelSensor > 30)  annotation(
     Placement(visible = true, transformation(origin = {-27, 41}, extent = {{-33, -9}, {33, 9}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c3(y = P.y > 30 - 0.01)  annotation(
+  SFC.SFCelements.Condition c3(y = P.y > 30 - 0.01)  annotation(
     Placement(visible = true, transformation(origin = {-50, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c4(y = stirrer.t > 60)  annotation(
+  SFC.SFCelements.Condition c4(y = stirrer.t > 60)  annotation(
     Placement(visible = true, transformation(origin = {-50, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c5(y = P.y < 0.1)  annotation(
+  SFC.SFCelements.Condition c5(y = P.y < 0.1)  annotation(
     Placement(visible = true, transformation(origin = {-50, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c6(y = tank.levelSensor < 0.01)  annotation(
+  SFC.SFCelements.Condition c6(y = tank.levelSensor < 0.01)  annotation(
     Placement(visible = true, transformation(origin = {-50, -120}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.StateGraph.Examples.Utilities.Tank tank(a = 0.03)  annotation(
     Placement(visible = true, transformation(origin = {45, 53}, extent = {{-35, -35}, {35, 35}}, rotation = 0)));
@@ -36,15 +36,15 @@ model HeaterTankExample
     Placement(visible = true, transformation(origin = {28, 100}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   Modelica.StateGraph.Examples.Utilities.valve valveOUT annotation(
     Placement(visible = true, transformation(origin = {66, 10}, extent = {{-10, 10}, {10, -10}}, rotation = -90)));
-  SFC.BasicBlocks.Action valve1open annotation(
+  SFC.SFCelements.Action valve1open annotation(
     Placement(visible = true, transformation(origin = {-50, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action valve2open annotation(
+  SFC.SFCelements.Action valve2open annotation(
     Placement(visible = true, transformation(origin = {-50, -100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action ON(qualifierType = SFC.Types.Qualifier.P)  annotation(
+  SFC.SFCelements.Action ON(qualifierType = SFC.Types.Qualifier.P)  annotation(
     Placement(visible = true, transformation(origin = {-48, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action OFF(qualifierType = SFC.Types.Qualifier.P)  annotation(
+  SFC.SFCelements.Action OFF(qualifierType = SFC.Types.Qualifier.P)  annotation(
     Placement(visible = true, transformation(origin = {-50, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.mergeActions ON_OFF(n = 2)  annotation(
+  SFC.SFCelements.mergeActions ON_OFF(n = 2)  annotation(
     Placement(visible = true, transformation(origin = {50, -30}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   SFC.ContinuousSys.ContinuousBlocks.industrialPI industrialPI(Saturation = true, T = 40, k = 2 / 0.7, yMax = 100)  annotation(
     Placement(visible = true, transformation(origin = {50, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -58,13 +58,13 @@ model HeaterTankExample
     Placement(visible = true, transformation(origin = {-162, 132}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.StateGraph.Examples.Utilities.Source source(maxflow = 0.3)  annotation(
     Placement(visible = true, transformation(origin = {28, 122}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step heaterON annotation(
+  SFC.SFCelements.Step heaterON annotation(
     Placement(visible = true, transformation(origin = {-90, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step heaterOFF annotation(
+  SFC.SFCelements.Step heaterOFF annotation(
     Placement(visible = true, transformation(origin = {-90, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step stirrer annotation(
+  SFC.SFCelements.Step stirrer annotation(
     Placement(visible = true, transformation(origin = {-90, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action stir annotation(
+  SFC.SFCelements.Action stir annotation(
     Placement(visible = true, transformation(origin = {-50, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(valve2open.actionBoolean, valveOUT.valveControl) annotation(

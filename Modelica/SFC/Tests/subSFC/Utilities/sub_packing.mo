@@ -2,31 +2,31 @@ within SFC.Tests.subSFC.Utilities;
 model sub_packing
 
 extends SFC.Interfaces.subSystem;
-  SFC.BasicBlocks.InitialStep idle annotation(
+  SFC.SFCelements.InitialStep idle annotation(
     Placement(visible = true, transformation(origin = {10, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step fold annotation(
+  SFC.SFCelements.Step fold annotation(
     Placement(visible = true, transformation(origin = {10, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step wrap annotation(
+  SFC.SFCelements.Step wrap annotation(
     Placement(visible = true, transformation(origin = {10, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step packed annotation(
+  SFC.SFCelements.Step packed annotation(
     Placement(visible = true, transformation(origin = {10, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t1 annotation(
+  SFC.SFCelements.Transition t1 annotation(
     Placement(visible = true, transformation(origin = {10, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t2 annotation(
+  SFC.SFCelements.Transition t2 annotation(
     Placement(visible = true, transformation(origin = {10, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t3 annotation(
+  SFC.SFCelements.Transition t3 annotation(
     Placement(visible = true, transformation(origin = {10, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t4 annotation(
+  SFC.SFCelements.Transition t4 annotation(
     Placement(visible = true, transformation(origin = {10, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c1(y = u)  annotation(
+  SFC.SFCelements.Condition c1(y = u)  annotation(
     Placement(visible = true, transformation(origin = {44, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c2(y = fold.t > 1)  annotation(
+  SFC.SFCelements.Condition c2(y = fold.t > 1)  annotation(
     Placement(visible = true, transformation(origin = {44, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c3(y = wrap.t > 15)  annotation(
+  SFC.SFCelements.Condition c3(y = wrap.t > 15)  annotation(
     Placement(visible = true, transformation(origin = {44, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c4(y = true)  annotation(
+  SFC.SFCelements.Condition c4(y = true)  annotation(
     Placement(visible = true, transformation(origin = {44, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action end_pack(qualifierType = SFC.Types.Qualifier.P)  annotation(
+  SFC.SFCelements.Action end_pack(qualifierType = SFC.Types.Qualifier.P)  annotation(
     Placement(visible = true, transformation(origin = {44, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(end_pack.actionBoolean, y) annotation(

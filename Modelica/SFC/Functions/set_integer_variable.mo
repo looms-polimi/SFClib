@@ -1,6 +1,7 @@
 within SFC.Functions;
 
-function set_integer_variable
+impure function set_integer_variable
+  extends Modelica.Icons.Function;
  input Integer handle;
  input Integer value;
  external "C" set_integer_variable(handle, value) annotation(

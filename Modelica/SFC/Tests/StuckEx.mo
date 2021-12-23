@@ -1,25 +1,25 @@
 within SFC.Tests;
 
 model StuckEx
-  SFC.BasicBlocks.Step step annotation(
+  SFC.SFCelements.Step step annotation(
     Placement(visible = true, transformation(origin = {-20, 18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  BasicBlocks.InitialStepNI initialStepNI annotation(
+  SFCelements.InitialStepNI initialStepNI annotation(
     Placement(visible = true, transformation(origin = {-20, 72}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition transition annotation(
+  SFC.SFCelements.Transition transition annotation(
     Placement(visible = true, transformation(origin = {-20, 44}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step step1 annotation(
+  SFC.SFCelements.Step step1 annotation(
     Placement(visible = true, transformation(origin = {-20, -36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition transition1 annotation(
+  SFC.SFCelements.Transition transition1 annotation(
     Placement(visible = true, transformation(origin = {-20, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition transition2 annotation(
+  SFC.SFCelements.Transition transition2 annotation(
     Placement(visible = true, transformation(origin = {-20, -62}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.FinalStep finalStep annotation(
+  SFC.SFCelements.FinalStep finalStep annotation(
     Placement(visible = true, transformation(origin = {-20, -82}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition(y = time > 2)  annotation(
+  SFC.SFCelements.Condition condition(y = time > 2)  annotation(
     Placement(visible = true, transformation(origin = {20, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  BasicBlocks.Condition condition1(y = true)  annotation(
+  SFCelements.Condition condition1(y = true)  annotation(
     Placement(visible = true, transformation(origin = {24, -24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition2(y = true) annotation(
+  SFC.SFCelements.Condition condition2(y = true) annotation(
     Placement(visible = true, transformation(origin = {28, -62}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(initialStepNI.OUT, transition.IN) annotation(

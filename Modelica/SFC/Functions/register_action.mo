@@ -1,6 +1,7 @@
 within SFC.Functions;
 
-function register_action
+impure function register_action
+  extends Modelica.Icons.Function;
  input String name;
  output Integer handle;
  external "C" handle = register_action(name) annotation(

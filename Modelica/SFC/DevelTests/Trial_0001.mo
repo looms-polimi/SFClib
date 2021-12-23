@@ -2,23 +2,23 @@ within SFC.DevelTests;
 
 model Trial_0001
   extends Modelica.Icons.Example;
-  SFC.BasicBlocks.InitialStep S0 annotation(
+  SFC.SFCelements.InitialStep S0 annotation(
     Placement(visible = true, transformation(origin = {-70, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T01 annotation(
+  SFC.SFCelements.Transition T01 annotation(
     Placement(visible = true, transformation(origin = {-70, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S1 annotation(
+  SFC.SFCelements.Step S1 annotation(
     Placement(visible = true, transformation(origin = {-70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T10 annotation(
+  SFC.SFCelements.Transition T10 annotation(
     Placement(visible = true, transformation(origin = {-70, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression C01(y = S0.t > 1)  annotation(
     Placement(visible = true, transformation(origin = {-27, 20}, extent = {{13, -10}, {-13, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression C10(y = S1.t > 0.5) annotation(
     Placement(visible = true, transformation(origin = {-27, -40}, extent = {{13, -10}, {-13, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action actionS1(InitialCond = true)  annotation(
+  SFC.SFCelements.Action actionS1(InitialCond = true)  annotation(
     Placement(visible = true, transformation(origin = {-26, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
 Boolean A (start=false);
-  SFC.BasicBlocks.Action actionS0 annotation(
+  SFC.SFCelements.Action actionS0 annotation(
     Placement(visible = true, transformation(origin = {-28, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
 algorithm

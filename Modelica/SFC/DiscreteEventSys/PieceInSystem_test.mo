@@ -1,19 +1,19 @@
 within SFC.DiscreteEventSys;
 
 model PieceInSystem_test
-  SFC.BasicBlocks.InitialStep initialStep annotation(
+  SFC.SFCelements.InitialStep initialStep annotation(
     Placement(visible = true, transformation(origin = {-24, 68}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition transition annotation(
+  SFC.SFCelements.Transition transition annotation(
     Placement(visible = true, transformation(origin = {-24, 38}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition condition(y = PieceIn.y) annotation(
+  SFC.SFCelements.Condition condition(y = PieceIn.y) annotation(
     Placement(visible = true, transformation(origin = {22, 38}, extent = {{-18, -12}, {18, 12}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanPulse PieceIn(period = 50, startTime = 10, width = 0.1) annotation(
     Placement(visible = true, transformation(origin = {-76, 78}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
-  SFC.BasicBlocks.Step step annotation(
+  SFC.SFCelements.Step step annotation(
     Placement(visible = true, transformation(origin = {-24, 12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition transition1 annotation(
+  SFC.SFCelements.Transition transition1 annotation(
     Placement(visible = true, transformation(origin = {-24, -16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition C_IE(y = step.t > 10) annotation(
+  SFC.SFCelements.Condition C_IE(y = step.t > 10) annotation(
     Placement(visible = true, transformation(origin = {22, -18}, extent = {{-18, -6}, {18, 6}}, rotation = 0)));
 equation
   connect(initialStep.OUT, transition.IN) annotation(

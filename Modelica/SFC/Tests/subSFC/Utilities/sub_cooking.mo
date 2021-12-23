@@ -1,31 +1,31 @@
 within SFC.Tests.subSFC.Utilities;
 model sub_cooking
   extends SFC.Interfaces.subSystem;
-  SFC.BasicBlocks.InitialStep idle annotation(
+  SFC.SFCelements.InitialStep idle annotation(
     Placement(visible = true, transformation(origin = {0, 66}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step piadina_in annotation(
+  SFC.SFCelements.Step piadina_in annotation(
     Placement(visible = true, transformation(origin = {0, 26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step wait annotation(
+  SFC.SFCelements.Step wait annotation(
     Placement(visible = true, transformation(origin = {0, -14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step piadina_out annotation(
+  SFC.SFCelements.Step piadina_out annotation(
     Placement(visible = true, transformation(origin = {0, -54}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t1 annotation(
+  SFC.SFCelements.Transition t1 annotation(
     Placement(visible = true, transformation(origin = {0, 46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t2 annotation(
+  SFC.SFCelements.Transition t2 annotation(
     Placement(visible = true, transformation(origin = {0, 6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t3 annotation(
+  SFC.SFCelements.Transition t3 annotation(
     Placement(visible = true, transformation(origin = {0, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition t4 annotation(
+  SFC.SFCelements.Transition t4 annotation(
     Placement(visible = true, transformation(origin = {0, -74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c1(y = u)  annotation(
+  SFC.SFCelements.Condition c1(y = u)  annotation(
     Placement(visible = true, transformation(origin = {30, 46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c2(y = piadina_in.t > 3)  annotation(
+  SFC.SFCelements.Condition c2(y = piadina_in.t > 3)  annotation(
     Placement(visible = true, transformation(origin = {30, 6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c3(y = wait.t > 60)  annotation(
+  SFC.SFCelements.Condition c3(y = wait.t > 60)  annotation(
     Placement(visible = true, transformation(origin = {30, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition c4(y = true)  annotation(
+  SFC.SFCelements.Condition c4(y = true)  annotation(
     Placement(visible = true, transformation(origin = {30, -74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action end_cooking(qualifierType = SFC.Types.Qualifier.P)  annotation(
+  SFC.SFCelements.Action end_cooking(qualifierType = SFC.Types.Qualifier.P)  annotation(
     Placement(visible = true, transformation(origin = {30, -54}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(piadina_out.X, end_cooking.phase_active) annotation(

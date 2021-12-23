@@ -1,6 +1,7 @@
 within SFC.Functions;
 
-function new_aligned_event
+impure function new_aligned_event
+  extends Modelica.Icons.Function;
  output Integer y;
  external "C" y = new_aligned_event() annotation(
       LibraryDirectory="modelica://SFC/Resources/Source/",

@@ -1,25 +1,25 @@
 within SFC.Tests.TestWithCyclicGroup;
 
 model test_cg_003 "Two consecutive true conditions with a CyclicGroup"
- SFC.BasicBlocks.Step S20(initialStep = true) annotation(
+ SFC.SFCelements.Step S20(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {-17, 95}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
- SFC.BasicBlocks.Condition C20_21(y = S20.t > 2) annotation(
+ SFC.SFCelements.Condition C20_21(y = S20.t > 2) annotation(
     Placement(visible = true, transformation(origin = {72, 63}, extent = {{-38, -11}, {38, 11}}, rotation = 0)));
- SFC.BasicBlocks.Transition T20_21 annotation(
+ SFC.SFCelements.Transition T20_21 annotation(
     Placement(visible = true, transformation(origin = {-19, 63}, extent = {{-19, -19}, {19, 19}}, rotation = 0)));
- SFC.BasicBlocks.Step S21 annotation(
+ SFC.SFCelements.Step S21 annotation(
     Placement(visible = true, transformation(origin = {-15, 33}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
- SFC.BasicBlocks.Condition C21_22(y = true) annotation(
+ SFC.SFCelements.Condition C21_22(y = true) annotation(
     Placement(visible = true, transformation(origin = {65, -1}, extent = {{-27, -13}, {27, 13}}, rotation = 0)));
- SFC.BasicBlocks.Transition T21_22 annotation(
+ SFC.SFCelements.Transition T21_22 annotation(
     Placement(visible = true, transformation(origin = {-16, -4}, extent = {{-18, -18}, {18, 18}}, rotation = 0)));
- SFC.BasicBlocks.Step S22 annotation(
+ SFC.SFCelements.Step S22 annotation(
     Placement(visible = true, transformation(origin = {-17, -33}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));
- SFC.BasicBlocks.Condition C22_20(y = true) annotation(
+ SFC.SFCelements.Condition C22_20(y = true) annotation(
     Placement(visible = true, transformation(origin = {61, -64}, extent = {{-27, -14}, {27, 14}}, rotation = 0)));
- SFC.BasicBlocks.Transition T22_20 annotation(
+ SFC.SFCelements.Transition T22_20 annotation(
     Placement(visible = true, transformation(origin = {-16, -68}, extent = {{-18, -18}, {18, 18}}, rotation = 0)));
- inner SFC.BasicBlocks.CyclicGroup cyclicGroup(period = 0.5) annotation(
+ inner SFC.SFCelements.CyclicGroup cyclicGroup(period = 0.5) annotation(
     Placement(visible = true, transformation(origin = {-190, 190}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T20_21.C, C20_21.y) annotation(

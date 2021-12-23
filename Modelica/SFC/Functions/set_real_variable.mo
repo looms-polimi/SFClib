@@ -1,6 +1,7 @@
 within SFC.Functions;
 
-function set_real_variable
+impure function set_real_variable
+  extends Modelica.Icons.Function;
  input Integer handle;
  input Real value;
  external "C" set_real_variable(handle, value) annotation(

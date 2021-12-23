@@ -1,57 +1,57 @@
 within SFC.DiscreteEventSys;
 
 model PieceInSystem
-  SFC.BasicBlocks.Action action_initialStepReset(initialStepAction = true, qualifierType = SFC.Types.Qualifier.R) annotation(
+  SFC.SFCelements.Action action_initialStepReset(initialStepAction = true, qualifierType = SFC.Types.Qualifier.R) annotation(
     Placement(visible = true, transformation(origin = {-30, 172}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T01 annotation(
+  SFC.SFCelements.Transition T01 annotation(
     Placement(visible = true, transformation(origin = {-80, 142}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition cond_T01(y = PieceIn.y) annotation(
+  SFC.SFCelements.Condition cond_T01(y = PieceIn.y) annotation(
     Placement(visible = true, transformation(origin = {-42, 142}, extent = {{-18, -12}, {18, 12}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanPulse PieceIn(period = 50, startTime = 10, width = 0.1) annotation(
     Placement(visible = true, transformation(origin = {-126, 168}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T12 annotation(
+  SFC.SFCelements.Transition T12 annotation(
     Placement(visible = true, transformation(origin = {-80, 92}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action action_S1(qualifierType = SFC.Types.Qualifier.S) annotation(
+  SFC.SFCelements.Action action_S1(qualifierType = SFC.Types.Qualifier.S) annotation(
     Placement(visible = true, transformation(origin = {-40, 116}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.mergeActions Belt(n = 4)  annotation(
+  SFC.SFCelements.mergeActions Belt(n = 4)  annotation(
     Placement(visible = true, transformation(origin = {18, 148}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.mergeActions xBG1(n = 3)  annotation(
+  SFC.SFCelements.mergeActions xBG1(n = 3)  annotation(
     Placement(visible = true, transformation(origin = {62, 110}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S2 annotation(
+  SFC.SFCelements.Step S2 annotation(
     Placement(visible = true, transformation(origin = {-80, 66}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition cond_T12(y = S1.t > 20) annotation(
+  SFC.SFCelements.Condition cond_T12(y = S1.t > 20) annotation(
     Placement(visible = true, transformation(origin = {-38, 92}, extent = {{-18, -12}, {18, 12}}, rotation = 0)));
-  SFC.BasicBlocks.Action action(qualifierType = SFC.Types.Qualifier.S) annotation(
+  SFC.SFCelements.Action action(qualifierType = SFC.Types.Qualifier.S) annotation(
     Placement(visible = true, transformation(origin = {-44, 66}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T23(Tcycle = 0.5)  annotation(
+  SFC.SFCelements.Transition T23(Tcycle = 0.5)  annotation(
     Placement(visible = true, transformation(origin = {-80, 38}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S3 annotation(
+  SFC.SFCelements.Step S3 annotation(
     Placement(visible = true, transformation(origin = {-80, 18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T34 annotation(
+  SFC.SFCelements.Transition T34 annotation(
     Placement(visible = true, transformation(origin = {-80, -14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition cond_T34(y = S3.t > 5)  annotation(
+  SFC.SFCelements.Condition cond_T34(y = S3.t > 5)  annotation(
     Placement(visible = true, transformation(origin = {-38, -14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action action_S3(qualifierType = SFC.Types.Qualifier.R) annotation(
+  SFC.SFCelements.Action action_S3(qualifierType = SFC.Types.Qualifier.R) annotation(
     Placement(visible = true, transformation(origin = {-34, 18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S4 annotation(
+  SFC.SFCelements.Step S4 annotation(
     Placement(visible = true, transformation(origin = {-80, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action action_S4(qualifierType = SFC.Types.Qualifier.S)  annotation(
+  SFC.SFCelements.Action action_S4(qualifierType = SFC.Types.Qualifier.S)  annotation(
     Placement(visible = true, transformation(origin = {-34, -38}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T45 annotation(
+  SFC.SFCelements.Transition T45 annotation(
     Placement(visible = true, transformation(origin = {-80, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition cond_T45(y = S4.t > 5)  annotation(
+  SFC.SFCelements.Condition cond_T45(y = S4.t > 5)  annotation(
     Placement(visible = true, transformation(origin = {-38, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S5 annotation(
+  SFC.SFCelements.Step S5 annotation(
     Placement(visible = true, transformation(origin = {-80, -88}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  BasicBlocks.Action action_S5(qualifierType = SFC.Types.Qualifier.R) annotation(
+  SFCelements.Action action_S5(qualifierType = SFC.Types.Qualifier.R) annotation(
     Placement(visible = true, transformation(origin = {-34, -88}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T50 annotation(
+  SFC.SFCelements.Transition T50 annotation(
     Placement(visible = true, transformation(origin = {-80, -110}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition cond_50(y = S5.t > 10)  annotation(
+  SFC.SFCelements.Condition cond_50(y = S5.t > 10)  annotation(
     Placement(visible = true, transformation(origin = {-42, -110}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  BasicBlocks.Step S1 annotation(
+  SFCelements.Step S1 annotation(
     Placement(visible = true, transformation(origin = {-80, 116}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.InitialStep initialStep annotation(
+  SFC.SFCelements.InitialStep initialStep annotation(
     Placement(visible = true, transformation(origin = {-80, 168}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T01.C, cond_T01.y) annotation(

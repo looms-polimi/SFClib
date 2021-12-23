@@ -2,19 +2,19 @@ within SFC.Tests.TestWithCyclicGroup;
 
 model test_cg_001 "SFC - Cycle group with period=1"
  parameter Real period = 0.5;
- SFC.BasicBlocks.Step S0(initialStep = true)  annotation(
+ SFC.SFCelements.Step S0(initialStep = true)  annotation(
     Placement(visible = true, transformation(origin = {-30, 130}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- SFC.BasicBlocks.Transition T01 annotation(
+ SFC.SFCelements.Transition T01 annotation(
     Placement(visible = true, transformation(origin = {-30, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- SFC.BasicBlocks.Step S1 annotation(
+ SFC.SFCelements.Step S1 annotation(
     Placement(visible = true, transformation(origin = {-30, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
- SFC.BasicBlocks.Transition T10 annotation(
+ SFC.SFCelements.Transition T10 annotation(
     Placement(visible = true, transformation(origin = {-30, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
  Modelica.Blocks.Sources.BooleanExpression C01(y = sin(time) > 0.4)  annotation(
     Placement(visible = true, transformation(origin = {81, 91}, extent = {{67, -13}, {-67, 13}}, rotation = 0)));
  Modelica.Blocks.Sources.BooleanExpression C10(y = sin(time) > 0.9)  annotation(
     Placement(visible = true, transformation(origin = {82, 5}, extent = {{62, -15}, {-62, 15}}, rotation = 0)));
- inner SFC.BasicBlocks.CyclicGroup cyclicGroup(period = period)  annotation(
+ inner SFC.SFCelements.CyclicGroup cyclicGroup(period = period)  annotation(
     Placement(visible = true, transformation(origin = {-190, 190}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(S0.OUT, T01.IN) annotation(

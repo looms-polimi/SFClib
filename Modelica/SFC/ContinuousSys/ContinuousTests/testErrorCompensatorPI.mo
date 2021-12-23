@@ -1,17 +1,17 @@
 within SFC.ContinuousSys.ContinuousTests;
 
 model testErrorCompensatorPI
-  SFC.BasicBlocks.Condition C1(y = true) annotation(
+  SFC.SFCelements.Condition C1(y = true) annotation(
     Placement(visible = true, transformation(origin = {-60, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition C2(y = P.y > 29.99) annotation(
+  SFC.SFCelements.Condition C2(y = P.y > 29.99) annotation(
     Placement(visible = true, transformation(origin = {-60, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.InitialStep S0 annotation(
+  SFC.SFCelements.InitialStep S0 annotation(
     Placement(visible = true, transformation(origin = {-90, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T1 annotation(
+  SFC.SFCelements.Transition T1 annotation(
     Placement(visible = true, transformation(origin = {-90, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S1 annotation(
+  SFC.SFCelements.Step S1 annotation(
     Placement(visible = true, transformation(origin = {-90, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T2 annotation(
+  SFC.SFCelements.Transition T2 annotation(
     Placement(visible = true, transformation(origin = {-90, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Feedback feedback1 annotation(
     Placement(visible = true, transformation(origin = {10, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -19,17 +19,17 @@ model testErrorCompensatorPI
     Placement(visible = true, transformation(origin = {70, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Step step1(height = 30, startTime = 0) annotation(
     Placement(visible = true, transformation(origin = {-18, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S2 annotation(
+  SFC.SFCelements.Step S2 annotation(
     Placement(visible = true, transformation(origin = {-90, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T3 annotation(
+  SFC.SFCelements.Transition T3 annotation(
     Placement(visible = true, transformation(origin = {-90, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action ON(qualifierType = SFC.Types.Qualifier.P) annotation(
+  SFC.SFCelements.Action ON(qualifierType = SFC.Types.Qualifier.P) annotation(
     Placement(visible = true, transformation(origin = {-60, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action OFF(qualifierType = SFC.Types.Qualifier.P) annotation(
+  SFC.SFCelements.Action OFF(qualifierType = SFC.Types.Qualifier.P) annotation(
     Placement(visible = true, transformation(origin = {-60, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition C3(y = P.y < 0) annotation(
+  SFC.SFCelements.Condition C3(y = P.y < 0) annotation(
     Placement(visible = true, transformation(origin = {-60, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.mergeActions ON_OFF(n = 2) annotation(
+  SFC.SFCelements.mergeActions ON_OFF(n = 2) annotation(
     Placement(visible = true, transformation(origin = {40, 50}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   SFC.ContinuousSys.ContinuousBlocks.industrialPI PI(Saturation = true, T = 40, k = 2 / 0.7, yMax = 100) annotation(
     Placement(visible = true, transformation(origin = {40, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

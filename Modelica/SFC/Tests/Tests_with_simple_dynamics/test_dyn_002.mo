@@ -3,19 +3,19 @@ within SFC.Tests.Tests_with_simple_dynamics;
 model test_dyn_002 "Two consecutive true conditions with a CyclicGroup"
   Modelica.Blocks.Sources.BooleanExpression C20(y = S2.t > 2) annotation(
     Placement(visible = true, transformation(origin = {32, -90}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S0(initialStep = true) annotation(
+  SFC.SFCelements.Step S0(initialStep = true) annotation(
     Placement(visible = true, transformation(origin = {-30, 110}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S1 annotation(
+  SFC.SFCelements.Step S1 annotation(
     Placement(visible = true, transformation(origin = {-30, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S2 annotation(
+  SFC.SFCelements.Step S2 annotation(
     Placement(visible = true, transformation(origin = {-30, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T01(label = "T01") annotation(
+  SFC.SFCelements.Transition T01(label = "T01") annotation(
     Placement(visible = true, transformation(origin = {-30, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T12(label = "T12") annotation(
+  SFC.SFCelements.Transition T12(label = "T12") annotation(
     Placement(visible = true, transformation(origin = {-30, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition T20(label = "T20") annotation(
+  SFC.SFCelements.Transition T20(label = "T20") annotation(
     Placement(visible = true, transformation(origin = {-30, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  inner SFC.BasicBlocks.CyclicGroup cyclicGroup(period = 0.01) annotation(
+  inner SFC.SFCelements.CyclicGroup cyclicGroup(period = 0.01) annotation(
     Placement(visible = true, transformation(origin = {-170, 170}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression C01(y = P.y > 0.5) annotation(
     Placement(visible = true, transformation(origin = {50, 70}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));

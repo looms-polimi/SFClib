@@ -4,37 +4,37 @@ model sub_ingr_prep
     Placement(visible = true, transformation(origin = {-100, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-80, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.BooleanOutput y annotation(
     Placement(visible = true, transformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {90, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition tsub5 annotation(
+  SFC.SFCelements.Transition tsub5 annotation(
     Placement(visible = true, transformation(origin = {8, -94}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition end_collecting(y = true)  annotation(
+  SFC.SFCelements.Condition end_collecting(y = true)  annotation(
     Placement(visible = true, transformation(origin = {40, -94}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step ingr_READY annotation(
+  SFC.SFCelements.Step ingr_READY annotation(
     Placement(visible = true, transformation(origin = {8, -74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Action ingr_ready(qualifierType = SFC.Types.Qualifier.P)  annotation(
+  SFC.SFCelements.Action ingr_ready(qualifierType = SFC.Types.Qualifier.P)  annotation(
     Placement(visible = true, transformation(origin = {40, -74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition tsub4 annotation(
+  SFC.SFCelements.Transition tsub4 annotation(
     Placement(visible = true, transformation(origin = {8, -54}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition got_oil(y = oil.t > 2)  annotation(
+  SFC.SFCelements.Condition got_oil(y = oil.t > 2)  annotation(
     Placement(visible = true, transformation(origin = {40, -54}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition got_flour(y = flour.t > 3)  annotation(
+  SFC.SFCelements.Condition got_flour(y = flour.t > 3)  annotation(
     Placement(visible = true, transformation(origin = {40, 26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition got_water(y = water.t > 7)  annotation(
+  SFC.SFCelements.Condition got_water(y = water.t > 7)  annotation(
     Placement(visible = true, transformation(origin = {40, -14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition start_collecting(y = u)  annotation(
+  SFC.SFCelements.Condition start_collecting(y = u)  annotation(
     Placement(visible = true, transformation(origin = {40, 66}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step oil annotation(
+  SFC.SFCelements.Step oil annotation(
     Placement(visible = true, transformation(origin = {8, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition tsub3 annotation(
+  SFC.SFCelements.Transition tsub3 annotation(
     Placement(visible = true, transformation(origin = {8, -14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step water annotation(
+  SFC.SFCelements.Step water annotation(
     Placement(visible = true, transformation(origin = {8, 6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition tsub2 annotation(
+  SFC.SFCelements.Transition tsub2 annotation(
     Placement(visible = true, transformation(origin = {8, 26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step flour annotation(
+  SFC.SFCelements.Step flour annotation(
     Placement(visible = true, transformation(origin = {8, 46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.InitialStep initialization annotation(
+  SFC.SFCelements.InitialStep initialization annotation(
     Placement(visible = true, transformation(origin = {8, 86}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Transition tsub1 annotation(
+  SFC.SFCelements.Transition tsub1 annotation(
     Placement(visible = true, transformation(origin = {8, 66}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(tsub5.OUT, initialization.IN) annotation(

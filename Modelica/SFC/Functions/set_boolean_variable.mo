@@ -1,6 +1,7 @@
 within SFC.Functions;
 
-function set_boolean_variable
+impure function set_boolean_variable
+  extends Modelica.Icons.Function;
  input Integer handle;
  input Boolean value;
  external "C" set_boolean_variable(handle, value) annotation(

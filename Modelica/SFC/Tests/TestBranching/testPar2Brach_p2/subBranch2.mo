@@ -2,14 +2,14 @@ within SFC.Tests.TestBranching.testPar2Brach_p2;
 
 model subBranch2
 
-extends SFC.BasicBlocks.SubBranch;
-  SFC.BasicBlocks.Transition_p2 T4(Tcycle = 0.4) annotation(
+extends SFC.SFCelements.SubBranch;
+  SFC.SFCelements.Transition_p2 T4(Tcycle = 0.4) annotation(
     Placement(visible = true, transformation(origin = {0, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S4 annotation(
+  SFC.SFCelements.Step S4 annotation(
     Placement(visible = true, transformation(origin = {0, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Step S3 annotation(
+  SFC.SFCelements.Step S3 annotation(
     Placement(visible = true, transformation(origin = {0, 18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.BasicBlocks.Condition C4(y = S3.t > 1) annotation(
+  SFC.SFCelements.Condition C4(y = S3.t > 1) annotation(
     Placement(visible = true, transformation(origin = {30, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T4.OUT, S4.IN) annotation(

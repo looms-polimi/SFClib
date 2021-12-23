@@ -4,43 +4,43 @@ within SFC.DiscreteEventSys.DiscreteBlocks;
 model MachineStates
   Branching.AlternativeJoin3 alternativeJoin3Fault annotation(
     Placement(visible = true, transformation(origin = {91, 21}, extent = {{-5, -5}, {5, 5}}, rotation = 0)));
-  BasicBlocks.Transition EW annotation(
+  SFCelements.Transition EW annotation(
     Placement(visible = true, transformation(origin = {1, 39}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
-  BasicBlocks.Transition EF annotation(
+  SFCelements.Transition EF annotation(
     Placement(visible = true, transformation(origin = {91, 39}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
-  BasicBlocks.Transition WF annotation(
+  SFCelements.Transition WF annotation(
     Placement(visible = true, transformation(origin = {41, -53}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
-  BasicBlocks.Step F annotation(
+  SFCelements.Step F annotation(
     Placement(visible = true, transformation(origin = {106, -2}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
   SFC.Branching.AlternativeJoin2 alternativeJoin3Working annotation(
     Placement(visible = true, transformation(origin = {5, 23}, extent = {{5, -5}, {-5, 5}}, rotation = 0)));
-  SFC.BasicBlocks.Step W annotation(
+  SFC.SFCelements.Step W annotation(
     Placement(visible = true, transformation(origin = {-4, 2}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
-  BasicBlocks.InitialStep E annotation(
+  SFCelements.InitialStep E annotation(
     Placement(visible = true, transformation(origin = {0, 82}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  BasicBlocks.Transition WI annotation(
+  SFCelements.Transition WI annotation(
     Placement(visible = true, transformation(origin = {-15, -33}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
-  SFC.BasicBlocks.Transition EI annotation(
+  SFC.SFCelements.Transition EI annotation(
     Placement(visible = true, transformation(origin = {-93, 43}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
   Branching.AlternativeJoin3 alternativeJoin3 annotation(
     Placement(visible = true, transformation(origin = {13, -83}, extent = {{-17, -17}, {17, 17}}, rotation = 0)));
   Branching.AlternativeSplit3 alternativeSplit31 annotation(
     Placement(visible = true, transformation(origin = {-79, -19}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
-  BasicBlocks.Transition IW annotation(
+  SFCelements.Transition IW annotation(
     Placement(visible = true, transformation(origin = {-53, -51}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
-  SFC.BasicBlocks.Transition FE annotation(
+  SFC.SFCelements.Transition FE annotation(
     Placement(visible = true, transformation(origin = {107, -31}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
-  BasicBlocks.Transition IF annotation(
+  SFCelements.Transition IF annotation(
     Placement(visible = true, transformation(origin = {-79, -41}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
-  BasicBlocks.Transition WE annotation(
+  SFCelements.Transition WE annotation(
     Placement(visible = true, transformation(origin = {13, -43}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
-  BasicBlocks.Transition IE annotation(
+  SFCelements.Transition IE annotation(
     Placement(visible = true, transformation(origin = {-107, -33}, extent = {{-7, -7}, {7, 7}}, rotation = 0)));
   Branching.AlternativeJoin2 alternativeJoinIdle annotation(
     Placement(visible = true, transformation(origin = {-78, 22}, extent = {{-4, -4}, {4, 4}}, rotation = 0)));
   SFC.Branching.AlternativeSplit3 alternativeSplit3 annotation(
     Placement(visible = true, transformation(origin = {0, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  BasicBlocks.Step I annotation(
+  SFCelements.Step I annotation(
     Placement(visible = true, transformation(origin = {-78, 0}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
   Branching.AlternativeSplit3 alternativeSplit32 annotation(
     Placement(visible = true, transformation(origin = {13, -19}, extent = {{7, -7}, {-7, 7}}, rotation = 0)));
