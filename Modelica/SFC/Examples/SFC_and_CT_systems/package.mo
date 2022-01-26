@@ -1,5 +1,5 @@
 within SFC.Examples;
 
-package SFC_and_CT_system
+package SFC_and_CT_systems
   extends Modelica.Icons.ExamplesPackage;
-end SFC_and_CT_system;
+end SFC_and_CT_systems;

@@ -41,8 +41,8 @@
 using namespace std;
 
 // Var for debug
-int debug_level = 1;
-int actions_log = 1;
+int debug_level = 0;
+int actions_log = 0;
 
 // Class for action management
 
@@ -61,8 +61,8 @@ public:
     {
         active_N_phases = 0;
         active_R_phases = 0;
-        //on = false;
-        //was_set = false;
+        on = false;
+        was_set = false;
     }
 
     bool on_phase_activation(int qualifier)
