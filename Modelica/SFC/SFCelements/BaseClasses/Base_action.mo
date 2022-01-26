@@ -16,6 +16,9 @@ algorithm
   when initial() then
     handle_bool := SFC.Functions.register_boolean_variable(action_name);
     handle_act := SFC.Functions.register_action("act_" + action_name);
+    if phase_active then
+       SFC.Functions.set_boolean_variable(handle_bool, SFC.Functions.on_phase_activation(handle_act, qualifier));
+    end if;
   end when;
   when phase_active then
     SFC.Functions.set_boolean_variable(handle_bool, SFC.Functions.on_phase_activation(handle_act, qualifier));

@@ -23,7 +23,7 @@ equation
   active = X;
   t = if X then time - t_last_activation else duration_last_activity;
   OUT.active=X;
-  
+    
 algorithm
   when change(IN.fire) then
     X:=true;

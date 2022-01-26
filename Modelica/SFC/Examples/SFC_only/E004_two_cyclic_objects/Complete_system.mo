@@ -6,7 +6,9 @@ model Complete_system
     Placement(visible = true, transformation(origin = {-50, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.Examples.SFC_only.E004_two_cyclic_objects.Cyclic_object_2 co2 annotation(
     Placement(visible = true, transformation(origin = {-10, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.SFCio.Read_boolean rb1(variable_name = "out2")  annotation(
+  SFC.SFCio.Read_boolean rb_out2(variable_name = "out2")  annotation(
+    Placement(visible = true, transformation(origin = {-40, -30}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
+  SFC.SFCio.Read_boolean rb_cmd12(variable_name = "cmd12") annotation(
     Placement(visible = true, transformation(origin = {-40, 10}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
 equation
 
