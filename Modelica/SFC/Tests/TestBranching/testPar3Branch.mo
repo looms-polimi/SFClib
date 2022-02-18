@@ -5,7 +5,7 @@ model testPar3Branch "Parallel Split/Join test with three branches"
     Placement(visible = true, transformation(origin = {0, 82}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.SFCelements.Transition T1 annotation(
     Placement(visible = true, transformation(origin = {0, 62}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.Branching.ParallelSplit3 parallelSplit31 annotation(
+  SFC.SFCelements.ParallelSplit3 parallelSplit31 annotation(
     Placement(visible = true, transformation(origin = {0, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.SFCelements.Step S1 annotation(
     Placement(visible = true, transformation(origin = {-40, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -25,19 +25,19 @@ model testPar3Branch "Parallel Split/Join test with three branches"
     Placement(visible = true, transformation(origin = {40, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.SFCelements.Transition T6 annotation(
     Placement(visible = true, transformation(origin = {0, -32}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.Branching.ParallelJoin3 parallelJoin31 annotation(
+  SFC.SFCelements.ParallelJoin3 parallelJoin31 annotation(
     Placement(visible = true, transformation(origin = {0, -74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.SFCelements.Transition T7 annotation(
     Placement(visible = true, transformation(origin = {0, -88}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.SFCelements.Condition C1(y = S0.t > 2) annotation(
+  Modelica.Blocks.Sources.BooleanExpression C1(y = S0.t > 2) annotation(
     Placement(visible = true, transformation(origin = {32, 62}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.SFCelements.Condition C4(y = S2.t > 1) annotation(
+  Modelica.Blocks.Sources.BooleanExpression C4(y = S2.t > 1) annotation(
     Placement(visible = true, transformation(origin = {70, 38}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.SFCelements.Condition C5(y = S3.t > 2) annotation(
+  Modelica.Blocks.Sources.BooleanExpression C5(y = S3.t > 2) annotation(
     Placement(visible = true, transformation(origin = {70, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.SFCelements.Condition C6(y = S4.t > 0.5) annotation(
+  Modelica.Blocks.Sources.BooleanExpression C6(y = S4.t > 0.5) annotation(
     Placement(visible = true, transformation(origin = {101, -68}, extent = {{-23, -10}, {23, 10}}, rotation = 0)));
-  SFC.SFCelements.Condition C7(y = S1.t > 3) annotation(
+  Modelica.Blocks.Sources.BooleanExpression C7(y = S1.t > 3) annotation(
     Placement(visible = true, transformation(origin = {30, -88}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanPulse Cpulse(period = 2, startTime = 0.2, width = 20) annotation(
     Placement(visible = true, transformation(origin = {-38, 78}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

@@ -5,7 +5,7 @@ model testPar2Branch "Parallel Split/Join test with two branches"
     Placement(visible = true, transformation(origin = {10, 82}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.SFCelements.Transition T13 annotation(
     Placement(visible = true, transformation(origin = {10, 62}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.Branching.ParallelSplit2 pSplit annotation(
+  SFC.SFCelements.ParallelSplit2 pSplit annotation(
     Placement(visible = true, transformation(origin = {10, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.SFCelements.Step S1 annotation(
     Placement(visible = true, transformation(origin = {-30, 26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -21,29 +21,29 @@ model testPar2Branch "Parallel Split/Join test with two branches"
     Placement(visible = true, transformation(origin = {-30, 2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.SFCelements.Transition T5 annotation(
     Placement(visible = true, transformation(origin = {10, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.SFCelements.Condition C13(y = S0.t > 2) annotation(
-    Placement(visible = true, transformation(origin = {40, 62}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.SFCelements.Condition C4(y = S3.t > 1) annotation(
-    Placement(visible = true, transformation(origin = {92, 1}, extent = {{-22, -11}, {22, 11}}, rotation = 0)));
-  SFC.SFCelements.Condition C5(y = S2.t > 4) annotation(
-    Placement(visible = true, transformation(origin = {53, -90}, extent = {{-23, -10}, {23, 10}}, rotation = 0)));
-  SFC.SFCelements.Condition C2(y = S1.t > 0.5) annotation(
-    Placement(visible = true, transformation(origin = {16, 2}, extent = {{-26, -10}, {26, 10}}, rotation = 0)));
+  Modelica.Blocks.Sources.BooleanExpression C13(y = S0.t > 2) annotation(
+    Placement(visible = true, transformation(origin = {40, 62}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+  Modelica.Blocks.Sources.BooleanExpression C4(y = S3.t > 1) annotation(
+    Placement(visible = true, transformation(origin = {88, 2}, extent = {{18, -10}, {-18, 10}}, rotation = 0)));
+  Modelica.Blocks.Sources.BooleanExpression C5(y = S2.t > 4) annotation(
+    Placement(visible = true, transformation(origin = {47, -91}, extent = {{13, -7}, {-13, 7}}, rotation = 0)));
+  Modelica.Blocks.Sources.BooleanExpression C2(y = S1.t > 0.5) annotation(
+    Placement(visible = true, transformation(origin = {9, -1}, extent = {{15, -9}, {-15, 9}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanPulse Cpulse(period = 2, width = 30) annotation(
-    Placement(visible = true, transformation(origin = {100, -72}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
-  SFC.Branching.ParallelJoin2 pJoin annotation(
+    Placement(visible = true, transformation(origin = {-86, 54}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
+  SFC.SFCelements.ParallelJoin2 pJoin annotation(
     Placement(visible = true, transformation(origin = {10, -76}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner SFCelements.CyclicGroup cyclicGroup(period = 0.01)  annotation(
     Placement(visible = true, transformation(origin = {-88, 88}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T2.C, C2.y) annotation(
-    Line(points = {{-18, 2}, {-13, 2}}, color = {255, 0, 255}));
+    Line(points = {{-18, 2}, {-15, 2}, {-15, -1}, {-8, -1}}, color = {255, 0, 255}));
   connect(T5.C, C5.y) annotation(
-    Line(points = {{22, -90}, {28, -90}}, color = {255, 0, 255}));
+    Line(points = {{22, -90}, {25, -90}, {25, -91}, {33, -91}}, color = {255, 0, 255}));
   connect(T4.C, C4.y) annotation(
-    Line(points = {{62, 2}, {65, 2}, {65, 1}, {68, 1}}, color = {255, 0, 255}));
+    Line(points = {{62, 2}, {68, 2}}, color = {255, 0, 255}));
   connect(T13.C, C13.y) annotation(
-    Line(points = {{22, 62}, {30, 62}, {30, 62}, {28, 62}}, color = {255, 0, 255}));
+    Line(points = {{22, 62}, {29, 62}}, color = {255, 0, 255}));
   connect(T5.OUT, S0.IN) annotation(
     Line(points = {{10, -92}, {9.75, -92}, {9.75, -94}, {9.5, -94}, {9.5, -102}, {-56, -102}, {-56, 98}, {10, 98}, {10, 92}}));
   connect(T2.OUT, S2.IN) annotation(
