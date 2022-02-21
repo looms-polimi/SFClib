@@ -11,7 +11,7 @@ model CompleteSystem
 equation
 
 annotation(
-    experiment(StartTime = 0, StopTime = 20000, Tolerance = 1e-6, Interval = 40),
+    experiment(StartTime = 0, StopTime = 14400, Tolerance = 1e-6, Interval = 28.8),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
 end CompleteSystem;

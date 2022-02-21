@@ -3,13 +3,13 @@ within SFC.Examples.Application_example_001;
 model Plant
   Modelica.Fluid.Valves.ValveDiscrete V_bulk_in(redeclare package Medium = Medium, dp_nominal(displayUnit = "Pa") = 10000, m_flow_nominal = 1) annotation(
     Placement(visible = true, transformation(origin = {-41, 169}, extent = {{10, -10}, {-10, 10}}, rotation = 180)));
-  Modelica.Fluid.Vessels.OpenTank Tank_bulk(redeclare package Medium = Medium, T_start = system.T_ambient, crossArea = 0.25, energyDynamics = Modelica.Fluid.Types.Dynamics.FixedInitial, height = 2, level_start = 0.05, massDynamics = Modelica.Fluid.Types.Dynamics.FixedInitial, nPorts = 2, portsData = {Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 0, zeta_out = 0, zeta_in = 1), Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 2, zeta_out = 0, zeta_in = 1)}, use_HeatTransfer = true) annotation(
+  Modelica.Fluid.Vessels.OpenTank Tank_bulk(redeclare package Medium = Medium, T_start = system.T_ambient, crossArea = 0.1, energyDynamics = Modelica.Fluid.Types.Dynamics.FixedInitial, height = 2, level_start = 0.05, massDynamics = Modelica.Fluid.Types.Dynamics.FixedInitial, nPorts = 2, portsData = {Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 0, zeta_out = 0, zeta_in = 1), Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 2, zeta_out = 0, zeta_in = 1)}, use_HeatTransfer = true) annotation(
     Placement(visible = true, transformation(origin = {10, 99}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Fluid.Valves.ValveDiscrete V_bulk_2mix(redeclare package Medium = Medium, dp_nominal(displayUnit = "Pa") = 10000, m_flow_nominal = 0.5) annotation(
     Placement(visible = true, transformation(origin = {10, 55}, extent = {{10, -10}, {-10, 10}}, rotation = 90)));
-  Modelica.Fluid.Valves.ValveDiscrete V_product_out(redeclare package Medium = Medium, dp_nominal(displayUnit = "Pa") = 10000, m_flow_nominal = 0.1) annotation(
+  Modelica.Fluid.Valves.ValveDiscrete V_product_out(redeclare package Medium = Medium, dp_nominal(displayUnit = "Pa") = 10000, m_flow_nominal = 2) annotation(
     Placement(visible = true, transformation(origin = {-21, -159}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  Modelica.Fluid.Vessels.OpenTank Tank_mix(redeclare package Medium = Medium, T_start = system.T_ambient, crossArea = 0.25, energyDynamics = Modelica.Fluid.Types.Dynamics.FixedInitial, height = 1, level_start = 0.001, massDynamics = Modelica.Fluid.Types.Dynamics.FixedInitial, nPorts = 6, portsData = {Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 1, zeta_out = 0, zeta_in = 1), Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 1, zeta_out = 0, zeta_in = 1), Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 1, zeta_out = 0, zeta_in = 1), Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 1, zeta_out = 0, zeta_in = 1), Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 0, zeta_out = 0, zeta_in = 1), Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 0, zeta_out = 0, zeta_in = 1)}) annotation(
+  Modelica.Fluid.Vessels.OpenTank Tank_mix(redeclare package Medium = Medium, T_start = system.T_ambient, crossArea = 0.1, energyDynamics = Modelica.Fluid.Types.Dynamics.FixedInitial, height = 1, level_start = 0.001, massDynamics = Modelica.Fluid.Types.Dynamics.FixedInitial, nPorts = 6, portsData = {Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 1, zeta_out = 0, zeta_in = 1), Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 1, zeta_out = 0, zeta_in = 1), Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 1, zeta_out = 0, zeta_in = 1), Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 1, zeta_out = 0, zeta_in = 1), Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 0, zeta_out = 0, zeta_in = 1), Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 0, zeta_out = 0, zeta_in = 1)}) annotation(
     Placement(visible = true, transformation(extent = {{10, -81}, {50, -41}}, rotation = 0)));
   Modelica.Fluid.Sources.Boundary_pT Storage_product(redeclare package Medium = Medium, nPorts = 1, p = system.p_ambient, T = system.T_ambient) annotation(
     Placement(visible = true, transformation(extent = {{-80, -169}, {-60, -149}}, rotation = 0)));
@@ -75,9 +75,9 @@ model Plant
     Placement(visible = true, transformation(origin = {-32, 99}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature Tamb(T = system.T_ambient) annotation(
     Placement(visible = true, transformation(origin = {-78, 99}, extent = {{-5, -5}, {5, 5}}, rotation = 0)));
-  Modelica.Blocks.Sources.BooleanExpression LSM_bulk(y = Tank_bulk.level > 1) annotation(
+  Modelica.Blocks.Sources.BooleanExpression LSS_bulk(y = Tank_bulk.level > 0.88) annotation(
     Placement(visible = true, transformation(origin = {81, 65}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.SFCio.Write_boolean write_boolean3(variable_name = "Tank_bulk_LSM") annotation(
+  SFC.SFCio.Write_boolean write_boolean3(variable_name = "Tank_bulk_LSS") annotation(
     Placement(visible = true, transformation(origin = {131, 65}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
 equation
   connect(Supply_bulk.ports[1], V_bulk_in.port_a) annotation(
@@ -142,7 +142,7 @@ equation
     Line(points = {{-10, 99}, {-26, 99}}, color = {191, 0, 0}));
   connect(Tamb.port, Gloss.port_a) annotation(
     Line(points = {{-73, 99}, {-38, 99}}, color = {191, 0, 0}));
-  connect(LSM_bulk.y, write_boolean3.u) annotation(
+  connect(LSS_bulk.y, write_boolean3.u) annotation(
     Line(points = {{92, 65}, {109, 65}}, color = {255, 0, 255}));
   annotation(
     Diagram(coordinateSystem(preserveAspectRatio = true, extent = {{-200, -200}, {200, 200}}, grid = {1, 1})),

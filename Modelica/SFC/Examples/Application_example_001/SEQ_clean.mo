@@ -1,6 +1,6 @@
 within SFC.Examples.Application_example_001;
 
-model SEQ_recipe
+model SEQ_clean
   inner SFC.SFCelements.CyclicGroup cyclicGroup(period = 0.25)  annotation(
     Placement(visible = true, transformation(origin = {-80, 180}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.SFCio.Write_boolean write_boolean3(variable_name = "cmd_V_cleaner_in")  annotation(
@@ -93,4 +93,4 @@ recipe")}),
     experiment(StartTime = 0, StopTime = 100, Tolerance = 1e-06, Interval = 0.2),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
-end SEQ_recipe;
+end SEQ_clean;
