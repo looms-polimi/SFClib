@@ -17,7 +17,7 @@ model Test_activation_inconsistency
     Placement(visible = true, transformation(origin = {-10, -110}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.SFCelements.Transition T30 annotation(
     Placement(visible = true, transformation(origin = {-10, -140}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  inner SFC.SFCelements.CyclicGroup cyclicGroup(period = 0.01)  annotation(
+  inner SFC.SFCelements.CyclicGroup cyclicGroup(period = 0.005)  annotation(
     Placement(visible = true, transformation(origin = {-90, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression c1(y = true)  annotation(
     Placement(visible = true, transformation(origin = {80, 40}, extent = {{20, -10}, {-20, 10}}, rotation = 0)));
