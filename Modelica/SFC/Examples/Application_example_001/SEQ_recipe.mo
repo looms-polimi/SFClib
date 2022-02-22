@@ -13,7 +13,7 @@ model SEQ_recipe
     Placement(visible = true, transformation(origin = {-10, 170}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.SFCelements.Transition T_start_cycle annotation(
     Placement(visible = true, transformation(origin = {-10, 140}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.SFCio.Read_boolean read_boolean1(variable_name = "Tank_bulk_LSM") annotation(
+  SFC.SFCio.Read_boolean read_boolean1(variable_name = "Tank_bulk_LSS") annotation(
     Placement(visible = true, transformation(origin = {40, 140}, extent = {{20, -10}, {-20, 10}}, rotation = 0)));
   SFC.SFCelements.Step S_bulk annotation(
     Placement(visible = true, transformation(origin = {-10, 120}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -88,7 +88,7 @@ equation
     Line(points = {{-10, 47}, {-10, 60}}));
   annotation(
     Diagram(coordinateSystem(preserveAspectRatio = true, extent = {{-100, -200}, {100, 200}}, grid = {1, 1})),
-    Icon(coordinateSystem(preserveAspectRatio = true, extent = {{-100, -100}, {100, 100}}, grid = {1, 1}), graphics = {Text(fillColor = {78, 154, 6}, extent = {{-9, -5}, {-9, -5}}, textString = "P", textStyle = {TextStyle.Bold}), Rectangle(origin = {0.5, -0.5}, lineColor = {32, 74, 135}, fillColor = {183, 244, 224}, fillPattern = FillPattern.Solid, lineThickness = 2, extent = {{-100, 100}, {100, -100}}, radius = 40), Text(origin = {1, 0.5}, lineColor = {32, 74, 135}, fillColor = {78, 154, 6}, extent = {{-88, 88}, {88, -87}}, textString = "SEQ
+    Icon(coordinateSystem(preserveAspectRatio = true, extent = {{-100, -100}, {100, 100}}, grid = {1, 1}), graphics = {Text(extent = {{-9, -5}, {-9, -5}}, textString = "P", textStyle = {TextStyle.Bold}), Rectangle(origin = {0.5, -0.5}, lineColor = {32, 74, 135}, fillColor = {183, 244, 224}, fillPattern = FillPattern.Solid, lineThickness = 2, extent = {{-100, 100}, {100, -100}}, radius = 40), Text(origin = {1, 0.5}, textColor = {32, 74, 135}, extent = {{-88, 88}, {88, -87}}, textString = "SEQ
 recipe")}),
     experiment(StartTime = 0, StopTime = 100, Tolerance = 1e-06, Interval = 0.2),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",

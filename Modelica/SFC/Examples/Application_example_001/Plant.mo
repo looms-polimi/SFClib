@@ -10,7 +10,7 @@ model Plant
   Modelica.Fluid.Valves.ValveDiscrete V_product_out(redeclare package Medium = Medium, dp_nominal(displayUnit = "Pa") = 10000, m_flow_nominal = 2) annotation(
     Placement(visible = true, transformation(origin = {-21, -159}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   Modelica.Fluid.Vessels.OpenTank Tank_mix(redeclare package Medium = Medium, T_start = system.T_ambient, crossArea = 0.1, energyDynamics = Modelica.Fluid.Types.Dynamics.FixedInitial, height = 1, level_start = 0.001, massDynamics = Modelica.Fluid.Types.Dynamics.FixedInitial, nPorts = 6, portsData = {Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 1, zeta_out = 0, zeta_in = 1), Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 1, zeta_out = 0, zeta_in = 1), Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 1, zeta_out = 0, zeta_in = 1), Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 1, zeta_out = 0, zeta_in = 1), Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 0, zeta_out = 0, zeta_in = 1), Modelica.Fluid.Vessels.BaseClasses.VesselPortsData(diameter = 0.2, height = 0, zeta_out = 0, zeta_in = 1)}) annotation(
-    Placement(visible = true, transformation(extent = {{10, -81}, {50, -41}}, rotation = 0)));
+    Placement(visible = true, transformation(extent = {{9, -84}, {49, -44}}, rotation = 0)));
   Modelica.Fluid.Sources.Boundary_pT Storage_product(redeclare package Medium = Medium, nPorts = 1, p = system.p_ambient, T = system.T_ambient) annotation(
     Placement(visible = true, transformation(extent = {{-80, -169}, {-60, -149}}, rotation = 0)));
   Modelica.Fluid.Sources.Boundary_pT Supply_bulk(redeclare package Medium = Medium, T = system.T_ambient, nPorts = 1, p = 110000) annotation(
@@ -27,22 +27,22 @@ model Plant
     Placement(visible = true, transformation(origin = {-20, 10}, extent = {{10, -10}, {-10, 10}}, rotation = 90)));
   Modelica.Fluid.Valves.ValveDiscrete V_additive_2_in(redeclare package Medium = Medium, dp_nominal(displayUnit = "Pa") = 10000, m_flow_nominal = 0.1) annotation(
     Placement(visible = true, transformation(origin = {-45, -10}, extent = {{10, -10}, {-10, 10}}, rotation = 90)));
-  Modelica.Fluid.Valves.ValveDiscrete V_cleaner_out(redeclare package Medium = Medium, dp_nominal(displayUnit = "Pa") = 10000, m_flow_nominal = 0.1) annotation(
+  Modelica.Fluid.Valves.ValveDiscrete V_cleaner_out(redeclare package Medium = Medium, dp_nominal(displayUnit = "Pa") = 10000, m_flow_nominal = 0.5) annotation(
     Placement(visible = true, transformation(origin = {-41, -115}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   Modelica.Fluid.Valves.ValveDiscrete V_cleaner_in(redeclare package Medium = Medium, dp_nominal(displayUnit = "Pa") = 10000, m_flow_nominal = 0.1) annotation(
     Placement(visible = true, transformation(origin = {-45, -50}, extent = {{10, 10}, {-10, -10}}, rotation = -90)));
   Modelica.Fluid.Sources.Boundary_pT Exhaust_cleaner(redeclare package Medium = Medium, T = system.T_ambient, nPorts = 1, p = system.p_ambient) annotation(
     Placement(visible = true, transformation(extent = {{-81, -125}, {-61, -105}}, rotation = 0)));
-  Modelica.Fluid.Sources.Boundary_pT Supply_cleaner(redeclare package Medium = Medium, T = system.T_ambient, nPorts = 1, p = system.p_ambient) annotation(
+  Modelica.Fluid.Sources.Boundary_pT Supply_cleaner(redeclare package Medium = Medium, T = system.T_ambient, nPorts = 1, p = 130000) annotation(
     Placement(visible = true, transformation(extent = {{-81, -80}, {-61, -60}}, rotation = 0)));
   SFC.SFCio.Read_boolean read_boolean(variable_name = "cmd_V_bulk_in") annotation(
     Placement(visible = true, transformation(origin = {-141, 146}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   SFC.SFCio.Read_real read_real(variable_name = "cmd_heater_bulk") annotation(
     Placement(visible = true, transformation(origin = {-141, 120}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   SFC.SFCio.Write_real write_real(variable_name = "Tank_bulk_T") annotation(
-    Placement(visible = true, transformation(origin = {130, 124}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {149, 124}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   SFC.SFCio.Write_boolean write_boolean(variable_name = "Tank_bulk_LSH") annotation(
-    Placement(visible = true, transformation(origin = {130, 104}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {149, 104}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   SFC.SFCio.Read_boolean read_boolean1(variable_name = "cmd_V_bulk_2mix") annotation(
     Placement(visible = true, transformation(origin = {-140, 55}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   SFC.SFCio.Read_boolean read_boolean2(variable_name = "cmd_V_additive_1_in") annotation(
@@ -56,17 +56,17 @@ model Plant
   SFC.SFCio.Read_boolean read_boolean6(variable_name = "cmd_V_product_out") annotation(
     Placement(visible = true, transformation(origin = {-140, -140}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression Tbulk(y = Tank_bulk.heatTransfer.Ts[1]) annotation(
-    Placement(visible = true, transformation(origin = {80, 124}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {99, 124}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression LSH_bulk(y = Tank_bulk.level > 1.1) annotation(
-    Placement(visible = true, transformation(origin = {80, 104}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {99, 104}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression LSL_bulk(y = Tank_bulk.level > 0.9) annotation(
-    Placement(visible = true, transformation(origin = {80, 84}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.BooleanExpression LSE_mik(y = Tank_mix.level < .001) annotation(
-    Placement(visible = true, transformation(origin = {79, -77}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {99, 84}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Sources.BooleanExpression LSE_mix(y = Tank_mix.level < .001) annotation(
+    Placement(visible = true, transformation(origin = {98, -77}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.SFCio.Write_boolean write_boolean1(variable_name = "Tank_bulk_LSL") annotation(
-    Placement(visible = true, transformation(origin = {130, 84}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {149, 84}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   SFC.SFCio.Write_boolean write_boolean2(variable_name = "Tank_mix_LSE") annotation(
-    Placement(visible = true, transformation(origin = {129, -77}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {148, -77}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   Modelica.Blocks.Nonlinear.Limiter L01(limitsAtInit = true, uMax = 1, uMin = 0) annotation(
     Placement(visible = true, transformation(origin = {-78, 120}, extent = {{-5, -5}, {5, 5}}, rotation = 0)));
   Modelica.Blocks.Math.Gain Pmax(k = 10000) annotation(
@@ -76,9 +76,13 @@ model Plant
   Modelica.Thermal.HeatTransfer.Sources.FixedTemperature Tamb(T = system.T_ambient) annotation(
     Placement(visible = true, transformation(origin = {-78, 99}, extent = {{-5, -5}, {5, 5}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression LSS_bulk(y = Tank_bulk.level > 0.88) annotation(
-    Placement(visible = true, transformation(origin = {81, 65}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {100, 65}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.SFCio.Write_boolean write_boolean3(variable_name = "Tank_bulk_LSS") annotation(
-    Placement(visible = true, transformation(origin = {131, 65}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {150, 65}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
+  Modelica.Blocks.Sources.BooleanExpression LSH_mix(y = Tank_mix.level > 0.6) annotation(
+    Placement(visible = true, transformation(origin = {100, -97}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  SFC.SFCio.Write_boolean write_boolean4(variable_name = "Tank_mix_LSH") annotation(
+    Placement(visible = true, transformation(origin = {150, -97}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
 equation
   connect(Supply_bulk.ports[1], V_bulk_in.port_a) annotation(
     Line(points = {{-61, 169}, {-51, 169}}, color = {0, 127, 255}));
@@ -89,25 +93,25 @@ equation
   connect(V_bulk_in.port_b, Tank_bulk.ports[2]) annotation(
     Line(points = {{-31, 169}, {-10, 169}, {-10, 106.5}, {10, 106.5}, {10, 79}}, color = {0, 127, 255}));
   connect(V_bulk_2mix.port_b, Tank_mix.ports[1]) annotation(
-    Line(points = {{10, 45}, {10, -81}, {30, -81}}));
+    Line(points = {{10, 45}, {10, -84}, {29, -84}}));
   connect(Supply_additive_1.ports[1], V_additive_1_in.port_a) annotation(
     Line(points = {{-60, 70}, {-20, 70}, {-20, 20}}, color = {0, 127, 255}));
   connect(Supply_additive_2.ports[1], V_additive_2_in.port_a) annotation(
     Line(points = {{-60, 30}, {-45, 30}, {-45, 0}}, color = {0, 127, 255}));
   connect(V_additive_1_in.port_b, Tank_mix.ports[2]) annotation(
-    Line(points = {{-20, 0}, {-20, -10}, {10, -10}, {10, -81}, {30, -81}}, color = {0, 127, 255}));
+    Line(points = {{-20, 0}, {-20, -10}, {10, -10}, {10, -84}, {29, -84}}, color = {0, 127, 255}));
   connect(V_additive_2_in.port_b, Tank_mix.ports[3]) annotation(
-    Line(points = {{-45, -20}, {-45, -30}, {10, -30}, {10, -81}, {30, -81}}, color = {0, 127, 255}));
+    Line(points = {{-45, -20}, {-45, -30}, {10, -30}, {10, -84}, {29, -84}}, color = {0, 127, 255}));
   connect(V_cleaner_in.port_b, Tank_mix.ports[4]) annotation(
-    Line(points = {{-45, -40}, {-45, -30}, {10, -30}, {10, -81}, {30, -81}}, color = {0, 127, 255}));
+    Line(points = {{-45, -40}, {-45, -30}, {10, -30}, {10, -84}, {29, -84}}, color = {0, 127, 255}));
   connect(Supply_cleaner.ports[1], V_cleaner_in.port_a) annotation(
     Line(points = {{-61, -70}, {-45, -70}, {-45, -60}}, color = {0, 127, 255}));
   connect(Exhaust_cleaner.ports[1], V_cleaner_out.port_b) annotation(
     Line(points = {{-61, -115}, {-51, -115}}, color = {0, 127, 255}));
   connect(V_cleaner_out.port_a, Tank_mix.ports[5]) annotation(
-    Line(points = {{-31, -115}, {30, -115}, {30, -81}}, color = {0, 127, 255}));
+    Line(points = {{-31, -115}, {29, -115}, {29, -84}}, color = {0, 127, 255}));
   connect(V_product_out.port_a, Tank_mix.ports[6]) annotation(
-    Line(points = {{-11, -159}, {30, -159}, {30, -81}}, color = {0, 127, 255}));
+    Line(points = {{-11, -159}, {29, -159}, {29, -84}}, color = {0, 127, 255}));
   connect(H_bulk.port, Tank_bulk.heatPort) annotation(
     Line(points = {{-26, 120}, {-20, 120}, {-20, 99}, {-10, 99}}, color = {191, 0, 0}));
   connect(read_boolean.y, V_bulk_in.open) annotation(
@@ -125,13 +129,13 @@ equation
   connect(read_boolean6.y, V_product_out.open) annotation(
     Line(points = {{-118, -140}, {-21, -140}, {-21, -151}}, color = {255, 0, 255}));
   connect(Tbulk.y, write_real.u) annotation(
-    Line(points = {{91, 124}, {108, 124}}, color = {0, 0, 127}));
-  connect(LSE_mik.y, write_boolean2.u) annotation(
-    Line(points = {{90, -77}, {107, -77}}, color = {255, 0, 255}));
+    Line(points = {{110, 124}, {127, 124}}, color = {0, 0, 127}));
+  connect(LSE_mix.y, write_boolean2.u) annotation(
+    Line(points = {{109, -77}, {126, -77}}, color = {255, 0, 255}));
   connect(LSH_bulk.y, write_boolean.u) annotation(
-    Line(points = {{91, 104}, {108, 104}}, color = {255, 0, 255}));
+    Line(points = {{110, 104}, {127, 104}}, color = {255, 0, 255}));
   connect(LSL_bulk.y, write_boolean1.u) annotation(
-    Line(points = {{91, 84}, {108, 84}}, color = {255, 0, 255}));
+    Line(points = {{110, 84}, {127, 84}}, color = {255, 0, 255}));
   connect(read_real.y, L01.u) annotation(
     Line(points = {{-119, 120}, {-84, 120}}, color = {0, 0, 127}));
   connect(L01.y, Pmax.u) annotation(
@@ -143,10 +147,12 @@ equation
   connect(Tamb.port, Gloss.port_a) annotation(
     Line(points = {{-73, 99}, {-38, 99}}, color = {191, 0, 0}));
   connect(LSS_bulk.y, write_boolean3.u) annotation(
-    Line(points = {{92, 65}, {109, 65}}, color = {255, 0, 255}));
+    Line(points = {{111, 65}, {128, 65}}, color = {255, 0, 255}));
+  connect(LSH_mix.y, write_boolean4.u) annotation(
+    Line(points = {{111, -97}, {128, -97}}, color = {255, 0, 255}));
   annotation(
-    Diagram(coordinateSystem(preserveAspectRatio = true, extent = {{-200, -200}, {200, 200}}, grid = {1, 1})),
-    Icon(coordinateSystem(preserveAspectRatio = true, extent = {{-100, -100}, {100, 100}}, grid = {1, 1}), graphics = {Text(fillColor = {78, 154, 6}, extent = {{-9, -5}, {-9, -5}}, textString = "P", textStyle = {TextStyle.Bold}), Rectangle(origin = {0.5, -0.5}, lineColor = {143, 89, 2}, fillColor = {254, 236, 156}, fillPattern = FillPattern.Solid, lineThickness = 2, extent = {{-100, 100}, {100, -100}}, radius = 40), Text(origin = {-0.5, 0}, lineColor = {143, 89, 2}, fillColor = {78, 154, 6}, extent = {{-98, 99}, {99, -99}}, textString = "P")}),
+    Diagram(coordinateSystem(preserveAspectRatio = true, extent = {{-200, -200}, {200, 200}}, grid = {1, 1}), graphics = {Line(origin = {-71, -72}, points = {{0, 0}})}),
+    Icon(coordinateSystem(preserveAspectRatio = true, extent = {{-100, -100}, {100, 100}}, grid = {1, 1}), graphics = {Text(extent = {{-9, -5}, {-9, -5}}, textString = "P", textStyle = {TextStyle.Bold}), Rectangle(origin = {0.5, -0.5}, lineColor = {143, 89, 2}, fillColor = {254, 236, 156}, fillPattern = FillPattern.Solid, lineThickness = 2, extent = {{-100, 100}, {100, -100}}, radius = 40), Text(origin = {-0.5, 0}, textColor = {143, 89, 2}, extent = {{-98, 99}, {99, -99}}, textString = "P")}),
     experiment(StartTime = 0, StopTime = 100, Tolerance = 1e-06, Interval = 0.2),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));

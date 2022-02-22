@@ -4,14 +4,14 @@ model ModulatingControl
   SFC.SFCio.Read_real read_real(variable_name = "Tank_bulk_T") annotation(
     Placement(visible = true, transformation(origin = {-99, 14}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   SFC.SFCio.Write_real write_real(variable_name = "cmd_heater_bulk") annotation(
-    Placement(visible = true, transformation(origin = {20, 39}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {23, 39}, extent = {{-24, -12}, {24, 12}}, rotation = 0)));
   Modelica.Blocks.Continuous.LimPID C(Ti = 500, controllerType = Modelica.Blocks.Types.SimpleController.PI, k = 0.2, limitsAtInit = true, yMax = 1, yMin = 0) annotation(
     Placement(visible = true, transformation(origin = {-33, 39}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression spTbulk(y = 273.15 + 30) annotation(
     Placement(visible = true, transformation(origin = {-110, 39}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(C.y, write_real.u) annotation(
-    Line(points = {{-22, 39}, {-2, 39}}, color = {0, 0, 127}));
+    Line(points = {{-22, 39}, {-3, 39}}, color = {0, 0, 127}));
   connect(C.u_m, read_real.y) annotation(
     Line(points = {{-33, 27}, {-33, 14}, {-77, 14}}, color = {0, 0, 127}));
   connect(spTbulk.y, C.u_s) annotation(
