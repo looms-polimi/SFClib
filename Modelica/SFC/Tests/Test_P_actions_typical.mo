@@ -3,7 +3,7 @@ within SFC.Tests;
 model Test_P_actions_typical
   SFC.SFCelements.InitialStepNUT S0 annotation(
     Placement(visible = true, transformation(origin = {-30, 110}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SFC.SFCelements.P_actions_typical.P_action_integer_set p_action_integer_set(label = "int1=0", value = 3, variable_name = "int1")  annotation(
+  SFC.SFCelements.P_actions_typical.P_action_integer_set p_action_integer_set(label = "int1=3", value = 0, variable_name = "int1")  annotation(
     Placement(visible = true, transformation(origin = {22, 110}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   inner SFC.SFCelements.CyclicGroup cyclicGroup(period = 0.1)  annotation(
     Placement(visible = true, transformation(origin = {-112, 150}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
