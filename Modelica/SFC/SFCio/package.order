@@ -1,4 +1,6 @@
 Read_real
+Read_integer
 Read_boolean
 Write_real
+Write_integer
 Write_boolean

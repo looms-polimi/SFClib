@@ -1,7 +1,7 @@
 within SFC.SFCelements; 
 
 model N_action 
-  extends SFCelements.BaseClasses.Base_action
+  extends SFCelements.BaseClasses.Base_action_NSR
     (redeclare constant Integer qualifier=Constants.QUALIFIER_N);
 
   annotation(

@@ -1,6 +1,6 @@
 within SFC.SFCelements.BaseClasses;
 
-partial model Base_action
+partial model Base_action_NSR
   extends Icons.Action;
   parameter String action_name = "action1";
   Modelica.Blocks.Interfaces.BooleanInput phase_active annotation(
@@ -17,14 +17,17 @@ algorithm
     handle_bool := SFC.Functions.register_boolean_variable(action_name);
     handle_act := SFC.Functions.register_action("act_" + action_name);
     if phase_active then
-       SFC.Functions.set_boolean_variable(handle_bool, SFC.Functions.on_phase_activation(handle_act, qualifier));
+       SFC.Functions.set_boolean_variable(handle_bool,
+           SFC.Functions.on_phase_activation(handle_act, qualifier));
     end if;
   end when;
   when phase_active then
-    SFC.Functions.set_boolean_variable(handle_bool, SFC.Functions.on_phase_activation(handle_act, qualifier));
+    SFC.Functions.set_boolean_variable(handle_bool, 
+        SFC.Functions.on_phase_activation(handle_act, qualifier));
   end when;
   when phase_active_neg then
-    SFC.Functions.set_boolean_variable(handle_bool, SFC.Functions.on_phase_deactivation(handle_act, qualifier));
+    SFC.Functions.set_boolean_variable(handle_bool,
+        SFC.Functions.on_phase_deactivation(handle_act, qualifier));
   end when;
   annotation(
     Icon(graphics = {Text(origin = {32, 0}, extent = {{-168, 18}, {168, -18}}, textString = "%action_name", horizontalAlignment = TextAlignment.Left)}, coordinateSystem(extent = {{-200, -100}, {200, 100}})),
@@ -44,4 +47,4 @@ The structure of the block consists of a sequence of when statements that detect
   </tr><tr>  <th>R</th><td>the action is deactivated; it is useful when combined with qualifier S*.</td>
   </tr><tr>  <th>P</th><td>the action, when the step it is associated becomes active, is instantaneously activated and deactivated.</td>
   </tr></tbody></table></div><div>(*) in order to combine actions see block MergeActions.&nbsp;</div><div><br></div><div><br></div><div>&nbsp;</div></div></body></html>"));
-end Base_action;
+end Base_action_NSR;

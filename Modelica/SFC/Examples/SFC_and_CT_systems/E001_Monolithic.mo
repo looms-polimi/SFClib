@@ -2,7 +2,7 @@ within SFC.Examples.SFC_and_CT_systems;
 
 model E001_Monolithic
   extends Modelica.Icons.Example;
-  inner SFC.SFCelements.CyclicGroup cyclicGroup(period = 0.25)  annotation(
+  inner SFC.SFCelements.CyclicGroup cyclicGroup(period = 0.025)  annotation(
     Placement(visible = true, transformation(origin = {-170, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.SFCelements.Step S0(initialStep = true)  annotation(
     Placement(visible = true, transformation(origin = {-120, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -17,7 +17,7 @@ model E001_Monolithic
   Modelica.Blocks.Sources.BooleanExpression c01(y = rpv.y >= 0.7)  annotation(
     Placement(visible = true, transformation(origin = {-80, -10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   Modelica.Blocks.Continuous.TransferFunction P(a = {10, 1})  annotation(
-    Placement(visible = true, transformation(origin = {90, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {90, 70}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   SFC.SFCio.Write_real wr1(variable_name = "pv")  annotation(
     Placement(visible = true, transformation(origin = {140, 70}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   SFC.SFCio.Read_boolean rb1(variable_name = "cs")  annotation(
@@ -72,9 +72,9 @@ equation
   connect(rb1.y, b2r1.u) annotation(
     Line(points = {{22, 70}, {38, 70}}, color = {255, 0, 255}));
   connect(b2r1.y, P.u) annotation(
-    Line(points = {{62, 70}, {78, 70}}, color = {0, 0, 127}));
+    Line(points = {{62, 70}, {102, 70}}, color = {0, 0, 127}));
   connect(P.y, wr1.u) annotation(
-    Line(points = {{102, 70}, {118, 70}}, color = {0, 0, 127}));
+    Line(points = {{79, 70}, {118, 70}}, color = {0, 0, 127}));
   connect(S0.X, acs1.phase_active) annotation(
     Line(points = {{-108, 20}, {-92, 20}}, color = {255, 0, 255}));
   connect(c23.y, T23.C) annotation(
