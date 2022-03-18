@@ -2,7 +2,7 @@ within SFC.Examples.Application_example_001;
 
 model SEQ_recipe
   inner SFC.SFCelements.CyclicGroup cyclicGroup(period = 0.25)  annotation(
-    Placement(visible = true, transformation(origin = {-180, 180}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-180, 170}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.SFCio.Read_boolean read_boolean(variable_name = "Tank_mix_LSE")  annotation(
     Placement(visible = true, transformation(origin = {-80, -20}, extent = {{20, -10}, {-20, 10}}, rotation = 0)));
   SFC.SFCelements.Step Sidle(initialStep = true)  annotation(
@@ -86,7 +86,7 @@ model SEQ_recipe
   SFC.SFCelements.AlternativeJoin2 joun_clean annotation(
     Placement(visible = true, transformation(origin = {30, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SFC.SFCio.Read_integer r_cycles(variable_name = "cycles")  annotation(
-    Placement(visible = true, transformation(origin = {-170, 156}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-170, 146}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression booleanExpression3(y = r_cycles.y < 5) annotation(
     Placement(visible = true, transformation(origin = {30.5, 100}, extent = {{20.5, -11}, {-20.5, 11}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression booleanExpression7(y = r_cycles.y >= 5) annotation(

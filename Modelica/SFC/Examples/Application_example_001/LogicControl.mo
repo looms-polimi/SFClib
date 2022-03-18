@@ -1,10 +1,10 @@
 within SFC.Examples.Application_example_001;
 
 model LogicControl
-  LVL_bulk sLVL_bulk annotation(
-    Placement(visible = true, transformation(origin = {-96, 51}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SEQ_recipe sSEQ_recipe annotation(
-    Placement(visible = true, transformation(origin = {-41, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  SFC.Examples.Application_example_001.LVL_bulk sLVL_bulk annotation(
+    Placement(visible = true, transformation(origin = {-120, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  SFC.Examples.Application_example_001.SEQ_recipe sSEQ_recipe annotation(
+    Placement(visible = true, transformation(origin = {-80, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
 
   annotation(
