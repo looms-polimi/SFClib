@@ -27,9 +27,9 @@ model Plant
     Placement(visible = true, transformation(origin = {-20, 10}, extent = {{10, -10}, {-10, 10}}, rotation = 90)));
   Modelica.Fluid.Valves.ValveDiscrete V_additive_2_in(redeclare package Medium = Medium, dp_nominal(displayUnit = "Pa") = 10000, m_flow_nominal = 0.1) annotation(
     Placement(visible = true, transformation(origin = {-45, -10}, extent = {{10, -10}, {-10, 10}}, rotation = 90)));
-  Modelica.Fluid.Valves.ValveDiscrete V_cleaner_out(redeclare package Medium = Medium, dp_nominal(displayUnit = "Pa") = 10000, m_flow_nominal = 0.5) annotation(
+  Modelica.Fluid.Valves.ValveDiscrete V_cleaner_out(redeclare package Medium = Medium, dp_nominal(displayUnit = "Pa") = 10000, m_flow_nominal = 4) annotation(
     Placement(visible = true, transformation(origin = {-41, -115}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  Modelica.Fluid.Valves.ValveDiscrete V_cleaner_in(redeclare package Medium = Medium, dp_nominal(displayUnit = "Pa") = 10000, m_flow_nominal = 0.1) annotation(
+  Modelica.Fluid.Valves.ValveDiscrete V_cleaner_in(redeclare package Medium = Medium, dp_nominal(displayUnit = "Pa") = 10000, m_flow_nominal = 1) annotation(
     Placement(visible = true, transformation(origin = {-45, -50}, extent = {{10, 10}, {-10, -10}}, rotation = -90)));
   Modelica.Fluid.Sources.Boundary_pT Exhaust_cleaner(redeclare package Medium = Medium, T = system.T_ambient, nPorts = 1, p = system.p_ambient) annotation(
     Placement(visible = true, transformation(extent = {{-81, -125}, {-61, -105}}, rotation = 0)));

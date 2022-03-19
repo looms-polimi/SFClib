@@ -55,7 +55,7 @@ model SEQ_recipe
     Placement(visible = true, transformation(origin = {110, 105}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   SFC.SFCelements.Transition T_clean_full annotation(
     Placement(visible = true, transformation(origin = {70, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.BooleanExpression booleanExpression4(y = S_clean_in.t >= 5) annotation(
+  Modelica.Blocks.Sources.BooleanExpression booleanExpression4(y = S_clean_in.t >= 20) annotation(
     Placement(visible = true, transformation(origin = {110.5, 80}, extent = {{20.5, -11}, {-20.5, 11}}, rotation = 0)));
   SFC.SFCelements.Step S_clean_mix annotation(
     Placement(visible = true, transformation(origin = {70, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -63,7 +63,7 @@ model SEQ_recipe
     Placement(visible = true, transformation(origin = {110, 60}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   SFC.SFCelements.Transition T_clean_empty annotation(
     Placement(visible = true, transformation(origin = {70, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.BooleanExpression booleanExpression5(y = S_clean_mix.t >= 20) annotation(
+  Modelica.Blocks.Sources.BooleanExpression booleanExpression5(y = S_clean_mix.t >= 120) annotation(
     Placement(visible = true, transformation(origin = {110.5, 40}, extent = {{20.5, -11}, {-20.5, 11}}, rotation = 0)));
   SFC.SFCelements.Step S_clean_empty annotation(
     Placement(visible = true, transformation(origin = {70, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
