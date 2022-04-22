@@ -1,4 +1,2 @@
-*.o
-*.so
 *.bak-mo
-
+Modelica/SFC/Resources/Source/build
