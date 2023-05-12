@@ -29,16 +29,16 @@ algorithm
     X:=true;
     t_last_activation:= time;
     IN_count := IN_count+1;
-    Modelica.Utilities.Streams.print(
-     getInstanceName()+": active="+String(X)+ " at t="+String(time),"log.txt");
+//    Modelica.Utilities.Streams.print(
+//     getInstanceName()+": active="+String(X)+ " at t="+String(time),"log.txt");
   end when;
   
   when change(OUT.fire) then
      X:=false;
      duration_last_activity := t;
      OUT_count := OUT_count+1;
-    Modelica.Utilities.Streams.print(
-     getInstanceName()+": active="+String(X)+ " at t="+String(time),"log.txt");
+//    Modelica.Utilities.Streams.print(
+//     getInstanceName()+": active="+String(X)+ " at t="+String(time),"log.txt");
   end when;
   
 initial algorithm
