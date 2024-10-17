@@ -67,7 +67,7 @@ model Plant
     Placement(visible = true, transformation(origin = {130, 84}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   SFC.SFCio.Write_boolean write_boolean2(variable_name = "Tank_mix_LSE") annotation(
     Placement(visible = true, transformation(origin = {130, 44}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
-  Modelica.Blocks.Nonlinear.Limiter L01(limitsAtInit = true, uMax = 1, uMin = 0) annotation(
+  Modelica.Blocks.Nonlinear.Limiter L01(uMax = 1, uMin = 0) annotation(
     Placement(visible = true, transformation(origin = {-78, 120}, extent = {{-5, -5}, {5, 5}}, rotation = 0)));
   Modelica.Blocks.Math.Gain Pmax(k = 10000) annotation(
     Placement(visible = true, transformation(origin = {-58, 120}, extent = {{-5, -5}, {5, 5}}, rotation = 0)));

@@ -5,7 +5,7 @@ model ModulatingControl
     Placement(visible = true, transformation(origin = {-99, 14}, extent = {{-20, -10}, {20, 10}}, rotation = 0)));
   SFC.SFCio.Write_real write_real(variable_name = "cmd_heater_bulk") annotation(
     Placement(visible = true, transformation(origin = {23, 39}, extent = {{-24, -12}, {24, 12}}, rotation = 0)));
-  Modelica.Blocks.Continuous.LimPID C(Td = 30,Ti = 200, controllerType = Modelica.Blocks.Types.SimpleController.PID, k = 0.5, limitsAtInit = true, yMax = 1, yMin = 0) annotation(
+  Modelica.Blocks.Continuous.LimPID C(Td = 30,Ti = 200, controllerType = Modelica.Blocks.Types.SimpleController.PID, k = 0.5, yMax = 1, yMin = 0) annotation(
     Placement(visible = true, transformation(origin = {-33, 39}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression spTbulk(y = 273.15 + 30) annotation(
     Placement(visible = true, transformation(origin = {-110, 39}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
