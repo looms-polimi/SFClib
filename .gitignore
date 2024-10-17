@@ -1,2 +1,5 @@
 *.bak-mo
+*.dll
+*.dll.a
+*.so
 Modelica/SFC/Resources/Source/build
